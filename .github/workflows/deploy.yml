@@ -39,8 +39,8 @@ jobs:
       - name: 🔨 Build with Next.js
         run: bun run build
         env:
-          # 如果你的仓库不是 username.github.io，需要设置 basePath
-          # NEXT_PUBLIC_BASE_PATH: /your-repo-name
+          # 设置 basePath 为仓库名
+          NEXT_PUBLIC_BASE_PATH: /new-api-docs-v1
           NODE_ENV: production
 
       - name: 📄 Setup Pages
