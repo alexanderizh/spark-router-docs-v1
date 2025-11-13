@@ -1,37 +1,20 @@
-import Image, { type ImageProps } from 'next/image';
 import { withBasePath } from '@/lib/base-path';
 
 /**
  * MDX Image component with automatic basePath handling
+ * Uses native img tags for static export compatibility
  */
-export function MDXImage(
-  props: ImageProps | React.ImgHTMLAttributes<HTMLImageElement>
-) {
-  const { src, width, height, ...rest } = props;
+export function MDXImage(props: React.ImgHTMLAttributes<HTMLImageElement>) {
+  const { src, ...rest } = props;
 
   // Handle missing src
-  if (!src) {
+  if (!src || typeof src !== 'string') {
     return null;
   }
 
-  // Only add basePath to string paths, not imported images or external URLs
-  const processedSrc = typeof src === 'string' ? withBasePath(src) : src;
+  // Only add basePath to local paths, not external URLs
+  const processedSrc = withBasePath(src);
 
-  // If we have numeric width/height, use Next.js Image component
-  if (typeof width === 'number' && typeof height === 'number') {
-    return (
-      <Image
-        src={processedSrc}
-        width={width}
-        height={height}
-        {...(rest as any)}
-        unoptimized
-      />
-    );
-  }
-
-  // Otherwise use native img tag with basePath
-  return (
-    <img src={processedSrc as string} width={width} height={height} {...rest} />
-  );
+  // Always use native img tag for static export compatibility
+  return <img src={processedSrc} {...rest} />;
 }
