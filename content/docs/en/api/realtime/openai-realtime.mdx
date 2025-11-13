@@ -924,41 +924,41 @@ Triggered after each "response.done" event to indicate updated rate limits.
 
 Returned when conversation is created.
 
-| Parameter    | Type   | Required | Description                        | Example Value                                         |
-| ------------ | ------ | -------- | ---------------------------------- | ----------------------------------------------------- |
-| event_id     | String | No       | Unique identifier for server event | event_9101                                            |
-| type         | String | No       | Event type                         | conversation.created                                  |
+| Parameter    | Type   | Required | Description                        | Example Value                                           |
+| ------------ | ------ | -------- | ---------------------------------- | ------------------------------------------------------- |
+| event_id     | String | No       | Unique identifier for server event | event_9101                                              |
+| type         | String | No       | Event type                         | conversation.created                                    |
 | conversation | Object | No       | Conversation resource object       | `{"id": "conv_001", "object": "realtime.conversation"}` |
 
 #### conversation.item.created
 
 Returned when conversation item is created.
 
-| Parameter        | Type   | Required | Description                        | Example Value                                                                                                                                          |
-| ---------------- | ------ | -------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| event_id         | String | No       | Unique identifier for server event | event_1920                                                                                                                                             |
-| type             | String | No       | Event type                         | conversation.item.created                                                                                                                              |
-| previous_item_id | String | No       | ID of previous conversation item   | msg_002                                                                                                                                                |
+| Parameter        | Type   | Required | Description                        | Example Value                                                                                                                                            |
+| ---------------- | ------ | -------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| event_id         | String | No       | Unique identifier for server event | event_1920                                                                                                                                               |
+| type             | String | No       | Event type                         | conversation.item.created                                                                                                                                |
+| previous_item_id | String | No       | ID of previous conversation item   | msg_002                                                                                                                                                  |
 | item             | Object | No       | Conversation item object           | `{"id": "msg_003", "object": "realtime.item", "type": "message", "status": "completed", "role": "user", "content": [{"type": "text", "text": "Hello"}]}` |
 
 #### session.created
 
 Returned when session is created.
 
-| Parameter | Type   | Required | Description                        | Example Value                                                                                       |
-| --------- | ------ | -------- | ---------------------------------- | --------------------------------------------------------------------------------------------------- |
-| event_id  | String | No       | Unique identifier for server event | event_1234                                                                                          |
-| type      | String | No       | Event type                         | session.created                                                                                     |
+| Parameter | Type   | Required | Description                        | Example Value                                                                                         |
+| --------- | ------ | -------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| event_id  | String | No       | Unique identifier for server event | event_1234                                                                                            |
+| type      | String | No       | Event type                         | session.created                                                                                       |
 | session   | Object | No       | Session object                     | `{"id": "sess_001", "object": "realtime.session", "model": "gpt-4", "modalities": ["text", "audio"]}` |
 
 #### session.updated
 
 Returned when session is updated.
 
-| Parameter | Type   | Required | Description                        | Example Value                                                                                       |
-| --------- | ------ | -------- | ---------------------------------- | --------------------------------------------------------------------------------------------------- |
-| event_id  | String | No       | Unique identifier for server event | event_5678                                                                                          |
-| type      | String | No       | Event type                         | session.updated                                                                                     |
+| Parameter | Type   | Required | Description                        | Example Value                                                                                         |
+| --------- | ------ | -------- | ---------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| event_id  | String | No       | Unique identifier for server event | event_5678                                                                                            |
+| type      | String | No       | Event type                         | session.updated                                                                                       |
 | session   | Object | No       | Updated session object             | `{"id": "sess_001", "object": "realtime.session", "model": "gpt-4", "modalities": ["text", "audio"]}` |
 
 ### Rate Limit Event Parameter Table
@@ -972,11 +972,11 @@ Returned when session is updated.
 
 ### Function Call Parameter Table
 
-| Parameter   | Type   | Required | Description                   | Example Value                           |
-| ----------- | ------ | -------- | ----------------------------- | --------------------------------------- |
-| type        | String | Yes      | Function type                 | function                                |
-| name        | String | Yes      | Function name                 | get_weather                             |
-| description | String | No       | Function description          | Get the current weather                 |
+| Parameter   | Type   | Required | Description                   | Example Value                             |
+| ----------- | ------ | -------- | ----------------------------- | ----------------------------------------- |
+| type        | String | Yes      | Function type                 | function                                  |
+| name        | String | Yes      | Function name                 | get_weather                               |
+| description | String | No       | Function description          | Get the current weather                   |
 | parameters  | Object | Yes      | Function parameter definition | `{"type": "object", "properties": {...}}` |
 
 ### Audio Format Parameter Table
@@ -998,9 +998,9 @@ Returned when session is updated.
 
 ### Tool Selection Parameter Table
 
-| Parameter   | Type   | Description           | Optional Values                         |
-| ----------- | ------ | --------------------- | --------------------------------------- |
-| tool_choice | String | Tool selection method | auto, none, required                    |
+| Parameter   | Type   | Description           | Optional Values                           |
+| ----------- | ------ | --------------------- | ----------------------------------------- |
+| tool_choice | String | Tool selection method | auto, none, required                      |
 | tools       | Array  | Available tools list  | `[{type, name, description, parameters}]` |
 
 ### Model Configuration Parameter Table
@@ -1022,9 +1022,9 @@ Returned when session is updated.
 
 ### Session Status Parameter Table
 
-| Parameter | Type   | Description       | Optional Values                                    |
-| --------- | ------ | ----------------- | -------------------------------------------------- |
-| status    | String | Session status    | active, ended, error                               |
+| Parameter | Type   | Description       | Optional Values                                      |
+| --------- | ------ | ----------------- | ---------------------------------------------------- |
+| status    | String | Session status    | active, ended, error                                 |
 | error     | Object | Error information | `{"type": "error_type", "message": "error message"}` |
 | metadata  | Object | Session metadata  | `{"client_id": "web", "session_type": "chat"}`       |
 
@@ -1046,9 +1046,9 @@ Returned when session is updated.
 
 ### Response Status Parameter Table
 
-| Parameter      | Type   | Description      | Optional Values                                               |
-| -------------- | ------ | ---------------- | ------------------------------------------------------------- |
-| status         | String | Response status  | completed, cancelled, failed, incomplete                      |
+| Parameter      | Type   | Description      | Optional Values                                                 |
+| -------------- | ------ | ---------------- | --------------------------------------------------------------- |
+| status         | String | Response status  | completed, cancelled, failed, incomplete                        |
 | status_details | Object | Status details   | `{"reason": "user_cancelled"}`                                  |
 | usage          | Object | Usage statistics | `{"total_tokens": 50, "input_tokens": 20, "output_tokens": 30}` |
 
@@ -1071,8 +1071,8 @@ Returned when session is updated.
 
 ### WebRTC Configuration Parameter Table
 
-| Parameter          | Type    | Description                       | Default Value                              |
-| ------------------ | ------- | --------------------------------- | ------------------------------------------ |
+| Parameter          | Type    | Description                       | Default Value                                |
+| ------------------ | ------- | --------------------------------- | -------------------------------------------- |
 | ice_servers        | Array   | ICE server list                   | `[{"urls": "stun:stun.l.google.com:19302"}]` |
 | audio_constraints  | Object  | Audio constraints                 | `{"echoCancellation": true}`                 |
-| connection_timeout | Integer | Connection timeout (milliseconds) | 30000                                      |
+| connection_timeout | Integer | Connection timeout (milliseconds) | 30000                                        |

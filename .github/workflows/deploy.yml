@@ -43,6 +43,9 @@ jobs:
           NEXT_PUBLIC_BASE_PATH: /new-api-docs-v1
           NODE_ENV: production
 
+      - name: 📝 Add .nojekyll file
+        run: touch out/.nojekyll
+
       - name: 📄 Setup Pages
         uses: actions/configure-pages@v5
 
