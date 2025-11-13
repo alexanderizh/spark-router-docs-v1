@@ -4,8 +4,10 @@ title: 环境变量配置指南
 
 本文档提供了New API支持的所有环境变量及其配置说明。您可以通过设置这些环境变量来自定义系统的行为。
 
-{/* TODO: Convert to Callout - tip: 提示 */}
-New API 支持从 `.env` 文件中读取环境变量，请参照 `.env.example` 文件，使用时请将其重命名为 `.env`。
+<Callout type="info" title="提示">
+  New API 支持从 `.env` 文件中读取环境变量，请参照 `.env.example`
+  文件，使用时请将其重命名为 `.env`。
+</Callout>
 
 ## 基本配置
 
@@ -49,8 +51,9 @@ New API 支持从 `.env` 文件中读取环境变量，请参照 `.env.example` 
 | `INITIAL_ROOT_TOKEN`        | 首次启动时创建的root用户令牌 | -        | `INITIAL_ROOT_TOKEN=your_token`             |
 | `INITIAL_ROOT_ACCESS_TOKEN` | 首次启动时创建的系统管理令牌 | -        | `INITIAL_ROOT_ACCESS_TOKEN=your_token`      |
 
-{/* TODO: Convert to Callout - info: 集群部署 */}
-关于如何使用这些环境变量构建完整的集群部署，请参考[集群部署指南](cluster-deployment.md)。
+<Callout type="info" title="集群部署">
+  关于如何使用这些环境变量构建完整的集群部署，请参考[集群部署指南](cluster-deployment.md)。
+</Callout>
 
 ## 用户及令牌配置
 
@@ -73,8 +76,9 @@ New API 支持从 `.env` 文件中读取环境变量，请参照 `.env.example` 
 | `STREAMING_TIMEOUT`            | 流式一次回复的超时时间(秒)  | `60`   | `STREAMING_TIMEOUT=120`           |
 | `MAX_FILE_DOWNLOAD_MB`         | 最大文件下载大小(MB)        | `20`   | `MAX_FILE_DOWNLOAD_MB=50`         |
 
-{/* TODO: Convert to Callout - warning: RELAY_TIMEOUT 设置警告 */}
-设置 `RELAY_TIMEOUT` 环境变量时请谨慎，如果设置过短可能导致以下问题：
+<Callout type="warn" title="RELAY_TIMEOUT 设置警告">
+  设置 `RELAY_TIMEOUT` 环境变量时请谨慎，如果设置过短可能导致以下问题：
+</Callout>
 
     - 上游API已经完成请求并计费，但本地因超时而未完成计费
 
@@ -113,8 +117,9 @@ New API 支持从 `.env` 文件中读取环境变量，请参照 `.env.example` 
 | `TIKTOKEN_CACHE_DIR`         | Tiktoken编码器缓存目录，用于存放分词文件避免网络下载 | -       | `TIKTOKEN_CACHE_DIR=/cache/tiktoken` |
 | `DATA_GYM_CACHE_DIR`         | DataGym缓存目录                                      | -       | `DATA_GYM_CACHE_DIR=/cache/data_gym` |
 
-{/* TODO: Convert to Callout - tip: Tiktoken文件配置 */}
-下载tiktoken文件后，请按照以下方式重命名：
+<Callout type="info" title="Tiktoken文件配置">
+  下载tiktoken文件后，请按照以下方式重命名：
+</Callout>
 
     - `cl100k_base.tiktoken` 重命名为 `9b5ad71b2ce5302211f9c61530b329a4922fc6a4`
 
@@ -122,10 +127,9 @@ New API 支持从 `.env` 文件中读取环境变量，请参照 `.env.example` 
 
     这些文件应放置在`TIKTOKEN_CACHE_DIR`指定的目录中，以提高token计算性能并减少网络依赖。
 
-{/* TODO: Convert to Callout - example: Tiktoken配置示例 */}
-
-````bash # Docker环境示例
-TIKTOKEN_CACHE_DIR=/app/data/tiktoken
+<Callout type="info" title="Tiktoken配置示例">
+  ````bash # Docker环境示例 TIKTOKEN_CACHE_DIR=/app/data/tiktoken
+</Callout>
 
     # 然后将tiktoken文件下载并重命名后放入该目录：
     /app/data/tiktoken/9b5ad71b2ce5302211f9c61530b329a4922fc6a4
@@ -178,7 +182,7 @@ CRYPTO_SECRET=your_unique_crypto_secret
 
 # Redis缓存配置
 REDIS_CONN_STRING=redis://default:password@redis-server:6379
-````
+```
 
 ### 从节点配置
 
@@ -203,8 +207,9 @@ FRONTEND_BASE_URL=https://your-domain.com
 SYNC_FREQUENCY=60
 ```
 
-{/* TODO: Convert to Callout - tip: 完整集群配置 */}
-这只是基本的多节点配置示例。完整的集群部署配置、架构说明和最佳实践，请参考[集群部署指南](cluster-deployment.md)。
+<Callout type="info" title="完整集群配置">
+  这只是基本的多节点配置示例。完整的集群部署配置、架构说明和最佳实践，请参考[集群部署指南](cluster-deployment.md)。
+</Callout>
 
 ## Docker Compose中的环境变量示例
 

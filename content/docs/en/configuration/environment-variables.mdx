@@ -4,8 +4,10 @@ title: Environment Variable Configuration Guide
 
 This document provides all environment variables supported by New API and their configuration instructions. You can customize the system's behavior by setting these environment variables.
 
-{/* TODO: Convert to Callout - tip: Tip */}
-New API supports reading environment variables from the `.env` file. Please refer to the `.env.example` file and rename it to `.env` for use.
+<Callout type="info" title="Tip">
+  New API supports reading environment variables from the `.env` file. Please
+  refer to the `.env.example` file and rename it to `.env` for use.
+</Callout>
 
 ## Basic Configuration
 
@@ -49,8 +51,11 @@ New API supports reading environment variables from the `.env` file. Please refe
 | `INITIAL_ROOT_TOKEN`        | Root user token created on first startup               | -             | `INITIAL_ROOT_TOKEN=your_token`             |
 | `INITIAL_ROOT_ACCESS_TOKEN` | System management token created on first startup       | -             | `INITIAL_ROOT_ACCESS_TOKEN=your_token`      |
 
-{/* TODO: Convert to Callout - info: Cluster Deployment */}
-For information on how to use these environment variables to build a complete cluster deployment, please refer to the [Cluster Deployment Guide](cluster-deployment.md).
+<Callout type="info" title="Cluster Deployment">
+  For information on how to use these environment variables to build a complete
+  cluster deployment, please refer to the [Cluster Deployment
+  Guide](cluster-deployment.md).
+</Callout>
 
 ## User and Token Configuration
 
@@ -73,8 +78,10 @@ For information on how to use these environment variables to build a complete cl
 | `STREAMING_TIMEOUT`            | Streaming single response timeout (seconds)   | `60`          | `STREAMING_TIMEOUT=120`           |
 | `MAX_FILE_DOWNLOAD_MB`         | Maximum file download size (MB)               | `20`          | `MAX_FILE_DOWNLOAD_MB=50`         |
 
-{/* TODO: Convert to Callout - warning: RELAY_TIMEOUT Setting Warning */}
-Please exercise caution when setting the `RELAY_TIMEOUT` environment variable. Setting it too short may lead to the following issues:
+<Callout type="warn" title="RELAY_TIMEOUT Setting Warning">
+  Please exercise caution when setting the `RELAY_TIMEOUT` environment variable.
+  Setting it too short may lead to the following issues:
+</Callout>
 
     - The upstream API has completed the request and charged, but local billing failed due to timeout
 
@@ -113,8 +120,9 @@ Please exercise caution when setting the `RELAY_TIMEOUT` environment variable. S
 | `TIKTOKEN_CACHE_DIR`         | Tiktoken encoder cache directory, used to store tokenizer files to avoid network download | -             | `TIKTOKEN_CACHE_DIR=/cache/tiktoken` |
 | `DATA_GYM_CACHE_DIR`         | DataGym cache directory                                                                   | -             | `DATA_GYM_CACHE_DIR=/cache/data_gym` |
 
-{/* TODO: Convert to Callout - tip: Tiktoken File Configuration */}
-After downloading the tiktoken files, please rename them as follows:
+<Callout type="info" title="Tiktoken File Configuration">
+  After downloading the tiktoken files, please rename them as follows:
+</Callout>
 
     - `cl100k_base.tiktoken` renamed to `9b5ad71b2ce5302211f9c61530b329a4922fc6a4`
 
@@ -122,10 +130,9 @@ After downloading the tiktoken files, please rename them as follows:
 
     These files should be placed in the directory specified by `TIKTOKEN_CACHE_DIR` to improve token calculation performance and reduce network dependency.
 
-{/* TODO: Convert to Callout - example: Tiktoken Configuration Example */}
-
-````bash # Docker environment example
-TIKTOKEN_CACHE_DIR=/app/data/tiktoken
+<Callout type="info" title="Tiktoken Configuration Example">
+  ````bash # Docker environment example TIKTOKEN_CACHE_DIR=/app/data/tiktoken
+</Callout>
 
     # Then download and rename the tiktoken files and place them in this directory:
     /app/data/tiktoken/9b5ad71b2ce5302211f9c61530b329a4922fc6a4
@@ -178,7 +185,7 @@ CRYPTO_SECRET=your_unique_crypto_secret
 
 # Redis Cache Configuration
 REDIS_CONN_STRING=redis://default:password@redis-server:6379
-````
+```
 
 ### Slave Node Configuration
 
@@ -203,8 +210,11 @@ FRONTEND_BASE_URL=https://your-domain.com
 SYNC_FREQUENCY=60
 ```
 
-{/* TODO: Convert to Callout - tip: Complete Cluster Configuration */}
-This is just a basic multi-node configuration example. For complete cluster deployment configuration, architecture description, and best practices, please refer to the [Cluster Deployment Guide](cluster-deployment.md).
+<Callout type="info" title="Complete Cluster Configuration">
+  This is just a basic multi-node configuration example. For complete cluster
+  deployment configuration, architecture description, and best practices, please
+  refer to the [Cluster Deployment Guide](cluster-deployment.md).
+</Callout>
 
 ## Environment Variable Example in Docker Compose
 

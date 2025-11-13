@@ -22,8 +22,9 @@ title: OpenAI Codex CLI
   />
 </div>
 
-{/* TODO: Convert to Callout - info: 项目介绍 */}
-Codex CLI is a coding agent from OpenAI that runs locally on your computer.
+<Callout type="info" title="项目介绍">
+  Codex CLI is a coding agent from OpenAI that runs locally on your computer.
+</Callout>
 
     Codex CLI 是一个来自 OpenAI 的编码代理，可在您的计算机上本地运行。
 
@@ -64,25 +65,24 @@ Codex CLI is a coding agent from OpenAI that runs locally on your computer.
 
 为在 Windows 上获得最佳性能，请安装并使用 Windows Subsystem for Linux (WSL2)。
 
-{/* TODO: Convert to Callout - info: 安装 WSL2，重启 Windows 计算机 */}
-`     wsl --install
-    `
-安装完成后重启 Windows 计算机
+<Callout type="info" title="安装 WSL2，重启 Windows 计算机">
+  ` wsl --install ` 安装完成后重启 Windows 计算机
+</Callout>
 
 !!! caution "Windows 注意事项" - 建议使用 PowerShell 而不是 CMD - 如果遇到权限问题，尝试以管理员身份运行 - 某些杀毒软件可能会误报，需要添加白名单
 
 ![windows-img-03.webp](/assets/codex/windows-img-03.webp)
 
-{/* TODO: Convert to Callout - info: 下载 Node Version Manager (NVM) */}
-`     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-    `
+<Callout type="info" title="下载 Node Version Manager (NVM)">
+  ` curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh |
+  bash `
+</Callout>
 
 ![windows-img-04.webp](/assets/codex/windows-img-04.webp)
 
-{/* TODO: Convert to Callout - info: NVM 安装 Node.js 22 */}
-标签栏新开一个 PowerShell 窗口，打开 WSL
-`     wsl
-    `
+<Callout type="info" title="NVM 安装 Node.js 22">
+  标签栏新开一个 PowerShell 窗口，打开 WSL ` wsl `
+</Callout>
 
     安装 Node.js
 
@@ -95,18 +95,20 @@ Codex CLI is a coding agent from OpenAI that runs locally on your computer.
 
 #### 3.安装 Codex CLI
 
-{/* TODO: Convert to Callout - info: 安装 Codex CLI */}
-`     npm i -g @openai/codex
-    `
-这个命令会从 npm 官方仓库下载并安装最新版本的 Codex CLI。
+<Callout type="info" title="安装 Codex CLI">
+  ` npm i -g @openai/codex ` 这个命令会从 npm 官方仓库下载并安装最新版本的 Codex
+  CLI。
+</Callout>
 
 ![windows-img-06.webp](/assets/codex/windows-img-06.webp)
 
 #### 4.修改配置文件
 
-{/* TODO: Convert to Callout - info: 一键修改 Codex CLI 配置文件 */}
-`     iex (irm 'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/codex-cli-setup.ps1')
-    `
+<Callout type="info" title="一键修改 Codex CLI 配置文件">
+  ` iex (irm
+  'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/codex-cli-setup.ps1')
+  `
+</Callout>
 
 ![windows-configure](/assets/codex/windows_configure.png)
 
@@ -114,19 +116,10 @@ Codex CLI is a coding agent from OpenAI that runs locally on your computer.
 
 现在你可以开始使用 Codex CLI 了！
 
-{/* TODO: Convert to Callout - info: 启动 Codex CLI */}
-启动 WSL2
-`     wsl
-    `
-直接启动 Codex CLI:
-`     codex
-    `
-在特定项目中使用:
-`     cd mnt/c/path/to/your/project
-    `
-`     codex
-    `
-Enter 启动 Codex CLI
+<Callout type="info" title="启动 Codex CLI">
+  启动 WSL2 ` wsl ` 直接启动 Codex CLI: ` codex ` 在特定项目中使用: ` cd
+  mnt/c/path/to/your/project ` ` codex ` Enter 启动 Codex CLI
+</Callout>
 
 ![windows-img-09.webp](/assets/codex/windows-img-09.webp)
 
@@ -134,9 +127,9 @@ Enter 启动 Codex CLI
 
 > 设置 Codex CLI 的权限：1.允许 Codex 直接修改文件；2.Codex 修改文件需要手动授权
 
-{/* TODO: Convert to Callout - info: 选择模型 */}
-`     /model
-    `
+<Callout type="info" title="选择模型">
+  ` /model `
+</Callout>
 
 ![windows-img-11.webp](/assets/codex/windows-img-11.webp)
 
@@ -158,9 +151,10 @@ Homebrew 是 macOS 缺失的软件包的管理器。
 
 ![macos-img-01.webp](/assets/codex/macos-img-01.webp)
 
-{/* TODO: Convert to Callout - info: 安装 Homebrew */}
-`     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    `
+<Callout type="info" title="安装 Homebrew">
+  ` /bin/bash -c "$(curl -fsSL
+  https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" `
+</Callout>
 
 ![macos-img-02.webp](/assets/codex/macos-img-02.webp)
 
@@ -170,13 +164,9 @@ Homebrew 是 macOS 缺失的软件包的管理器。
 
 #### 2.安装 Node.js 环境
 
-{/* TODO: Convert to Callout - info: Node.js 环境安装步骤 */}
-更新 Homebrew
-`     brew update
-    `
-安装 Node.js
-`     brew install node
-    `
+<Callout type="info" title="Node.js 环境安装步骤">
+  更新 Homebrew ` brew update ` 安装 Node.js ` brew install node `
+</Callout>
 
 !!! caution "macOS 注意事项" - 如果遇到权限问题，可能需要使用`sudo` - 首次运行可能需要在系统偏好设置中允许 - 建议使用`Terminal`或`iTerm2`
 
@@ -184,37 +174,32 @@ Homebrew 是 macOS 缺失的软件包的管理器。
 
 ![macos-img-06.webp](/assets/codex/macos-img-06.webp)
 
-{/* TODO: Convert to Callout - info */}rmation "验证安装是否成功"
-安装完成后，打开终端，输入以下命令：
-`     node --version
-    npm --version
-    `
-如果显示版本号，说明安装成功
+<Callout type="info">
+  rmation "验证安装是否成功" 安装完成后，打开终端，输入以下命令： ` node
+  --version npm --version ` 如果显示版本号，说明安装成功
+</Callout>
 
 #### 3.安装 Codex CLI
 
-{/* TODO: Convert to Callout - info: 安装 Codex CLI */}
-打开终端，运行以下命令：
-`     # 全局安装 Codex CLI
-    npm install -g @openai/codex
-    `
-如果遇到权限问题，可以使用 sudo：
-`     sudo npm install -g @openai/codex
-    `
+<Callout type="info" title="安装 Codex CLI">
+  打开终端，运行以下命令： ` # 全局安装 Codex CLI npm install -g @openai/codex `
+  如果遇到权限问题，可以使用 sudo： ` sudo npm install -g @openai/codex `
+</Callout>
 
 ![macos-img-07.webp](/assets/codex/macos-img-07.webp)
 
-{/* TODO: Convert to Callout - info: 验证 Codex CLI 安装 */}
-安装完成后，输入以下命令检查是否安装成功：
-`     codex --version
-    `
-如果显示版本号，恭喜你！Codex CLI 已经成功安装了。
+<Callout type="info" title="验证 Codex CLI 安装">
+  安装完成后，输入以下命令检查是否安装成功： ` codex --version `
+  如果显示版本号，恭喜你！Codex CLI 已经成功安装了。
+</Callout>
 
 #### 4.修改配置文件
 
-{/* TODO: Convert to Callout - info: 一键修改 Codex CLI 配置文件 */}
-`     curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/codex-cli-setup.sh | bash
-    `
+<Callout type="info" title="一键修改 Codex CLI 配置文件">
+  ` curl -fsSL
+  https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/codex-cli-setup.sh
+  | bash `
+</Callout>
 
 ![macos-configure](/assets/codex/macos_configure.png)
 
@@ -222,16 +207,10 @@ Homebrew 是 macOS 缺失的软件包的管理器。
 
 现在你可以开始使用 Codex CLI 了！
 
-{/* TODO: Convert to Callout - info: 启动 Codex CLI */}
-直接启动 Codex CLI:
-`     codex
-    `
-在特定项目中使用:
-`     cd mnt/c/path/to/your/project
-    `
-`     codex
-    `
-Enter 启动 Codex CLI
+<Callout type="info" title="启动 Codex CLI">
+  直接启动 Codex CLI: ` codex ` 在特定项目中使用: ` cd
+  mnt/c/path/to/your/project ` ` codex ` Enter 启动 Codex CLI
+</Callout>
 
 ![macos-img-09.webp](/assets/codex/macos-img-09.webp)
 
@@ -251,14 +230,16 @@ Enter 启动 Codex CLI
 
 #### 6.macOS 常见问题解决
 
-{/* TODO: Collapsible example: 安装时提示权限错误 */}
-尝试以下解决方法：
+<Callout type="info" title="安装时提示权限错误" collapsible>
+  尝试以下解决方法：
+</Callout>
 
     - 使用`sudo`安装：`sudo npm install -g @openai/codex`
     - 或者配置`npm`使用用户目录：`npm config set prefix ~/.npm-global`
 
-{/* TODO: Collapsible example: macOS 安全设置阻止运行 */}
-如果系统阻止运行 Codex CLI：
+<Callout type="info" title="macOS 安全设置阻止运行" collapsible>
+  如果系统阻止运行 Codex CLI：
+</Callout>
 
     - 打开"系统偏好设置" → "安全性与隐私"
     - 点击"仍要打开"或"允许"
@@ -270,13 +251,10 @@ Enter 启动 Codex CLI
 
 Codex CLI 需要 Node.js 环境才能运行。
 
-{/* TODO: Convert to Callout - info: Node.js 环境安装步骤 */}
-添加 NodeSource 仓库
-`     sudo curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-    `
-安装 Node.js
-`     sudo apt-get install -y nodejs
-    `
+<Callout type="info" title="Node.js 环境安装步骤">
+  添加 NodeSource 仓库 ` sudo curl -fsSL https://deb.nodesource.com/setup_lts.x
+  | sudo -E bash - ` 安装 Node.js ` sudo apt-get install -y nodejs `
+</Callout>
 
 !!! caution "Linux 注意事项" - 某些发行版可能需要安装额外的依赖 - 如果遇到权限问题，使用 sudo - 确保你的用户在 npm 的全局目录有写权限
 
@@ -284,36 +262,31 @@ Codex CLI 需要 Node.js 环境才能运行。
 
 ![linux-img-02.webp](/assets/codex/linux-img-02.webp)
 
-{/* TODO: Convert to Callout - info */}rmation "验证安装是否成功"
-安装完成后，打开终端，输入以下命令：
-`     node --version
-    npm --version
-    `
-如果显示版本号，说明安装成功
+<Callout type="info">
+  rmation "验证安装是否成功" 安装完成后，打开终端，输入以下命令： ` node
+  --version npm --version ` 如果显示版本号，说明安装成功
+</Callout>
 
 #### 2.安装 Codex CLI
 
-{/* TODO: Convert to Callout - info: 安装 Codex CLI */}
-打开终端，运行以下命令：
-`     # 全局安装 Codex CLI
-    npm install -g @openai/codex
-    `
-如果遇到权限问题，可以使用 sudo：
-`     sudo npm install -g @openai/codex
-    `
-![linux-img-03.webp](/assets/codex/linux-img-03.webp)
+<Callout type="info" title="安装 Codex CLI">
+  打开终端，运行以下命令： ` # 全局安装 Codex CLI npm install -g @openai/codex `
+  如果遇到权限问题，可以使用 sudo： ` sudo npm install -g @openai/codex `
+  ![linux-img-03.webp](/assets/codex/linux-img-03.webp)
+</Callout>
 
-{/* TODO: Convert to Callout - info: 验证 Codex CLI 安装 */}
-安装完成后，输入以下命令检查是否安装成功：
-`     codex --version
-    `
-如果显示版本号，恭喜你！Codex CLI 已经成功安装了。
+<Callout type="info" title="验证 Codex CLI 安装">
+  安装完成后，输入以下命令检查是否安装成功： ` codex --version `
+  如果显示版本号，恭喜你！Codex CLI 已经成功安装了。
+</Callout>
 
 #### 3.修改配置文件
 
-{/* TODO: Convert to Callout - info: 一键修改 Codex CLI 配置文件 */}
-`     curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/codex-cli-setup.sh | bash
-    `
+<Callout type="info" title="一键修改 Codex CLI 配置文件">
+  ` curl -fsSL
+  https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/codex-cli-setup.sh
+  | bash `
+</Callout>
 
 ![macos-configure](/assets/codex/macos_configure.png)
 
@@ -321,19 +294,11 @@ Codex CLI 需要 Node.js 环境才能运行。
 
 现在你可以开始使用 Codex CLI 了！
 
-{/* TODO: Convert to Callout - info: 启动 Codex CLI */}
-直接启动 Codex CLI:
-`     # 启动 Codex CLI
-    codex
-    `
-在特定项目中使用:
-`     # 进入你的项目目录
-    cd /path/to/your/project
-    `
-`     # 启动 Codex CLI
-    codex
-    `
-Enter 启动 Codex CLI
+<Callout type="info" title="启动 Codex CLI">
+  直接启动 Codex CLI: ` # 启动 Codex CLI codex ` 在特定项目中使用: ` #
+  进入你的项目目录 cd /path/to/your/project ` ` # 启动 Codex CLI codex ` Enter
+  启动 Codex CLI
+</Callout>
 
 ![linux-img-05.webp](/assets/codex/linux-img-05.webp)
 
@@ -353,8 +318,9 @@ Enter 启动 Codex CLI
 
 #### 5.Linux 常见问题解决
 
-{/* TODO: Collapsible example: 安装时提示权限错误 */}
-尝试以下解决方法：
+<Callout type="info" title="安装时提示权限错误" collapsible>
+  尝试以下解决方法：
+</Callout>
 
     - 使用`sudo`安装：`sudo npm install -g @openai/codex`
 
@@ -362,11 +328,7 @@ Enter 启动 Codex CLI
 
     - 然后添加到`PATH`：`export PATH=~/.npm-global/bin:$PATH`
 
-{/* TODO: Collapsible example: 缺少依赖库 */}
-某些 Linux 发行版需要安装额外依赖：
-`     # Ubuntu/Debian
-    sudo apt install build-essential
-    `
-`     # CentOS/RHEL
-    sudo dnf groupinstall "Development Tools"
-    `
+<Callout type="info" title="缺少依赖库" collapsible>
+  某些 Linux 发行版需要安装额外依赖： ` # Ubuntu/Debian sudo apt install
+  build-essential ` ` # CentOS/RHEL sudo dnf groupinstall "Development Tools" `
+</Callout>

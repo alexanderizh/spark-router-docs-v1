@@ -1,10 +1,15 @@
-﻿---
+---
 title: OpenAI Realtime API
 ---
 
-{/* TODO: Convert to Callout - info: Official Documentation */} - [OpenAI Realtime WebRTC](https://platform.openai.com/docs/guides/realtime-webrtc) - [OpenAI Realtime WebSocket](https://platform.openai.com/docs/guides/realtime-websocket)
+<Callout type="info" title="Official Documentation">
+  - [OpenAI Realtime
+  WebRTC](https://platform.openai.com/docs/guides/realtime-webrtc) - [OpenAI
+  Realtime
+  WebSocket](https://platform.openai.com/docs/guides/realtime-websocket)
+</Callout>
 
-## 📝 Overview
+## ?? Overview
 
 ### Introduction
 
@@ -32,7 +37,7 @@ OpenAI Realtime API provides two connection methods:
 - Audio transcription capabilities
 - WebSocket server-side integration
 
-## 🔐 Authentication & Security
+## ?? Authentication & Security
 
 ### Authentication Methods
 
@@ -50,7 +55,7 @@ POST https://your-newapi-server-address/v1/realtime/sessions
 Content-Type: application/json
 Authorization: Bearer $NEW_API_KEY
 
-\{
+{
   "model": "gpt-4o-realtime-preview-2024-12-17",
   "voice": "verse"
 }
@@ -63,7 +68,7 @@ Authorization: Bearer $NEW_API_KEY
 - Implement appropriate access controls
 - Monitor for unusual activity
 
-## 🔌 Connection Establishment
+## ?? Connection Establishment
 
 ### WebRTC Connection
 
@@ -121,7 +126,7 @@ sequenceDiagram
 - Input: `addTrack()`
 - Output: `ontrack` event
 
-## 💬 Conversation Interaction
+## ?? Conversation Interaction
 
 ### Conversation Modes
 
@@ -144,7 +149,7 @@ sequenceDiagram
 - Status updates
 - Error events
 
-## ⚙️ Configuration Options
+## ?? Configuration Options
 
 ### Audio Configuration
 
@@ -174,16 +179,16 @@ sequenceDiagram
 - Silence duration
 - Prefix padding
 
-## 💡 Request Examples
+## ?? Request Examples
 
-### WebRTC Connection ❌
+### WebRTC Connection ?
 
 #### Client Implementation (Browser)
 
 ```javascript
-async function init() \{
+async function init() {
   // Get ephemeral key from server - see server code below
-  const tokenResponse = await fetch("/session");
+  const tokenResponse = await fetch('/session');
   const data = await tokenResponse.json();
   const EPHEMERAL_KEY = data.client_secret.value;
 
@@ -191,19 +196,19 @@ async function init() \{
   const pc = new RTCPeerConnection();
 
   // Set up remote audio from model playback
-  const audioEl = document.createElement("audio");
+  const audioEl = document.createElement('audio');
   audioEl.autoplay = true;
-  pc.ontrack = e => audioEl.srcObject = e.streams[0];
+  pc.ontrack = (e) => (audioEl.srcObject = e.streams[0]);
 
   // Add local audio track from browser microphone input
   const ms = await navigator.mediaDevices.getUserMedia({
-    audio: true
+    audio: true,
   });
   pc.addTrack(ms.getTracks()[0]);
 
   // Set up data channel for sending and receiving events
-  const dc = pc.createDataChannel("oai-events");
-  dc.addEventListener("message", (e) => \{
+  const dc = pc.createDataChannel('oai-events');
+  dc.addEventListener('message', (e) => {
     // Receive real-time server events here!
     console.log(e);
   });
@@ -212,19 +217,19 @@ async function init() \{
   const offer = await pc.createOffer();
   await pc.setLocalDescription(offer);
 
-  const baseUrl = "https://your-newapi-server-address/v1/realtime";
-  const model = "gpt-4o-realtime-preview-2024-12-17";
+  const baseUrl = 'https://your-newapi-server-address/v1/realtime';
+  const model = 'gpt-4o-realtime-preview-2024-12-17';
   const sdpResponse = await fetch(`${baseUrl}?model=${model}`, {
-    method: "POST",
+    method: 'POST',
     body: offer.sdp,
     headers: {
       Authorization: `Bearer ${EPHEMERAL_KEY}`,
-      "Content-Type": "application/sdp"
+      'Content-Type': 'application/sdp',
     },
   });
 
   const answer = {
-    type: "answer",
+    type: 'answer',
     sdp: await sdpResponse.text(),
   };
   await pc.setRemoteDescription(answer);
@@ -236,24 +241,27 @@ init();
 #### Server Implementation (Node.js)
 
 ```javascript
-import express from "express";
+import express from 'express';
 
 const app = express();
 
 // Create an endpoint for generating ephemeral tokens
 // This endpoint works with the client code above
-app.get("/session", async (req, res) => {
-  const r = await fetch("https://your-newapi-server-address/v1/realtime/sessions", {
-    method: "POST",
-    headers: \{
-      "Authorization": `Bearer ${process.env.NEW_API_KEY}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      model: "gpt-4o-realtime-preview-2024-12-17",
-      voice: "verse",
-    }),
-  });
+app.get('/session', async (req, res) => {
+  const r = await fetch(
+    'https://your-newapi-server-address/v1/realtime/sessions',
+    {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${process.env.NEW_API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-realtime-preview-2024-12-17',
+        voice: 'verse',
+      }),
+    }
+  );
   const data = await r.json();
 
   // Send the JSON received from OpenAI REST API back to client
@@ -288,26 +296,27 @@ const responseCreate = {
 dc.send(JSON.stringify(responseCreate));
 ```
 
-### WebSocket Connection ✅
+### WebSocket Connection ?
 
 #### Node.js (ws module)
 
 ```javascript
-import WebSocket from "ws";
+import WebSocket from 'ws';
 
-const url = "wss://your-newapi-server-address/v1/realtime?model=gpt-4o-realtime-preview-2024-12-17";
+const url =
+  'wss://your-newapi-server-address/v1/realtime?model=gpt-4o-realtime-preview-2024-12-17';
 const ws = new WebSocket(url, {
-  headers: \{
-    "Authorization": "Bearer " + process.env.NEW_API_KEY,
-    "OpenAI-Beta": "realtime=v1",
+  headers: {
+    Authorization: 'Bearer ' + process.env.NEW_API_KEY,
+    'OpenAI-Beta': 'realtime=v1',
   },
 });
 
-ws.on("open", function open() {
-  console.log("Connected to server.");
+ws.on('open', function open() {
+  console.log('Connected to server.');
 });
 
-ws.on("message", function incoming(message) {
+ws.on('message', function incoming(message) {
   console.log(JSON.parse(message.toString()));
 });
 ```
@@ -385,19 +394,19 @@ ws.on('message', function incoming(message) {
 
 ```javascript
 // Receive server events
-ws.on("message", function incoming(message) \{
+ws.on('message', function incoming(message) {
   // Need to parse message data from JSON
-  const serverEvent = JSON.parse(message.data)
+  const serverEvent = JSON.parse(message.data);
   console.log(serverEvent);
 });
 
 // Send events, create JSON data structure conforming to client event format
 const event = {
-  type: "response.create",
+  type: 'response.create',
   response: {
-    modalities: ["audio", "text"],
-    instructions: "Give me a haiku about code.",
-  }
+    modalities: ['audio', 'text'],
+    instructions: 'Give me a haiku about code.',
+  },
 };
 ws.send(JSON.stringify(event));
 ```
@@ -409,9 +418,9 @@ ws.send(JSON.stringify(event));
 def on_open(ws):
     print("Connected to server.");
 
-    event = \{
+    event = {
         "type": "response.create",
-        "response": \{
+        "response": {
             "modalities": ["text"],
             "instructions": "Please assist the user."
         }
@@ -424,7 +433,7 @@ def on_message(ws, message):
     print("Received event:", json.dumps(data, indent=2))
 ```
 
-## ⚠️ Error Handling
+## ?? Error Handling
 
 ### Common Errors
 
@@ -448,7 +457,7 @@ def on_message(ws, message):
 3. Error retry
 4. Graceful degradation
 
-## 📝 Event Reference
+## ?? Event Reference
 
 ### Common Request Headers
 
@@ -528,8 +537,8 @@ Add a new conversation item to the conversation.
 | item.content     | Array  | No       | Message content                             | [text/audio/transcript]                    |
 | item.call_id     | String | No       | ID of function call                         | call_001                                   |
 | item.name        | String | No       | Name of called function                     | function_name                              |
-| item.arguments   | String | No       | Arguments for function call                 | \{"param": "value"}                        |
-| item.output      | String | No       | Output result of function call              | \{"result": "value"}                       |
+| item.arguments   | String | No       | Arguments for function call                 | {"param": "value"}                         |
+| item.output      | String | No       | Output result of function call              | {"result": "value"}                        |
 
 #### conversation.item.truncate
 
@@ -883,7 +892,7 @@ Returned when model-generated function call arguments are updated.
 | item_id      | String  | No       | ID of message item                        | fc_001                                 |
 | output_index | Integer | No       | Index of output item in response          | 0                                      |
 | call_id      | String  | No       | ID of function call                       | call_001                               |
-| delta        | String  | No       | JSON format function call arguments delta | "\{\"location\": \"San\""              |
+| delta        | String  | No       | JSON format function call arguments delta | "{\"location\": \"San\""               |
 
 #### response.function_call_arguments.done
 
@@ -897,7 +906,7 @@ Returned when model-generated function call arguments streaming is complete.
 | item_id      | String  | No       | ID of message item                                   | fc_001                                |
 | output_index | Integer | No       | Index of output item in response                     | 0                                     |
 | call_id      | String  | No       | ID of function call                                  | call_001                              |
-| arguments    | String  | No       | Final complete function call arguments (JSON format) | "\{\"location\": \"San Francisco\"}"  |
+| arguments    | String  | No       | Final complete function call arguments (JSON format) | "{\"location\": \"San Francisco\"}"   |
 
 ### Other Status Updates
 
@@ -905,52 +914,52 @@ Returned when model-generated function call arguments streaming is complete.
 
 Triggered after each "response.done" event to indicate updated rate limits.
 
-| Parameter   | Type         | Required | Description                        | Example Value                                                                      |
-| ----------- | ------------ | -------- | ---------------------------------- | ---------------------------------------------------------------------------------- |
-| event_id    | String       | No       | Unique identifier for server event | event_5758                                                                         |
-| type        | String       | No       | Event type                         | rate_limits.updated                                                                |
-| rate_limits | Object array | No       | List of rate limit information     | [\{"name": "requests_per_min", "limit": 60, "remaining": 45, "reset_seconds": 35}] |
+| Parameter   | Type         | Required | Description                        | Example Value                                                                     |
+| ----------- | ------------ | -------- | ---------------------------------- | --------------------------------------------------------------------------------- |
+| event_id    | String       | No       | Unique identifier for server event | event_5758                                                                        |
+| type        | String       | No       | Event type                         | rate_limits.updated                                                               |
+| rate_limits | Object array | No       | List of rate limit information     | [{"name": "requests_per_min", "limit": 60, "remaining": 45, "reset_seconds": 35}] |
 
 #### conversation.created
 
 Returned when conversation is created.
 
-| Parameter    | Type   | Required | Description                        | Example Value                                          |
-| ------------ | ------ | -------- | ---------------------------------- | ------------------------------------------------------ |
-| event_id     | String | No       | Unique identifier for server event | event_9101                                             |
-| type         | String | No       | Event type                         | conversation.created                                   |
-| conversation | Object | No       | Conversation resource object       | \{"id": "conv_001", "object": "realtime.conversation"} |
+| Parameter    | Type   | Required | Description                        | Example Value                                         |
+| ------------ | ------ | -------- | ---------------------------------- | ----------------------------------------------------- |
+| event_id     | String | No       | Unique identifier for server event | event_9101                                            |
+| type         | String | No       | Event type                         | conversation.created                                  |
+| conversation | Object | No       | Conversation resource object       | {"id": "conv_001", "object": "realtime.conversation"} |
 
 #### conversation.item.created
 
 Returned when conversation item is created.
 
-| Parameter        | Type   | Required | Description                        | Example Value                                                                                                                                            |
-| ---------------- | ------ | -------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| event_id         | String | No       | Unique identifier for server event | event_1920                                                                                                                                               |
-| type             | String | No       | Event type                         | conversation.item.created                                                                                                                                |
-| previous_item_id | String | No       | ID of previous conversation item   | msg_002                                                                                                                                                  |
-| item             | Object | No       | Conversation item object           | \{"id": "msg_003", "object": "realtime.item", "type": "message", "status": "completed", "role": "user", "content": [\{"type": "text", "text": "Hello"}]} |
+| Parameter        | Type   | Required | Description                        | Example Value                                                                                                                                          |
+| ---------------- | ------ | -------- | ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| event_id         | String | No       | Unique identifier for server event | event_1920                                                                                                                                             |
+| type             | String | No       | Event type                         | conversation.item.created                                                                                                                              |
+| previous_item_id | String | No       | ID of previous conversation item   | msg_002                                                                                                                                                |
+| item             | Object | No       | Conversation item object           | {"id": "msg_003", "object": "realtime.item", "type": "message", "status": "completed", "role": "user", "content": [{"type": "text", "text": "Hello"}]} |
 
 #### session.created
 
 Returned when session is created.
 
-| Parameter | Type   | Required | Description                        | Example Value                                                                                        |
-| --------- | ------ | -------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| event_id  | String | No       | Unique identifier for server event | event_1234                                                                                           |
-| type      | String | No       | Event type                         | session.created                                                                                      |
-| session   | Object | No       | Session object                     | \{"id": "sess_001", "object": "realtime.session", "model": "gpt-4", "modalities": ["text", "audio"]} |
+| Parameter | Type   | Required | Description                        | Example Value                                                                                       |
+| --------- | ------ | -------- | ---------------------------------- | --------------------------------------------------------------------------------------------------- |
+| event_id  | String | No       | Unique identifier for server event | event_1234                                                                                          |
+| type      | String | No       | Event type                         | session.created                                                                                     |
+| session   | Object | No       | Session object                     | {"id": "sess_001", "object": "realtime.session", "model": "gpt-4", "modalities": ["text", "audio"]} |
 
 #### session.updated
 
 Returned when session is updated.
 
-| Parameter | Type   | Required | Description                        | Example Value                                                                                        |
-| --------- | ------ | -------- | ---------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| event_id  | String | No       | Unique identifier for server event | event_5678                                                                                           |
-| type      | String | No       | Event type                         | session.updated                                                                                      |
-| session   | Object | No       | Updated session object             | \{"id": "sess_001", "object": "realtime.session", "model": "gpt-4", "modalities": ["text", "audio"]} |
+| Parameter | Type   | Required | Description                        | Example Value                                                                                       |
+| --------- | ------ | -------- | ---------------------------------- | --------------------------------------------------------------------------------------------------- |
+| event_id  | String | No       | Unique identifier for server event | event_5678                                                                                          |
+| type      | String | No       | Event type                         | session.updated                                                                                     |
+| session   | Object | No       | Updated session object             | {"id": "sess_001", "object": "realtime.session", "model": "gpt-4", "modalities": ["text", "audio"]} |
 
 ### Rate Limit Event Parameter Table
 
@@ -963,12 +972,12 @@ Returned when session is updated.
 
 ### Function Call Parameter Table
 
-| Parameter   | Type   | Required | Description                   | Example Value                             |
-| ----------- | ------ | -------- | ----------------------------- | ----------------------------------------- |
-| type        | String | Yes      | Function type                 | function                                  |
-| name        | String | Yes      | Function name                 | get_weather                               |
-| description | String | No       | Function description          | Get the current weather                   |
-| parameters  | Object | Yes      | Function parameter definition | \{"type": "object", "properties": \{...}} |
+| Parameter   | Type   | Required | Description                   | Example Value                           |
+| ----------- | ------ | -------- | ----------------------------- | --------------------------------------- |
+| type        | String | Yes      | Function type                 | function                                |
+| name        | String | Yes      | Function name                 | get_weather                             |
+| description | String | No       | Function description          | Get the current weather                 |
+| parameters  | Object | Yes      | Function parameter definition | {"type": "object", "properties": {...}} |
 
 ### Audio Format Parameter Table
 
@@ -1013,11 +1022,11 @@ Returned when session is updated.
 
 ### Session Status Parameter Table
 
-| Parameter | Type   | Description       | Optional Values                                     |
-| --------- | ------ | ----------------- | --------------------------------------------------- |
-| status    | String | Session status    | active, ended, error                                |
-| error     | Object | Error information | \{"type": "error_type", "message": "error message"} |
-| metadata  | Object | Session metadata  | \{"client_id": "web", "session_type": "chat"}       |
+| Parameter | Type   | Description       | Optional Values                                    |
+| --------- | ------ | ----------------- | -------------------------------------------------- |
+| status    | String | Session status    | active, ended, error                               |
+| error     | Object | Error information | {"type": "error_type", "message": "error message"} |
+| metadata  | Object | Session metadata  | {"client_id": "web", "session_type": "chat"}       |
 
 ### Conversation Item Status Parameter Table
 
@@ -1037,11 +1046,11 @@ Returned when session is updated.
 
 ### Response Status Parameter Table
 
-| Parameter      | Type   | Description      | Optional Values                                                |
-| -------------- | ------ | ---------------- | -------------------------------------------------------------- |
-| status         | String | Response status  | completed, cancelled, failed, incomplete                       |
-| status_details | Object | Status details   | \{"reason": "user_cancelled"}                                  |
-| usage          | Object | Usage statistics | \{"total_tokens": 50, "input_tokens": 20, "output_tokens": 30} |
+| Parameter      | Type   | Description      | Optional Values                                               |
+| -------------- | ------ | ---------------- | ------------------------------------------------------------- |
+| status         | String | Response status  | completed, cancelled, failed, incomplete                      |
+| status_details | Object | Status details   | {"reason": "user_cancelled"}                                  |
+| usage          | Object | Usage statistics | {"total_tokens": 50, "input_tokens": 20, "output_tokens": 30} |
 
 ### Audio Transcription Parameter Table
 
@@ -1062,8 +1071,8 @@ Returned when session is updated.
 
 ### WebRTC Configuration Parameter Table
 
-| Parameter          | Type    | Description                       | Default Value                               |
-| ------------------ | ------- | --------------------------------- | ------------------------------------------- |
-| ice_servers        | Array   | ICE server list                   | [\{"urls": "stun:stun.l.google.com:19302"}] |
-| audio_constraints  | Object  | Audio constraints                 | \{"echoCancellation": true}                 |
-| connection_timeout | Integer | Connection timeout (milliseconds) | 30000                                       |
+| Parameter          | Type    | Description                       | Default Value                              |
+| ------------------ | ------- | --------------------------------- | ------------------------------------------ |
+| ice_servers        | Array   | ICE server list                   | [{"urls": "stun:stun.l.google.com:19302"}] |
+| audio_constraints  | Object  | Audio constraints                 | {"echoCancellation": true}                 |
+| connection_timeout | Integer | Connection timeout (milliseconds) | 30000                                      |

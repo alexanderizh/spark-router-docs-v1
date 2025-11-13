@@ -22,8 +22,11 @@ title: Claude Code
   />
 </div>
 
-{/* TODO: Convert to Callout - info: 项目介绍 */}
-Unleash Claude’s raw power directly in your terminal. Search million-line codebases instantly. Turn hours-long workflows into a single command. Your tools. Your workflow. Your codebase, evolving at thought speed.
+<Callout type="info" title="项目介绍">
+  Unleash Claude’s raw power directly in your terminal. Search million-line
+  codebases instantly. Turn hours-long workflows into a single command. Your
+  tools. Your workflow. Your codebase, evolving at thought speed.
+</Callout>
 
     直接在你的终端中，释放 Claude 的强大威力。瞬间搜索百万行代码库。将数小时的工作流化为一条命令。你的工具。你的工作流。你的代码库，以思维速度进化。
 
@@ -70,7 +73,11 @@ Unleash Claude’s raw power directly in your terminal. Search million-line code
 
 Claude Code 需要 Node.js 环境才能运行。
 
-{/* TODO: Convert to Callout - info: Node.js 环境安装步骤 */} - 打开浏览器访问 https://nodejs.org/ - 点击 "LTS" 版本进行下载（推荐长期支持版本）- 下载完成后双击 .msi 文件 - 按照安装向导完成安装，保持默认设置即可
+<Callout type="info" title="Node.js 环境安装步骤">
+  - 打开浏览器访问 https://nodejs.org/ - 点击 "LTS"
+  版本进行下载（推荐长期支持版本）- 下载完成后双击 .msi 文件 -
+  按照安装向导完成安装，保持默认设置即可
+</Callout>
 
 !!! caution "Windows 注意事项" - 建议使用 PowerShell 而不是 CMD - 如果遇到权限问题，尝试以管理员身份运行 - 某些杀毒软件可能会误报，需要添加白名单
 
@@ -96,7 +103,11 @@ Claude Code 需要 Node.js 环境才能运行。
 !!! caution "Windows 注意事项"
 Windows 环境下需要使用 Git Bash 安装 Claude code。安装完成后，环境变量设置和使用 Claude Code 仍然在普通的 PowerShell 或 CMD 中进行。
 
-{/* TODO: Convert to Callout - info: 下载并安装 Git for Windows */} - 访问 https://git-scm.com/downloads/win - 点击 "Download for Windows" 下载安装包 - 运行下载的 .exe 安装文件 - 在安装过程中保持默认设置，直接点击 "Next" 完成安装
+<Callout type="info" title="下载并安装 Git for Windows">
+  - 访问 https://git-scm.com/downloads/win - 点击 "Download for Windows"
+  下载安装包 - 运行下载的 .exe 安装文件 - 在安装过程中保持默认设置，直接点击
+  "Next" 完成安装
+</Callout>
 
 ![windows-img-06.webp](/assets/claude_code/windows-img-06.webp)
 
@@ -112,28 +123,29 @@ Windows 环境下需要使用 Git Bash 安装 Claude code。安装完成后，�
 
 #### 3.安装 Claude Code
 
-{/* TODO: Convert to Callout - info: 安装 Claude Code */}
-打开 PowerShell，运行以下命令：
-`     npm install -g @anthropic-ai/claude-code
-    `
-这个命令会从 npm 官方仓库下载并安装最新版本的 Claude Code。
+<Callout type="info" title="安装 Claude Code">
+  打开 PowerShell，运行以下命令： ` npm install -g @anthropic-ai/claude-code `
+  这个命令会从 npm 官方仓库下载并安装最新版本的 Claude Code。
+</Callout>
 
 ![windows-img-09.webp](/assets/claude_code/windows-img-09.webp)
 
-{/* TODO: Convert to Callout - info: 将 ~/.local/bin 加入 PATH（仅当提示要求时） */}
-`     [Environment]::SetEnvironmentVariable('Path', ([Environment]::GetEnvironmentVariable('Path','User') + ";$HOME\.local\bin"), 'User')
-    `
+<Callout type="info" title="将 ~/.local/bin 加入 PATH（仅当提示要求时）">
+  ` [Environment]::SetEnvironmentVariable('Path',
+  ([Environment]::GetEnvironmentVariable('Path','User') + ";$HOME\.local\bin"),
+  'User') `
+</Callout>
 
-{/* TODO: Convert to Callout - info: 验证 Claude Code 安装 */}
-安装完成后，输入以下命令检查是否安装成功：
-`     claude --version
-    `
-如果显示版本号，恭喜你！Claude Code 已经成功安装了。
+<Callout type="info" title="验证 Claude Code 安装">
+  安装完成后，输入以下命令检查是否安装成功： ` claude --version `
+  如果显示版本号，恭喜你！Claude Code 已经成功安装了。
+</Callout>
 
 #### 4.设置环境变量
 
-{/* TODO: Convert to Callout - info: 一键设置命令 (Windows 系统) */}
-为了让 Claude Code 连接到你的中转服务，需要设置多个环境变量：
+<Callout type="info" title="一键设置命令 (Windows 系统)">
+  为了让 Claude Code 连接到你的中转服务，需要设置多个环境变量：
+</Callout>
 
 ```powershell
 iex (irm 'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.ps1')
@@ -145,18 +157,11 @@ iex (irm 'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/
 
 现在你可以开始使用 Claude Code 了！
 
-{/* TODO: Convert to Callout - info: 启动 Claude Code */}
-打开 PowerShell，直接启动 Claude Code:
-`     # 启动 Claude Code
-    claude
-    `
-在特定项目中使用:
-`     # 进入你的项目目录
-    cd C:\path\to\your\project
-    `
-`     # 启动 Claude Code
-    claude
-    `
+<Callout type="info" title="启动 Claude Code">
+  打开 PowerShell，直接启动 Claude Code: ` # 启动 Claude Code claude `
+  在特定项目中使用: ` # 进入你的项目目录 cd C:\path\to\your\project ` ` # 启动
+  Claude Code claude `
+</Callout>
 
 ![windows-img-11.webp](/assets/claude_code/windows-img-11.webp)
 
@@ -168,11 +173,9 @@ iex (irm 'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/
 
 ![windows-img-15.webp](/assets/claude_code/windows-img-15.webp)
 
-{/* TODO: Convert to Callout - info: 选择模型 */}
-输入命令：
-`     /model
-    `
-Enter进入，选择模型，通常使用默认设置即可。
+<Callout type="info" title="选择模型">
+  输入命令： ` /model ` Enter进入，选择模型，通常使用默认设置即可。
+</Callout>
 
 ![windows-img-16.webp](/assets/claude_code/windows-img-16.webp)
 
@@ -188,13 +191,11 @@ Enter进入，选择模型，通常使用默认设置即可。
 
 ![macos-img-01.webp](/assets/claude_code/macos-img-01.webp)
 
-{/* TODO: Convert to Callout - info: 安装 Claude Code */}
-打开终端，运行以下命令：
-`     curl -fsSL https://claude.ai/install.sh | bash
-    `
-可选项：出现提示后运行提供的命令
-`     echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
-    `
+<Callout type="info" title="安装 Claude Code">
+  打开终端，运行以下命令： ` curl -fsSL https://claude.ai/install.sh | bash `
+  可选项：出现提示后运行提供的命令 ` echo 'export PATH="$HOME/.local/bin:$PATH"'
+  >> ~/.bashrc && source ~/.bashrc `
+</Callout>
 
 ![macos-img-02.webp](/assets/claude_code/macos-img-02.webp)
 
@@ -202,35 +203,27 @@ Enter进入，选择模型，通常使用默认设置即可。
 
 为了让 Claude Code 连接到第三方中转服务，需要设置环境变量：
 
-{/* TODO: Convert to Callout - info: 一键设置 Claude Code 环境变量 */}
-输入命令：
-`     curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh | bash
-    `
+<Callout type="info" title="一键设置 Claude Code 环境变量">
+  输入命令： ` curl -fsSL
+  https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh
+  | bash `
+</Callout>
 
 ![macos-configure](/assets/claude_code/macos_configure.png)
 
-{/* TODO: Convert to Callout - info: 验证 Claude Code 安装 */}
-安装完成后，输入以下命令检查是否安装成功：
-`     claude --version
-    `
-如果显示版本号，恭喜你！Claude Code 已经成功安装了。
+<Callout type="info" title="验证 Claude Code 安装">
+  安装完成后，输入以下命令检查是否安装成功： ` claude --version `
+  如果显示版本号，恭喜你！Claude Code 已经成功安装了。
+</Callout>
 
 #### 3.开始使用 Claude Code
 
 现在你可以开始使用 Claude Code 了！
 
-{/* TODO: Convert to Callout - info: 启动 Claude Code */}
-直接启动 Claude Code:
-`     # 启动 Claude Code
-    claude
-    `
-在特定项目中使用:
-`     # 进入你的项目目录
-    cd /path/to/your/project
-    `
-`     # 启动 Claude Code
-    claude
-    `
+<Callout type="info" title="启动 Claude Code">
+  直接启动 Claude Code: ` # 启动 Claude Code claude ` 在特定项目中使用: ` #
+  进入你的项目目录 cd /path/to/your/project ` ` # 启动 Claude Code claude `
+</Callout>
 
 ![macos-img-04.webp](/assets/claude_code/macos-img-04.webp)
 
@@ -242,11 +235,9 @@ Enter进入，选择模型，通常使用默认设置即可。
 
 ![macos-img-08.webp](/assets/claude_code/macos-img-08.webp)
 
-{/* TODO: Convert to Callout - info: 选择模型 (可选) */}
-输入命令：
-`     /model
-    `
-Enter进入，选择官方模型选择，通常使用默认模型即可
+<Callout type="info" title="选择模型 (可选)">
+  输入命令： ` /model ` Enter进入，选择官方模型选择，通常使用默认模型即可
+</Callout>
 
 ![macos-img-09.webp](/assets/claude_code/macos-img-09.webp)
 
@@ -258,8 +249,9 @@ Enter进入，选择官方模型选择，通常使用默认模型即可
 
 #### 6.macOS 常见问题解决
 
-{/* TODO: Collapsible example: macOS 安全设置阻止运行 */}
-如果系统阻止运行 Claude Code：
+<Callout type="info" title="macOS 安全设置阻止运行" collapsible>
+  如果系统阻止运行 Claude Code：
+</Callout>
 
     - 打开"系统偏好设置" → "安全性与隐私"
     - 点击"仍要打开"或"允许"
@@ -271,29 +263,27 @@ Enter进入，选择官方模型选择，通常使用默认模型即可
 
 ![linux-img-01.webp](/assets/claude_code/linux-img-01.webp)
 
-{/* TODO: Convert to Callout - info: 安装 Claude Code */}
-打开终端，运行以下命令：
-`     curl -fsSL https://claude.ai/install.sh | bash
-    `
-如果遇到权限问题，可以使用 sudo：
-`     sudo curl -fsSL https://claude.ai/install.sh | bash
-    `
-![linux-img-03.webp](/assets/claude_code/linux-img-03.webp)
+<Callout type="info" title="安装 Claude Code">
+  打开终端，运行以下命令： ` curl -fsSL https://claude.ai/install.sh | bash `
+  如果遇到权限问题，可以使用 sudo： ` sudo curl -fsSL
+  https://claude.ai/install.sh | bash `
+  ![linux-img-03.webp](/assets/claude_code/linux-img-03.webp)
+</Callout>
 
-{/* TODO: Convert to Callout - info: 验证 Claude Code 安装 */}
-安装完成后，输入以下命令检查是否安装成功：
-`     claude --version
-    `
-如果显示版本号，恭喜你！Claude Code 已经成功安装了。
+<Callout type="info" title="验证 Claude Code 安装">
+  安装完成后，输入以下命令检查是否安装成功： ` claude --version `
+  如果显示版本号，恭喜你！Claude Code 已经成功安装了。
+</Callout>
 
 #### 2.设置环境变量
 
 为了让 Claude Code 连接到你的中转服务，需要设置两个环境变量：
 
-{/* TODO: Convert to Callout - info: 一键修改环境变量 */}
-输入命令：
-`     curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh | bash
-    `
+<Callout type="info" title="一键修改环境变量">
+  输入命令： ` curl -fsSL
+  https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh
+  | bash `
+</Callout>
 
 ![macos-configure](/assets/claude_code/macos_configure.png)
 
@@ -301,18 +291,10 @@ Enter进入，选择官方模型选择，通常使用默认模型即可
 
 现在你可以开始使用 Claude Code 了！
 
-{/* TODO: Convert to Callout - info: 启动 Claude Code */}
-直接启动 Claude Code:
-`     # 启动 Claude Code
-    claude
-    `
-在特定项目中使用:
-`     # 进入你的项目目录
-    cd /path/to/your/project
-    `
-`     # 启动 Claude Code
-    claude
-    `
+<Callout type="info" title="启动 Claude Code">
+  直接启动 Claude Code: ` # 启动 Claude Code claude ` 在特定项目中使用: ` #
+  进入你的项目目录 cd /path/to/your/project ` ` # 启动 Claude Code claude `
+</Callout>
 
 ![linux-img-03.webp](/assets/claude_code/linux-img-03.webp)
 
@@ -320,11 +302,9 @@ Enter进入，选择官方模型选择，通常使用默认模型即可
 
 ![linux-img-05.webp](/assets/claude_code/linux-img-05.webp)
 
-{/* TODO: Convert to Callout - info: 选择模型 */}
-输入命令：
-`     /model
-    `
-Enter进入，选择官方模型选择，通常使用默认模型即可
+<Callout type="info" title="选择模型">
+  输入命令： ` /model ` Enter进入，选择官方模型选择，通常使用默认模型即可
+</Callout>
 
 ![linux-img-06.webp](/assets/claude_code/linux-img-06.webp)
 
@@ -338,17 +318,14 @@ Enter进入，选择官方模型选择，通常使用默认模型即可
 
 #### 5.Linux 常见问题解决
 
-{/* TODO: Collapsible example: 缺少依赖库 */}
-某些 Linux 发行版需要安装额外依赖：
-`     # Ubuntu/Debian
-    sudo apt install build-essential
-    `
-`     # CentOS/RHEL
-    sudo dnf groupinstall "Development Tools"
-    `
+<Callout type="info" title="缺少依赖库" collapsible>
+  某些 Linux 发行版需要安装额外依赖： ` # Ubuntu/Debian sudo apt install
+  build-essential ` ` # CentOS/RHEL sudo dnf groupinstall "Development Tools" `
+</Callout>
 
-{/* TODO: Collapsible example: 环境变量不生效 */}
-检查以下几点：
+<Callout type="info" title="环境变量不生效" collapsible>
+  检查以下几点：
+</Callout>
 
     - 确认修改了正确的配置文件（`.bashrc`或`.zshrc`）
     - 重新启动终端或运行`source ~/.bashrc`

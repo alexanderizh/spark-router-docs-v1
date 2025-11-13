@@ -104,7 +104,12 @@ If the version number is displayed, the installation was successful
 !!! caution "Windows Notes"
 In the Windows environment, Git Bash is required to install Claude Code. After installation, environment variable setup and using Claude Code should still be done in standard PowerShell or CMD.
 
-{/* TODO: Convert to Callout - info: Download and Install Git for Windows */} - Visit https://git-scm.com/downloads/win - Click "Download for Windows" to download the installer - Run the downloaded .exe installation file - Keep the default settings during the installation process and click "Next" to complete the installation
+<Callout type="info" title="Download and Install Git for Windows">
+  - Visit https://git-scm.com/downloads/win - Click "Download for Windows" to
+  download the installer - Run the downloaded .exe installation file - Keep the
+  default settings during the installation process and click "Next" to complete
+  the installation
+</Callout>
 
 ![windows-img-06.webp](/assets/claude_code/windows-img-06.webp)
 
@@ -128,15 +133,17 @@ installs the latest version of Claude Code from the official npm repository.
 
 ![windows-img-09.webp](/assets/claude_code/windows-img-09.webp)
 
-{/* TODO: Convert to Callout - info: Add ~/.local/bin to PATH (Only if prompted) */}
-`     [Environment]::SetEnvironmentVariable('Path', ([Environment]::GetEnvironmentVariable('Path','User') + ";$HOME\.local\bin"), 'User')
-    `
+<Callout type="info" title="Add ~/.local/bin to PATH (Only if prompted)">
+  ` [Environment]::SetEnvironmentVariable('Path',
+  ([Environment]::GetEnvironmentVariable('Path','User') + ";$HOME\.local\bin"),
+  'User') `
+</Callout>
 
-{/* TODO: Convert to Callout - info: Verify Claude Code Installation */}
-After installation is complete, enter the following command to check if the installation was successful:
-`     claude --version
-    `
-If the version number is displayed, congratulations! Claude Code has been successfully installed.
+<Callout type="info" title="Verify Claude Code Installation">
+  After installation is complete, enter the following command to check if the
+  installation was successful: ` claude --version ` If the version number is
+  displayed, congratulations! Claude Code has been successfully installed.
+</Callout>
 
 #### 4. Set Environment Variables
 
@@ -172,11 +179,10 @@ You can now start using Claude Code!
 
 ![windows-img-15.webp](/assets/claude_code/windows-img-15.webp)
 
-{/* TODO: Convert to Callout - info: Select Model */}
-Enter the command:
-`     /model
-    `
-Press Enter to select the model; usually, the default settings are sufficient.
+<Callout type="info" title="Select Model">
+  Enter the command: ` /model ` Press Enter to select the model; usually, the
+  default settings are sufficient.
+</Callout>
 
 ![windows-img-16.webp](/assets/claude_code/windows-img-16.webp)
 
@@ -192,13 +198,12 @@ Open Terminal
 
 ![macos-img-01.webp](/assets/claude_code/macos-img-01.webp)
 
-{/* TODO: Convert to Callout - info: Install Claude Code */}
-Open Terminal and run the following command:
-`     curl -fsSL https://claude.ai/install.sh | bash
-    `
-Optional: Run the provided command if prompted
-`     echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
-    `
+<Callout type="info" title="Install Claude Code">
+  Open Terminal and run the following command: ` curl -fsSL
+  https://claude.ai/install.sh | bash ` Optional: Run the provided command if
+  prompted ` echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source
+  ~/.bashrc `
+</Callout>
 
 ![macos-img-02.webp](/assets/claude_code/macos-img-02.webp)
 
@@ -206,35 +211,32 @@ Optional: Run the provided command if prompted
 
 To allow Claude Code to connect to a third-party relay service, you need to set environment variables:
 
-{/* TODO: Convert to Callout - info: One-Click Setup for Claude Code Environment Variables */}
-Enter the command:
-`     curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh | bash
-    `
+<Callout
+  type="info"
+  title="One-Click Setup for Claude Code Environment Variables"
+>
+  Enter the command: ` curl -fsSL
+  https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh
+  | bash `
+</Callout>
 
 ![macos-configure](/assets/claude_code/macos_configure.png)
 
-{/* TODO: Convert to Callout - info: Verify Claude Code Installation */}
-After installation is complete, enter the following command to check if the installation was successful:
-`     claude --version
-    `
-If the version number is displayed, congratulations! Claude Code has been successfully installed.
+<Callout type="info" title="Verify Claude Code Installation">
+  After installation is complete, enter the following command to check if the
+  installation was successful: ` claude --version ` If the version number is
+  displayed, congratulations! Claude Code has been successfully installed.
+</Callout>
 
 #### 3. Start Using Claude Code
 
 You can now start using Claude Code!
 
-{/* TODO: Convert to Callout - info: Launch Claude Code */}
-Launch Claude Code directly:
-`     # 启动 Claude Code
-    claude
-    `
-To use in a specific project:
-`     # 进入你的项目目录
-    cd /path/to/your/project
-    `
-`     # 启动 Claude Code
-    claude
-    `
+<Callout type="info" title="Launch Claude Code">
+  Launch Claude Code directly: ` # 启动 Claude Code claude ` To use in a
+  specific project: ` # 进入你的项目目录 cd /path/to/your/project ` ` # 启动
+  Claude Code claude `
+</Callout>
 
 ![macos-img-04.webp](/assets/claude_code/macos-img-04.webp)
 
@@ -246,11 +248,10 @@ To use in a specific project:
 
 ![macos-img-08.webp](/assets/claude_code/macos-img-08.webp)
 
-{/* TODO: Convert to Callout - info: Select Model (Optional) */}
-Enter the command:
-`     /model
-    `
-Press Enter to select the official model; usually, the default model is sufficient
+<Callout type="info" title="Select Model (Optional)">
+  Enter the command: ` /model ` Press Enter to select the official model;
+  usually, the default model is sufficient
+</Callout>
 
 ![macos-img-09.webp](/assets/claude_code/macos-img-09.webp)
 
@@ -262,8 +263,13 @@ Press Enter to select the official model; usually, the default model is sufficie
 
 #### 6. macOS Common Issues Resolution
 
-{/* TODO: Collapsible example: macOS Security Settings Block Execution */}
-If the system prevents Claude Code from running:
+<Callout
+  type="info"
+  title="macOS Security Settings Block Execution"
+  collapsible
+>
+  If the system prevents Claude Code from running:
+</Callout>
 
     - Open "System Preferences" → "Security & Privacy"
     - Click "Open Anyway" or "Allow"
@@ -275,29 +281,28 @@ If the system prevents Claude Code from running:
 
 ![linux-img-01.webp](/assets/claude_code/linux-img-01.webp)
 
-{/* TODO: Convert to Callout - info: Install Claude Code */}
-Open Terminal and run the following command:
-`     curl -fsSL https://claude.ai/install.sh | bash
-    `
-If you encounter permission issues, you can use sudo:
-`     sudo curl -fsSL https://claude.ai/install.sh | bash
-    `
-![linux-img-03.webp](/assets/claude_code/linux-img-03.webp)
+<Callout type="info" title="Install Claude Code">
+  Open Terminal and run the following command: ` curl -fsSL
+  https://claude.ai/install.sh | bash ` If you encounter permission issues, you
+  can use sudo: ` sudo curl -fsSL https://claude.ai/install.sh | bash `
+  ![linux-img-03.webp](/assets/claude_code/linux-img-03.webp)
+</Callout>
 
-{/* TODO: Convert to Callout - info: Verify Claude Code Installation */}
-After installation is complete, enter the following command to check if the installation was successful:
-`     claude --version
-    `
-If the version number is displayed, congratulations! Claude Code has been successfully installed.
+<Callout type="info" title="Verify Claude Code Installation">
+  After installation is complete, enter the following command to check if the
+  installation was successful: ` claude --version ` If the version number is
+  displayed, congratulations! Claude Code has been successfully installed.
+</Callout>
 
 #### 2. Set Environment Variables
 
 To allow Claude Code to connect to your relay service, you need to set two environment variables:
 
-{/* TODO: Convert to Callout - info: One-Click Environment Variable Modification */}
-Enter the command:
-`     curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh | bash
-    `
+<Callout type="info" title="One-Click Environment Variable Modification">
+  Enter the command: ` curl -fsSL
+  https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh
+  | bash `
+</Callout>
 
 ![macos-configure](/assets/claude_code/macos_configure.png)
 
@@ -305,18 +310,11 @@ Enter the command:
 
 You can now start using Claude Code!
 
-{/* TODO: Convert to Callout - info: Launch Claude Code */}
-Launch Claude Code directly:
-`     # 启动 Claude Code
-    claude
-    `
-To use in a specific project:
-`     # 进入你的项目目录
-    cd /path/to/your/project
-    `
-`     # 启动 Claude Code
-    claude
-    `
+<Callout type="info" title="Launch Claude Code">
+  Launch Claude Code directly: ` # 启动 Claude Code claude ` To use in a
+  specific project: ` # 进入你的项目目录 cd /path/to/your/project ` ` # 启动
+  Claude Code claude `
+</Callout>
 
 ![linux-img-03.webp](/assets/claude_code/linux-img-03.webp)
 
@@ -324,11 +322,10 @@ To use in a specific project:
 
 ![linux-img-05.webp](/assets/claude_code/linux-img-05.webp)
 
-{/* TODO: Convert to Callout - info: Select Model */}
-Enter the command:
-`     /model
-    `
-Press Enter to select the official model; usually, the default model is sufficient
+<Callout type="info" title="Select Model">
+  Enter the command: ` /model ` Press Enter to select the official model;
+  usually, the default model is sufficient
+</Callout>
 
 ![linux-img-06.webp](/assets/claude_code/linux-img-06.webp)
 
@@ -342,17 +339,19 @@ Press Enter to select the official model; usually, the default model is sufficie
 
 #### 5. Linux Common Issues Resolution
 
-{/* TODO: Collapsible example: Missing Dependency Libraries */}
-Some Linux distributions require the installation of additional dependencies:
-`     # Ubuntu/Debian
-    sudo apt install build-essential
-    `
-`     # CentOS/RHEL
-    sudo dnf groupinstall "Development Tools"
-    `
+<Callout type="info" title="Missing Dependency Libraries" collapsible>
+  Some Linux distributions require the installation of additional dependencies:
+  ` # Ubuntu/Debian sudo apt install build-essential ` ` # CentOS/RHEL sudo dnf
+  groupinstall "Development Tools" `
+</Callout>
 
-{/* TODO: Collapsible example: Environment Variables Not Taking Effect */}
-Check the following points:
+<Callout
+  type="info"
+  title="Environment Variables Not Taking Effect"
+  collapsible
+>
+  Check the following points:
+</Callout>
 
     - Confirm that the correct configuration file (`.bashrc` or `.zshrc`) was modified
     - Restart the terminal or run `source ~/.bashrc`

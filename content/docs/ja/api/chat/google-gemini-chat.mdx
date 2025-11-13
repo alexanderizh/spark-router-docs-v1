@@ -2,8 +2,10 @@
 title: Google Gemini 対話フォーマット（Generate Content）
 ---
 
-{/* TODO: Convert to Callout - info: 公式ドキュメント */}
-[Google Gemini Generating content API](https://ai.google.dev/api/generate-content)
+<Callout type="info" title="公式ドキュメント">
+  [Google Gemini Generating content
+  API](https://ai.google.dev/api/generate-content)
+</Callout>
 
 ## 📝 概要
 
@@ -145,8 +147,11 @@ curl "https://你的newapi服务器地址/v1beta/models/gemini-2.0-flash:generat
 
 ### 音声処理 🟡
 
-{/* TODO: Convert to Callout - warning: ファイルアップロード制限 */}
-`inline_data` を介した base64 方式での音声アップロードのみをサポートしており、`file_data.file_uri` や File API はサポートしていません。
+<Callout type="warn" title="ファイルアップロード制限">
+  `inline_data` を介した base64
+  方式での音声アップロードのみをサポートしており、`file_data.file_uri` や File
+  API はサポートしていません。
+</Callout>
 
 ```bash
 # 使用File API上传音频数据到API请求
@@ -173,8 +178,11 @@ curl "https://你的newapi服务器地址/v1beta/models/gemini-2.0-flash:generat
 
 ### 動画処理 🟡
 
-{/* TODO: Convert to Callout - warning: ファイルアップロード制限 */}
-`inline_data` を介した base64 方式での動画アップロードのみをサポートしており、`file_data.file_uri` や File API はサポートしていません。
+<Callout type="warn" title="ファイルアップロード制限">
+  `inline_data` を介した base64
+  方式での動画アップロードのみをサポートしており、`file_data.file_uri` や File
+  API はサポートしていません。
+</Callout>
 
 ```bash
 # 使用File API上传视频数据到API请求
@@ -201,8 +209,11 @@ curl "https://你的newapi服务器地址/v1beta/models/gemini-2.0-flash:generat
 
 ### PDF処理 🟡
 
-{/* TODO: Convert to Callout - warning: ファイルアップロード制限 */}
-`inline_data` を介した base64 方式での PDF アップロードのみをサポートしており、`file_data.file_uri` や File API はサポートしていません。
+<Callout type="warn" title="ファイルアップロード制限">
+  `inline_data` を介した base64 方式での PDF
+  アップロードのみをサポートしており、`file_data.file_uri` や File API
+  はサポートしていません。
+</Callout>
 
 ```bash
 MIME_TYPE=$(file -b --mime-type "${PDF_PATH}")

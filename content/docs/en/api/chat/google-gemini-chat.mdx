@@ -2,8 +2,10 @@
 title: Google Gemini Chat Format (Generate Content)
 ---
 
-{/* TODO: Convert to Callout - info: Official Documentation */}
-[Google Gemini Generating content API](https://ai.google.dev/api/generate-content)
+<Callout type="info" title="Official Documentation">
+  [Google Gemini Generating content
+  API](https://ai.google.dev/api/generate-content)
+</Callout>
 
 ## 📝 Introduction
 
@@ -145,8 +147,10 @@ curl "https://your-newapi-server-address/v1beta/models/gemini-2.0-flash:generate
 
 ### Audio Processing 🟡
 
-{/* TODO: Convert to Callout - warning: File Upload Limitations */}
-Only supports uploading audio via `inline_data` in base64 format, does not support `file_data.file_uri` or File API.
+<Callout type="warn" title="File Upload Limitations">
+  Only supports uploading audio via `inline_data` in base64 format, does not
+  support `file_data.file_uri` or File API.
+</Callout>
 
 ```bash
 # Use File API to upload audio data to API request
@@ -173,8 +177,10 @@ curl "https://your-newapi-server-address/v1beta/models/gemini-2.0-flash:generate
 
 ### Video Processing 🟡
 
-{/* TODO: Convert to Callout - warning: File Upload Limitations */}
-Only supports uploading video via `inline_data` in base64 format, does not support `file_data.file_uri` or File API.
+<Callout type="warn" title="File Upload Limitations">
+  Only supports uploading video via `inline_data` in base64 format, does not
+  support `file_data.file_uri` or File API.
+</Callout>
 
 ```bash
 # Use File API to upload video data to API request
@@ -201,8 +207,10 @@ curl "https://your-newapi-server-address/v1beta/models/gemini-2.0-flash:generate
 
 ### PDF Processing 🟡
 
-{/* TODO: Convert to Callout - warning: File Upload Limitations */}
-仅支持通过 `inline_data` 以 base64 方式上传 PDF，不支持 `file_data.file_uri` 或 File API。
+<Callout type="warn" title="File Upload Limitations">
+  仅支持通过 `inline_data` 以 base64 方式上传 PDF，不支持 `file_data.file_uri`
+  或 File API。
+</Callout>
 
 ```bash
 MIME_TYPE=$(file -b --mime-type "${PDF_PATH}")

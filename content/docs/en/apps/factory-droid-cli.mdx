@@ -22,8 +22,12 @@ title: Factory Droid CLI
   />
 </div>
 
-{/* TODO: Convert to Callout - info: Project Introduction */}
-Command Line: Automation Across the SDLC. Script and parallelize Droids at massive scale for CI/CD, migrations, and maintenance. From automated code review to self-healing builds, integrate agents into every phase of development.
+<Callout type="info" title="Project Introduction">
+  Command Line: Automation Across the SDLC. Script and parallelize Droids at
+  massive scale for CI/CD, migrations, and maintenance. From automated code
+  review to self-healing builds, integrate agents into every phase of
+  development.
+</Callout>
 
     Droid CLI is a command-line tool developed by Factory AI, designed to operate as an AI software engineering agent. It allows users to interact with various large language models via the terminal, build, debug, and refactor code, and even create complete applications.
 
@@ -64,9 +68,9 @@ Command Line: Automation Across the SDLC. Script and parallelize Droids at massi
 
 Official one-click installation command:
 
-{/* TODO: Convert to Callout - info: One-Click Installation Command */}
-`     irm https://app.factory.ai/cli/windows | iex
-    `
+<Callout type="info" title="One-Click Installation Command">
+  ` irm https://app.factory.ai/cli/windows | iex `
+</Callout>
 
 ![windows-install](/assets/factory_droid_cli/windows_install_droid.webp)
 
@@ -76,52 +80,48 @@ Droid CLI requires modifying the configuration file to use third-party APIs.
 
 ![windows-configure.webp](/assets/factory_droid_cli/factory_cli_setup_windows.png)
 
-{/* TODO: Convert to Callout - info: Modify Environment Variables */}
-`     iex (irm 'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/factory-cli-setup.ps1')
-    `
+<Callout type="info" title="Modify Environment Variables">
+  ` iex (irm
+  'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/factory-cli-setup.ps1')
+  `
+</Callout>
 
 #### 4. Start Using Droid CLI
 
 You can now start using Droid CLI!
 
-{/* TODO: Convert to Callout - info: Launch Droid CLI */}
-Launch Droid CLI directly:
-`     # Launch Droid CLI
-    droid
-    `
-Use in a specific project:
-`     # Navigate to your project directory
-    cd C:\path\to\your\project
-    `
-`     # Launch Droid CLI
-    droid
-    `
-Press Enter to launch Droid CLI
+<Callout type="info" title="Launch Droid CLI">
+  Launch Droid CLI directly: ` # Launch Droid CLI droid ` Use in a specific
+  project: ` # Navigate to your project directory cd C:\path\to\your\project ` `
+  # Launch Droid CLI droid ` Press Enter to launch Droid CLI
+</Callout>
 
 Droid CLI requires users to log in to an official account (free) before use.
 
 #### 5. Windows Common Issues Troubleshooting
 
-{/* TODO: Collapsible example: Error message */}permission denied" during installation"
-This is usually a permission issue. Try the following solutions:
+<Callout type="info" title="Error message" collapsible>
+  permission denied" during installation" This is usually a permission issue.
+  Try the following solutions:
+</Callout>
 
     - Run `PowerShell` as administrator
 
     - Or configure `npm` to use the user directory: `npm config set prefix %APPDATA%\npm`
 
-{/* TODO: Collapsible example: PowerShell Execution Policy Error */}
-If you encounter execution policy restrictions, run:
-`     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-    `
+<Callout type="info" title="PowerShell Execution Policy Error" collapsible>
+  If you encounter execution policy restrictions, run: ` Set-ExecutionPolicy
+  -ExecutionPolicy RemoteSigned -Scope CurrentUser `
+</Callout>
 
 ### macOS/Linux Graphical Guide
 
 #### 1. Install Droid CLI
 
-{/* TODO: Convert to Callout - info: Install Droid CLI */}
-Open the terminal and run the following command:
-`     curl -fsSL https://app.factory.ai/cli | sh
-    `
+<Callout type="info" title="Install Droid CLI">
+  Open the terminal and run the following command: ` curl -fsSL
+  https://app.factory.ai/cli | sh `
+</Callout>
 
 ![macos-open-terminal](/assets/factory_droid_cli/macos_install_droid.webp)
 
@@ -131,19 +131,20 @@ Modify environment variables according to the installation prompts (copy the ins
 
 For Linux, choose `~/.bashrc` or `~/.zshrc` as appropriate.
 
-{/* TODO: Convert to Callout - info: Droid CLI Environment Variables (Example Only) */}
-`     echo 'export PATH=/Users/修改此处/.local/bin:$PATH' >> ~/.zshrc
-    `
-`     source ~/.zshrc
-    `
+<Callout type="info" title="Droid CLI Environment Variables (Example Only)">
+  ` echo 'export PATH=/Users/修改此处/.local/bin:$PATH' >> ~/.zshrc ` ` source
+  ~/.zshrc `
+</Callout>
 
 #### 2. Modify Configuration File
 
 Droid CLI requires modifying the configuration file to use third-party APIs.
 
-{/* TODO: Convert to Callout - info: One-Click Configuration File Modification */}
-`     curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/factory-cli-setup.sh | bash
-    `
+<Callout type="info" title="One-Click Configuration File Modification">
+  ` curl -fsSL
+  https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/factory-cli-setup.sh
+  | bash `
+</Callout>
 
 ![macos-img-03.webp](/assets/factory_droid_cli/macos_configure.png)
 
@@ -151,18 +152,10 @@ Droid CLI requires modifying the configuration file to use third-party APIs.
 
 You can now start using Droid CLI!
 
-{/* TODO: Convert to Callout - info: Launch Droid CLI */}
-Launch Droid CLI directly:
-`     # Launch Droid CLI
-    droid
-    `
-Use in a specific project:
-`     # Navigate to your project directory
-    cd /path/to/your/project
-    `
-`     # Launch Droid CLI
-    droid
-    `
-Press Enter to launch Droid CLI
+<Callout type="info" title="Launch Droid CLI">
+  Launch Droid CLI directly: ` # Launch Droid CLI droid ` Use in a specific
+  project: ` # Navigate to your project directory cd /path/to/your/project ` ` #
+  Launch Droid CLI droid ` Press Enter to launch Droid CLI
+</Callout>
 
 > Droid CLI requires users to log in to an official account (free) before use.

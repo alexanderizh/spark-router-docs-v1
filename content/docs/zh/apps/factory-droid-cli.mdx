@@ -22,8 +22,12 @@ title: Factory Droid CLI
   />
 </div>
 
-{/* TODO: Convert to Callout - info: 项目介绍 */}
-Command Line: Automation Across the SDLC. Script and parallelize Droids at massive scale for CI/CD, migrations, and maintenance. From automated code review to self-healing builds, integrate agents into every phase of development.
+<Callout type="info" title="项目介绍">
+  Command Line: Automation Across the SDLC. Script and parallelize Droids at
+  massive scale for CI/CD, migrations, and maintenance. From automated code
+  review to self-healing builds, integrate agents into every phase of
+  development.
+</Callout>
 
     Droid CLI 是由 Factory AI 开发的命令行工具，旨在作为 AI 软件工程代理运行。它允许用户通过终端与各种大型语言模型交互，构建、调试和重构代码，甚至创建完整的应用程序。
 
@@ -64,9 +68,9 @@ Command Line: Automation Across the SDLC. Script and parallelize Droids at massi
 
 官方一键安装命令：
 
-{/* TODO: Convert to Callout - info: 一键安装命令 */}
-`     irm https://app.factory.ai/cli/windows | iex
-    `
+<Callout type="info" title="一键安装命令">
+  ` irm https://app.factory.ai/cli/windows | iex `
+</Callout>
 
 ![windows-install](/assets/factory_droid_cli/windows_install_droid.webp)
 
@@ -76,52 +80,46 @@ Droid CLI 使用第三方 API 需要修改配置文件。
 
 ![windows-configure.webp](/assets/factory_droid_cli/factory_cli_setup_windows.png)
 
-{/* TODO: Convert to Callout - info: 修改环境变量 */}
-`     iex (irm 'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/factory-cli-setup.ps1')
-    `
+<Callout type="info" title="修改环境变量">
+  ` iex (irm
+  'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/factory-cli-setup.ps1')
+  `
+</Callout>
 
 #### 4.开始使用 Droid CLI
 
 现在你可以开始使用 Droid CLI 了！
 
-{/* TODO: Convert to Callout - info: 启动 Droid CLI */}
-直接启动 Droid CLI:
-`     # 启动 Droid CLI
-    droid
-    `
-在特定项目中使用:
-`     # 进入你的项目目录
-    cd C:\path\to\your\project
-    `
-`     # 启动 Droid CLI
-    droid
-    `
-Enter 启动 Droid CLI
+<Callout type="info" title="启动 Droid CLI">
+  直接启动 Droid CLI: ` # 启动 Droid CLI droid ` 在特定项目中使用: ` #
+  进入你的项目目录 cd C:\path\to\your\project ` ` # 启动 Droid CLI droid ` Enter
+  启动 Droid CLI
+</Callout>
 
 Droid CLI 要求用户登录官方账号（免费）后才能使用。
 
 #### 5.Windows 常见问题解决
 
-{/* TODO: Collapsible example: 安装时提示 */}permission denied" 错误"
-这通常是权限问题，尝试以下解决方法：
+<Callout type="info" title="安装时提示" collapsible>
+  permission denied" 错误" 这通常是权限问题，尝试以下解决方法：
+</Callout>
 
     - 以管理员身份运行`PowerShell`
 
     - 或者配置`npm`使用用户目录：`npm config set prefix %APPDATA%\npm`
 
-{/* TODO: Collapsible example: PowerShell 执行策略错误 */}
-如果遇到执行策略限制，运行：
-`     Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
-    `
+<Callout type="info" title="PowerShell 执行策略错误" collapsible>
+  如果遇到执行策略限制，运行： ` Set-ExecutionPolicy -ExecutionPolicy
+  RemoteSigned -Scope CurrentUser `
+</Callout>
 
 ### macOS/Linux 端图文指引
 
 #### 1.安装 Droid CLI
 
-{/* TODO: Convert to Callout - info: 安装 Droid CLI */}
-打开终端，运行以下命令：
-`     curl -fsSL https://app.factory.ai/cli | sh
-    `
+<Callout type="info" title="安装 Droid CLI">
+  打开终端，运行以下命令： ` curl -fsSL https://app.factory.ai/cli | sh `
+</Callout>
 
 ![macos-open-terminal](/assets/factory_droid_cli/macos_install_droid.webp)
 
@@ -131,19 +129,20 @@ Droid CLI 要求用户登录官方账号（免费）后才能使用。
 
 Linux 视情况选择 `~/.bashrc` 或 `~/.zshrc`
 
-{/* TODO: Convert to Callout - info: Droid CLI 环境变量 (仅作示例) */}
-`     echo 'export PATH=/Users/修改此处/.local/bin:$PATH' >> ~/.zshrc
-    `
-`     source ~/.zshrc
-    `
+<Callout type="info" title="Droid CLI 环境变量 (仅作示例)">
+  ` echo 'export PATH=/Users/修改此处/.local/bin:$PATH' >> ~/.zshrc ` ` source
+  ~/.zshrc `
+</Callout>
 
 #### 2.修改配置文件
 
 Droid CLI 使用第三方 API 需要修改配置文件。
 
-{/* TODO: Convert to Callout - info: 一键修改配置文件 */}
-`     curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/factory-cli-setup.sh | bash
-    `
+<Callout type="info" title="一键修改配置文件">
+  ` curl -fsSL
+  https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/factory-cli-setup.sh
+  | bash `
+</Callout>
 
 ![macos-img-03.webp](/assets/factory_droid_cli/macos_configure.png)
 
@@ -151,18 +150,10 @@ Droid CLI 使用第三方 API 需要修改配置文件。
 
 现在你可以开始使用 Droid CLI 了！
 
-{/* TODO: Convert to Callout - info: 启动 Droid CLI */}
-直接启动 Droid CLI:
-`     # 启动 Droid CLI
-    droid
-    `
-在特定项目中使用:
-`     # 进入你的项目目录
-    cd /path/to/your/project
-    `
-`     # 启动 Droid CLI
-    droid
-    `
-Enter 启动 Droid CLI
+<Callout type="info" title="启动 Droid CLI">
+  直接启动 Droid CLI: ` # 启动 Droid CLI droid ` 在特定项目中使用: ` #
+  进入你的项目目录 cd /path/to/your/project ` ` # 启动 Droid CLI droid ` Enter
+  启动 Droid CLI
+</Callout>
 
 > Droid CLI 要求用户登录官方账号（免费）后才能使用。

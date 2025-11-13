@@ -2,8 +2,10 @@
 title: Deepseek reasoning 対話フォーマット（Reasoning Content）
 ---
 
-{/* TODO: Convert to Callout - info: 公式ドキュメント */}
-[推論モデル (deepseek-reasoner)](https://api-docs.deepseek.com/zh-cn/guides/reasoning_model)
+<Callout type="info" title="公式ドキュメント">
+  [推論モデル
+  (deepseek-reasoner)](https://api-docs.deepseek.com/zh-cn/guides/reasoning_model)
+</Callout>
 
 ## 📝 概要
 
@@ -223,8 +225,12 @@ Authorization: Bearer $NEWAPI_API_KEY
 
 ![Deepseek reasoning 上下文拼接示意图](/assets/deepseek_r1_multiround_example_cn.png)
 
-{/* TODO: Convert to Callout - warning: 注意 */}
-入力する messages シーケンスに reasoning_content を渡した場合、API は 400 エラーを返します。したがって、API リクエストを再度送信する前に、以下の使用例に示す方法で API 応答から reasoning_content フィールドを削除してください。
+<Callout type="warn" title="注意">
+  入力する messages シーケンスに reasoning_content を渡した場合、API は 400
+  エラーを返します。したがって、API
+  リクエストを再度送信する前に、以下の使用例に示す方法で API 応答から
+  reasoning_content フィールドを削除してください。
+</Callout>
 
 使用例:
 

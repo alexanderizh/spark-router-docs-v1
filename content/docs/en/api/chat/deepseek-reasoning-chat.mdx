@@ -2,8 +2,10 @@
 title: Deepseek Reasoning Chat Format (Reasoning Content)
 ---
 
-{/* TODO: Convert to Callout - info: Official Documentation */}
-[Reasoning Model (deepseek-reasoner)](https://api-docs.deepseek.com/en/guides/reasoning_model)
+<Callout type="info" title="Official Documentation">
+  [Reasoning Model
+  (deepseek-reasoner)](https://api-docs.deepseek.com/en/guides/reasoning_model)
+</Callout>
 
 ## 📝 Introduction
 
@@ -223,8 +225,12 @@ In each round of conversation, the model outputs reasoning_content (chain-of-tho
 
 ![Deepseek reasoning context concatenation diagram](/assets/deepseek_r1_multiround_example_cn.png)
 
-{/* TODO: Convert to Callout - warning: Note */}
-If you pass reasoning_content in the input messages sequence, the API will return a 400 error. Therefore, please remove the reasoning_content field from the API response before making the next API request, as shown in the usage example below.
+<Callout type="warn" title="Note">
+  If you pass reasoning_content in the input messages sequence, the API will
+  return a 400 error. Therefore, please remove the reasoning_content field from
+  the API response before making the next API request, as shown in the usage
+  example below.
+</Callout>
 
 Usage Example:
 

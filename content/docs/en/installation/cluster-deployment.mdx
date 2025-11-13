@@ -47,8 +47,10 @@ For MySQL database, you can choose the following architecture solutions:
 | **Master-Slave Replication** | 1 master database`<br />`N slave databases                     | Master handles writes`<br />`Slaves handle reads`<br />`Automatic master-slave data sync     | Configure master database address as `SQL_DSN` |
 | **Database Cluster**         | Multiple peer nodes`<br />`Proxy layer (ProxySQL/MySQL Router) | All nodes can read/write`<br />`Load balancing through proxy layer`<br />`Automatic failover | Configure proxy layer address as `SQL_DSN`     |
 
-{/* TODO: Convert to Callout - warning: Important Note */}
-Regardless of which architecture you choose, the application's `SQL_DSN` configuration only needs one unified entry address.
+<Callout type="warn" title="Important Note">
+  Regardless of which architecture you choose, the application's `SQL_DSN`
+  configuration only needs one unified entry address.
+</Callout>
 
 Ensure these services can be accessed by all nodes and have sufficient performance and reliability.
 
@@ -78,8 +80,10 @@ services:
       - ./logs:/app/logs
 ```
 
-{/* TODO: Convert to Callout - warning: Security Tip */}
-Please use strong passwords and randomly generated secret strings to replace the example values in the above configuration.
+<Callout type="warn" title="Security Tip">
+  Please use strong passwords and randomly generated secret strings to replace
+  the example values in the above configuration.
+</Callout>
 
 Start the master node:
 

@@ -4,8 +4,11 @@ title: Docker安装指南
 
 本文档提供了使用Docker部署New API的详细步骤。
 
-{/* TODO: Convert to Callout - warning: 强烈推荐 */}
-我们强烈推荐使用 [Docker Compose 安装方式](docker-compose-installation.md) 而不是手动启动Docker容器。Docker Compose方式提供了更好的配置管理、服务编排和部署体验。
+<Callout type="warn" title="强烈推荐">
+  我们强烈推荐使用 [Docker Compose 安装方式](docker-compose-installation.md)
+  而不是手动启动Docker容器。Docker
+  Compose方式提供了更好的配置管理、服务编排和部署体验。
+</Callout>
 
 ## 基本要求
 
@@ -24,8 +27,9 @@ docker run --name new-api -d --restart always \
   calciumion/new-api:latest
 ```
 
-{/* TODO: Convert to Callout - warning: 注意 */}
-请将 `/your/data/path` 替换为您想要存储数据的本地路径。
+<Callout type="warn" title="注意">
+  请将 `/your/data/path` 替换为您想要存储数据的本地路径。
+</Callout>
 
 ### 使用MySQL数据库
 
@@ -38,8 +42,9 @@ docker run --name new-api -d --restart always \
   calciumion/new-api:latest
 ```
 
-{/* TODO: Convert to Callout - warning: 注意 */}
-请替换参数中的数据库连接信息。
+<Callout type="warn" title="注意">
+  请替换参数中的数据库连接信息。
+</Callout>
 
 ## 访问系统
 

@@ -4,8 +4,12 @@ title: Docker Installation Guide
 
 This document provides detailed steps for deploying New API using Docker.
 
-{/* TODO: Convert to Callout - warning: Strongly Recommended */}
-We strongly recommend using the [Docker Compose installation method](docker-compose-installation.md) instead of manually starting Docker containers. Docker Compose provides better configuration management, service orchestration, and deployment experience.
+<Callout type="warn" title="Strongly Recommended">
+  We strongly recommend using the [Docker Compose installation
+  method](docker-compose-installation.md) instead of manually starting Docker
+  containers. Docker Compose provides better configuration management, service
+  orchestration, and deployment experience.
+</Callout>
 
 ## Basic Requirements
 
@@ -24,8 +28,9 @@ docker run --name new-api -d --restart always \
   calciumion/new-api:latest
 ```
 
-{/* TODO: Convert to Callout - warning: Note */}
-Please replace `/your/data/path` with your desired local data storage path.
+<Callout type="warn" title="Note">
+  Please replace `/your/data/path` with your desired local data storage path.
+</Callout>
 
 ### Using MySQL Database
 
@@ -38,8 +43,9 @@ docker run --name new-api -d --restart always \
   calciumion/new-api:latest
 ```
 
-{/* TODO: Convert to Callout - warning: Note */}
-Please replace the database connection information in the parameters.
+<Callout type="warn" title="Note">
+  Please replace the database connection information in the parameters.
+</Callout>
 
 ## Accessing the System
 

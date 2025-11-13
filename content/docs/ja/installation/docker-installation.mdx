@@ -4,8 +4,11 @@ title: Docker インストールガイド
 
 このドキュメントでは、Dockerを使用してNew APIをデプロイするための詳細な手順を提供します。
 
-{/* TODO: Convert to Callout - warning: 強く推奨 */}
-手動でDockerコンテナを起動するのではなく、[Docker Compose インストール方法](docker-compose-installation.md)を使用することを強く推奨します。Docker Compose方式は、より優れた設定管理、サービスオーケストレーション、およびデプロイ体験を提供します。
+<Callout type="warn" title="強く推奨">
+  手動でDockerコンテナを起動するのではなく、[Docker Compose
+  インストール方法](docker-compose-installation.md)を使用することを強く推奨します。Docker
+  Compose方式は、より優れた設定管理、サービスオーケストレーション、およびデプロイ体験を提供します。
+</Callout>
 
 ## 基本要件
 
@@ -24,8 +27,9 @@ docker run --name new-api -d --restart always \
   calciumion/new-api:latest
 ```
 
-{/* TODO: Convert to Callout - warning: 注意 */}
-`/your/data/path` を、データを保存したいローカルパスに置き換えてください。
+<Callout type="warn" title="注意">
+  `/your/data/path` を、データを保存したいローカルパスに置き換えてください。
+</Callout>
 
 ### MySQLデータベースの使用
 
@@ -38,8 +42,9 @@ docker run --name new-api -d --restart always \
   calciumion/new-api:latest
 ```
 
-{/* TODO: Convert to Callout - warning: 注意 */}
-パラメータ内のデータベース接続情報を置き換えてください。
+<Callout type="warn" title="注意">
+  パラメータ内のデータベース接続情報を置き換えてください。
+</Callout>
 
 ## システムへのアクセス
 

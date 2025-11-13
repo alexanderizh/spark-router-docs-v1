@@ -16,8 +16,9 @@ title: 本地开发部署指南
 - **Redis**（可选，用于提升性能）
 - **Visual Studio Code** 或其他代码编辑器
 
-{/* TODO: Convert to Callout - info: 关于 Bun */}
-Bun是一个超快的JavaScript包管理器、测试运行器和bundler。相比传统的npm或yarn，Bun的安装速度快25倍，是2024年最推荐的JavaScript包管理工具。
+<Callout type="info" title="关于 Bun">
+  Bun是一个超快的JavaScript包管理器、测试运行器和bundler。相比传统的npm或yarn，Bun的安装速度快25倍，是2024年最推荐的JavaScript包管理工具。
+</Callout>
 
 ## 克隆项目
 
@@ -52,8 +53,10 @@ SQL_DSN=root:password@tcp(localhost:3306)/new-api   # 如使用MySQL，取消注
 # REDIS_CONN_STRING=redis://localhost:6379         # 如使用Redis，取消注释并修改
 ```
 
-{/* TODO: Convert to Callout - tip: 提示 */}
-如果不配置 `SQL_DSN`，系统将默认使用 SQLite 数据库，存储在 `one-api.db` 文件中。
+<Callout type="info" title="提示">
+  如果不配置 `SQL_DSN`，系统将默认使用 SQLite 数据库，存储在 `one-api.db`
+  文件中。
+</Callout>
 
 ### 运行后端服务
 
@@ -731,9 +734,10 @@ new-api/                                 # 项目根目录
                     index.js                 # 用户管理页面入口
 ```
 
-{/* TODO: Convert to Callout - tip: 需要帮助？ */}
+<Callout type="info" title="需要帮助？">
 如果您在开发过程中遇到问题，可以：
 
-    1. 查看 [GitHub Issues](https://github.com/Calcium-Ion/new-api/issues)
-    2. 加入 [QQ交流群](../support/community-interaction.md)
-    3. 通过 [问题反馈](../support/feedback-issues.md) 页面提交问题
+1. 查看 [GitHub Issues](https://github.com/Calcium-Ion/new-api/issues)
+2. 加入 [QQ交流群](../support/community-interaction.md)
+3. 通过 [问题反馈](../support/feedback-issues.md) 页面提交问题
+   </Callout>

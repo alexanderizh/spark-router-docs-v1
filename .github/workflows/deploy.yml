@@ -4,7 +4,7 @@ on:
   # 在推送到 main 分支时触发
   push:
     branches: ['main']
-  
+
   # 允许手动从 Actions 标签页触发
   workflow_dispatch:
 
@@ -62,4 +62,3 @@ jobs:
       - name: 🚀 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-

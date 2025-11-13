@@ -16,8 +16,12 @@ title: ローカル開発およびデプロイガイド
 - **Redis**（オプション、パフォーマンス向上に使用）
 - **Visual Studio Code** またはその他のコードエディタ
 
-{/* TODO: Convert to Callout - info: Bun について */}
-Bun は、超高速の JavaScript パッケージマネージャー、テストランナー、およびバンドラーです。従来の npm や yarn と比較して、Bun のインストール速度は 25 倍速く、2024 年に最も推奨される JavaScript パッケージ管理ツールです。
+<Callout type="info" title="Bun について">
+  Bun は、超高速の JavaScript
+  パッケージマネージャー、テストランナー、およびバンドラーです。従来の npm や
+  yarn と比較して、Bun のインストール速度は 25 倍速く、2024 年に最も推奨される
+  JavaScript パッケージ管理ツールです。
+</Callout>
 
 ## プロジェクトのクローン
 
@@ -52,8 +56,10 @@ SQL_DSN=root:password@tcp(localhost:3306)/new-api   # MySQL を使用する場�
 # REDIS_CONN_STRING=redis://localhost:6379         # Redis を使用する場合、コメントアウトを解除して変更
 ```
 
-{/* TODO: Convert to Callout - tip: ヒント */}
-`SQL_DSN` を設定しない場合、システムはデフォルトで SQLite データベースを使用し、`one-api.db` ファイルに保存されます。
+<Callout type="info" title="ヒント">
+  `SQL_DSN` を設定しない場合、システムはデフォルトで SQLite
+  データベースを使用し、`one-api.db` ファイルに保存されます。
+</Callout>
 
 ### バックエンドサービスの実行
 
@@ -731,8 +737,9 @@ new-api/                                 # プロジェクトルートディレ�
                     index.js                 # ユーザー管理ページエントリ
 ```
 
-{/* TODO: Convert to Callout - tip: ヘルプが必要ですか？ */}
-開発中に問題が発生した場合は、以下を参照してください。
+<Callout type="info" title="ヘルプが必要ですか？">
+  開発中に問題が発生した場合は、以下を参照してください。
+</Callout>
 
     1. [GitHub Issues](https://github.com/Calcium-Ion/new-api/issues) を確認する
     2. [QQ交流群](../support/community-interaction.md) に参加する

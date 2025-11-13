@@ -22,8 +22,9 @@ title: OpenAI Codex CLI
   />
 </div>
 
-{/* TODO: Convert to Callout - info: Project Introduction */}
-Codex CLI is a coding agent from OpenAI that runs locally on your computer.
+<Callout type="info" title="Project Introduction">
+  Codex CLI is a coding agent from OpenAI that runs locally on your computer.
+</Callout>
 
     Codex CLI is a coding agent from OpenAI that runs locally on your computer.
 
@@ -64,25 +65,24 @@ Codex CLI is a coding agent from OpenAI that runs locally on your computer.
 
 For optimal performance on Windows, please install and use the Windows Subsystem for Linux (WSL2).
 
-{/* TODO: Convert to Callout - info: Install WSL2, Restart Windows Computer */}
-`     wsl --install
-    `
-Restart the Windows computer after installation
+<Callout type="info" title="Install WSL2, Restart Windows Computer">
+  ` wsl --install ` Restart the Windows computer after installation
+</Callout>
 
 !!! caution "Windows Notes" - It is recommended to use PowerShell instead of CMD - If you encounter permission issues, try running as administrator - Some antivirus software may flag this as a false positive; you may need to add it to a whitelist
 
 ![windows-img-03.webp](/assets/codex/windows-img-03.webp)
 
-{/* TODO: Convert to Callout - info: Download Node Version Manager (NVM) */}
-`     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | bash
-    `
+<Callout type="info" title="Download Node Version Manager (NVM)">
+  ` curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh |
+  bash `
+</Callout>
 
 ![windows-img-04.webp](/assets/codex/windows-img-04.webp)
 
-{/* TODO: Convert to Callout - info: NVM Install Node.js 22 */}
-Open a new PowerShell window in the tab bar and start WSL
-`     wsl
-    `
+<Callout type="info" title="NVM Install Node.js 22">
+  Open a new PowerShell window in the tab bar and start WSL ` wsl `
+</Callout>
 
     Install Node.js
 
@@ -95,18 +95,23 @@ Open a new PowerShell window in the tab bar and start WSL
 
 #### 3. Install Codex CLI
 
-{/* TODO: Convert to Callout - info: Install Codex CLI */}
-`     npm i -g @openai/codex
-    `
-This command downloads and installs the latest version of Codex CLI from the official npm repository.
+<Callout type="info" title="Install Codex CLI">
+  ` npm i -g @openai/codex ` This command downloads and installs the latest
+  version of Codex CLI from the official npm repository.
+</Callout>
 
 ![windows-img-06.webp](/assets/codex/windows-img-06.webp)
 
 #### 4. Modify Configuration File
 
-{/* TODO: Convert to Callout - info: One-Click Modification of Codex CLI Configuration File */}
-`     iex (irm 'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/codex-cli-setup.ps1')
-    `
+<Callout
+  type="info"
+  title="One-Click Modification of Codex CLI Configuration File"
+>
+  ` iex (irm
+  'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/codex-cli-setup.ps1')
+  `
+</Callout>
 
 ![windows-configure](/assets/codex/windows_configure.png)
 
@@ -114,19 +119,11 @@ This command downloads and installs the latest version of Codex CLI from the off
 
 You can now start using Codex CLI!
 
-{/* TODO: Convert to Callout - info: Launch Codex CLI */}
-Start WSL2
-`     wsl
-    `
-Launch Codex CLI directly:
-`     codex
-    `
-Use in a specific project:
-`     cd mnt/c/path/to/your/project
-    `
-`     codex
-    `
-Press Enter to launch Codex CLI
+<Callout type="info" title="Launch Codex CLI">
+  Start WSL2 ` wsl ` Launch Codex CLI directly: ` codex ` Use in a specific
+  project: ` cd mnt/c/path/to/your/project ` ` codex ` Press Enter to launch
+  Codex CLI
+</Callout>
 
 ![windows-img-09.webp](/assets/codex/windows-img-09.webp)
 
@@ -134,9 +131,9 @@ Press Enter to launch Codex CLI
 
 > Set Codex CLI permissions: 1. Allow Codex to modify files directly; 2. Codex requires manual authorization to modify files
 
-{/* TODO: Convert to Callout - info: Select Model */}
-`     /model
-    `
+<Callout type="info" title="Select Model">
+  ` /model `
+</Callout>
 
 ![windows-img-11.webp](/assets/codex/windows-img-11.webp)
 
@@ -158,9 +155,10 @@ Official Website: https://brew.sh
 
 ![macos-img-01.webp](/assets/codex/macos-img-01.webp)
 
-{/* TODO: Convert to Callout - info: Install Homebrew */}
-`     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    `
+<Callout type="info" title="Install Homebrew">
+  ` /bin/bash -c "$(curl -fsSL
+  https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" `
+</Callout>
 
 ![macos-img-02.webp](/assets/codex/macos-img-02.webp)
 
@@ -170,13 +168,9 @@ Official Website: https://brew.sh
 
 #### 2. Install Node.js Environment
 
-{/* TODO: Convert to Callout - info: Node.js Environment Installation Steps */}
-Update Homebrew
-`     brew update
-    `
-Install Node.js
-`     brew install node
-    `
+<Callout type="info" title="Node.js Environment Installation Steps">
+  Update Homebrew ` brew update ` Install Node.js ` brew install node `
+</Callout>
 
 !!! caution "macOS Notes" - If you encounter permission issues, you may need to use `sudo` - The first run may require permission in System Preferences - It is recommended to use `Terminal` or `iTerm2`
 
@@ -184,37 +178,38 @@ Install Node.js
 
 ![macos-img-06.webp](/assets/codex/macos-img-06.webp)
 
-{/* TODO: Convert to Callout - info */}rmation "Verify Successful Installation"
-After installation, open the terminal and enter the following commands:
-`     node --version
-    npm --version
-    `
-If the version number is displayed, the installation was successful
+<Callout type="info">
+  rmation "Verify Successful Installation" After installation, open the terminal
+  and enter the following commands: ` node --version npm --version ` If the
+  version number is displayed, the installation was successful
+</Callout>
 
 #### 3. Install Codex CLI
 
-{/* TODO: Convert to Callout - info: Install Codex CLI */}
-Open the terminal and run the following command:
-`     # Install Codex CLI globally
-    npm install -g @openai/codex
-    `
-If you encounter permission issues, you can use sudo:
-`     sudo npm install -g @openai/codex
-    `
+<Callout type="info" title="Install Codex CLI">
+  Open the terminal and run the following command: ` # Install Codex CLI
+  globally npm install -g @openai/codex ` If you encounter permission issues,
+  you can use sudo: ` sudo npm install -g @openai/codex `
+</Callout>
 
 ![macos-img-07.webp](/assets/codex/macos-img-07.webp)
 
-{/* TODO: Convert to Callout - info: Verify Codex CLI Installation */}
-After installation, enter the following command to check if the installation was successful:
-`     codex --version
-    `
-If the version number is displayed, congratulations! Codex CLI has been successfully installed.
+<Callout type="info" title="Verify Codex CLI Installation">
+  After installation, enter the following command to check if the installation
+  was successful: ` codex --version ` If the version number is displayed,
+  congratulations! Codex CLI has been successfully installed.
+</Callout>
 
 #### 4. Modify Configuration File
 
-{/* TODO: Convert to Callout - info: One-Click Modification of Codex CLI Configuration File */}
-`     curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/codex-cli-setup.sh | bash
-    `
+<Callout
+  type="info"
+  title="One-Click Modification of Codex CLI Configuration File"
+>
+  ` curl -fsSL
+  https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/codex-cli-setup.sh
+  | bash `
+</Callout>
 
 ![macos-configure](/assets/codex/macos_configure.png)
 
@@ -222,16 +217,10 @@ If the version number is displayed, congratulations! Codex CLI has been successf
 
 You can now start using Codex CLI!
 
-{/* TODO: Convert to Callout - info: Launch Codex CLI */}
-Launch Codex CLI directly:
-`     codex
-    `
-Use in a specific project:
-`     cd mnt/c/path/to/your/project
-    `
-`     codex
-    `
-Press Enter to launch Codex CLI
+<Callout type="info" title="Launch Codex CLI">
+  Launch Codex CLI directly: ` codex ` Use in a specific project: ` cd
+  mnt/c/path/to/your/project ` ` codex ` Press Enter to launch Codex CLI
+</Callout>
 
 ![macos-img-09.webp](/assets/codex/macos-img-09.webp)
 
@@ -251,14 +240,20 @@ Press Enter to launch Codex CLI
 
 #### 6. macOS Common Issues Resolution
 
-{/* TODO: Collapsible example: Permission Error During Installation */}
-Try the following solutions:
+<Callout type="info" title="Permission Error During Installation" collapsible>
+  Try the following solutions:
+</Callout>
 
     - Install using `sudo`: `sudo npm install -g @openai/codex`
     - Or configure `npm` to use the user directory: `npm config set prefix ~/.npm-global`
 
-{/* TODO: Collapsible example: macOS Security Settings Block Execution */}
-If the system blocks Codex CLI from running:
+<Callout
+  type="info"
+  title="macOS Security Settings Block Execution"
+  collapsible
+>
+  If the system blocks Codex CLI from running:
+</Callout>
 
     - Open "System Preferences" → "Security & Privacy"
     - Click "Open Anyway" or "Allow"
@@ -270,13 +265,11 @@ If the system blocks Codex CLI from running:
 
 Codex CLI requires the Node.js environment to run.
 
-{/* TODO: Convert to Callout - info: Node.js Environment Installation Steps */}
-Add NodeSource repository
-`     sudo curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
-    `
-Install Node.js
-`     sudo apt-get install -y nodejs
-    `
+<Callout type="info" title="Node.js Environment Installation Steps">
+  Add NodeSource repository ` sudo curl -fsSL
+  https://deb.nodesource.com/setup_lts.x | sudo -E bash - ` Install Node.js `
+  sudo apt-get install -y nodejs `
+</Callout>
 
 !!! caution "Linux Notes" - Some distributions may require installing additional dependencies - Use sudo if you encounter permission issues - Ensure your user has write permissions in the npm global directory
 
@@ -284,36 +277,37 @@ Install Node.js
 
 ![linux-img-02.webp](/assets/codex/linux-img-02.webp)
 
-{/* TODO: Convert to Callout - info */}rmation "Verify Successful Installation"
-After installation, open the terminal and enter the following commands:
-`     node --version
-    npm --version
-    `
-If the version number is displayed, the installation was successful
+<Callout type="info">
+  rmation "Verify Successful Installation" After installation, open the terminal
+  and enter the following commands: ` node --version npm --version ` If the
+  version number is displayed, the installation was successful
+</Callout>
 
 #### 2. Install Codex CLI
 
-{/* TODO: Convert to Callout - info: Install Codex CLI */}
-Open the terminal and run the following command:
-`     # Install Codex CLI globally
-    npm install -g @openai/codex
-    `
-If you encounter permission issues, you can use sudo:
-`     sudo npm install -g @openai/codex
-    `
-![linux-img-03.webp](/assets/codex/linux-img-03.webp)
+<Callout type="info" title="Install Codex CLI">
+  Open the terminal and run the following command: ` # Install Codex CLI
+  globally npm install -g @openai/codex ` If you encounter permission issues,
+  you can use sudo: ` sudo npm install -g @openai/codex `
+  ![linux-img-03.webp](/assets/codex/linux-img-03.webp)
+</Callout>
 
-{/* TODO: Convert to Callout - info: Verify Codex CLI Installation */}
-After installation, enter the following command to check if the installation was successful:
-`     codex --version
-    `
-If the version number is displayed, congratulations! Codex CLI has been successfully installed.
+<Callout type="info" title="Verify Codex CLI Installation">
+  After installation, enter the following command to check if the installation
+  was successful: ` codex --version ` If the version number is displayed,
+  congratulations! Codex CLI has been successfully installed.
+</Callout>
 
 #### 3. Modify Configuration File
 
-{/* TODO: Convert to Callout - info: One-Click Modification of Codex CLI Configuration File */}
-`     curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/codex-cli-setup.sh | bash
-    `
+<Callout
+  type="info"
+  title="One-Click Modification of Codex CLI Configuration File"
+>
+  ` curl -fsSL
+  https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/codex-cli-setup.sh
+  | bash `
+</Callout>
 
 ![macos-configure](/assets/codex/macos_configure.png)
 
@@ -321,19 +315,11 @@ If the version number is displayed, congratulations! Codex CLI has been successf
 
 You can now start using Codex CLI!
 
-{/* TODO: Convert to Callout - info: Launch Codex CLI */}
-Launch Codex CLI directly:
-`     # Launch Codex CLI
-    codex
-    `
-Use in a specific project:
-`     # Navigate to your project directory
-    cd /path/to/your/project
-    `
-`     # Launch Codex CLI
-    codex
-    `
-Press Enter to launch Codex CLI
+<Callout type="info" title="Launch Codex CLI">
+  Launch Codex CLI directly: ` # Launch Codex CLI codex ` Use in a specific
+  project: ` # Navigate to your project directory cd /path/to/your/project ` ` #
+  Launch Codex CLI codex ` Press Enter to launch Codex CLI
+</Callout>
 
 ![linux-img-05.webp](/assets/codex/linux-img-05.webp)
 
@@ -353,8 +339,9 @@ Press Enter to launch Codex CLI
 
 #### 5. Linux Common Issues Resolution
 
-{/* TODO: Collapsible example: Permission Error During Installation */}
-Try the following solutions:
+<Callout type="info" title="Permission Error During Installation" collapsible>
+  Try the following solutions:
+</Callout>
 
     - Install using `sudo`: `sudo npm install -g @openai/codex`
 
@@ -362,11 +349,8 @@ Try the following solutions:
 
     - Then add to `PATH`: `export PATH=~/.npm-global/bin:$PATH`
 
-{/* TODO: Collapsible example: Missing Dependency Libraries */}
-Some Linux distributions require installing additional dependencies:
-`     # Ubuntu/Debian
-    sudo apt install build-essential
-    `
-`     # CentOS/RHEL
-    sudo dnf groupinstall "Development Tools"
-    `
+<Callout type="info" title="Missing Dependency Libraries" collapsible>
+  Some Linux distributions require installing additional dependencies: ` #
+  Ubuntu/Debian sudo apt install build-essential ` ` # CentOS/RHEL sudo dnf
+  groupinstall "Development Tools" `
+</Callout>

@@ -16,8 +16,11 @@ Before starting local development, please ensure your system has the following s
 - **Redis** (optional, for performance improvement)
 - **Visual Studio Code** or other code editors
 
-{/* TODO: Convert to Callout - info: About Bun */}
-Bun is an ultra-fast JavaScript package manager, test runner, and bundler. Compared to traditional npm or yarn, Bun's installation speed is 25x faster, making it the most recommended JavaScript package management tool in 2024.
+<Callout type="info" title="About Bun">
+  Bun is an ultra-fast JavaScript package manager, test runner, and bundler.
+  Compared to traditional npm or yarn, Bun's installation speed is 25x faster,
+  making it the most recommended JavaScript package management tool in 2024.
+</Callout>
 
 ## Clone the Project
 
@@ -52,8 +55,10 @@ SQL_DSN=root:password@tcp(localhost:3306)/new-api   # Uncomment and modify if us
 # REDIS_CONN_STRING=redis://localhost:6379         # Uncomment and modify if using Redis
 ```
 
-{/* TODO: Convert to Callout - tip: Note */}
-If `SQL_DSN` is not configured, the system will use SQLite database by default, stored in the `one-api.db` file.
+<Callout type="info" title="Note">
+  If `SQL_DSN` is not configured, the system will use SQLite database by
+  default, stored in the `one-api.db` file.
+</Callout>
 
 ### Run Backend Service
 
@@ -731,8 +736,9 @@ new-api/                                 # Project root directory
                     index.js                 # User management page entry
 ```
 
-{/* TODO: Convert to Callout - tip: Need Help? */}
-If you encounter problems during development, you can:
+<Callout type="info" title="Need Help?">
+  If you encounter problems during development, you can:
+</Callout>
 
     1. Check [GitHub Issues](https://github.com/Calcium-Ion/new-api/issues)
     2. Join the [Community Group](../support/community-interaction.md)

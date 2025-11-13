@@ -4,8 +4,11 @@ title: 環境変数設定ガイド
 
 このドキュメントでは、New APIがサポートするすべての環境変数とその設定について説明します。これらの環境変数を設定することで、システムの動作をカスタマイズできます。
 
-{/* TODO: Convert to Callout - tip: ヒント */}
-New API は、`.env` ファイルから環境変数を読み込むことをサポートしています。`.env.example` ファイルを参照し、使用する際は `.env` にリネームしてください。
+<Callout type="info" title="ヒント">
+  New API は、`.env`
+  ファイルから環境変数を読み込むことをサポートしています。`.env.example`
+  ファイルを参照し、使用する際は `.env` にリネームしてください。
+</Callout>
 
 ## 基本設定
 
@@ -49,8 +52,9 @@ New API は、`.env` ファイルから環境変数を読み込むことをサ�
 | `INITIAL_ROOT_TOKEN`        | 初回起動時に作成されるrootユーザーのトークン   | -            | `INITIAL_ROOT_TOKEN=your_token`             |
 | `INITIAL_ROOT_ACCESS_TOKEN` | 初回起動時に作成されるシステム管理トークン     | -            | `INITIAL_ROOT_ACCESS_TOKEN=your_token`      |
 
-{/* TODO: Convert to Callout - info: クラスターデプロイ */}
-これらの環境変数を使用して完全なクラスターデプロイを構築する方法については、[集群部署指南](cluster-deployment.md)を参照してください。
+<Callout type="info" title="クラスターデプロイ">
+  これらの環境変数を使用して完全なクラスターデプロイを構築する方法については、[集群部署指南](cluster-deployment.md)を参照してください。
+</Callout>
 
 ## ユーザーおよびトークン設定
 
@@ -73,8 +77,10 @@ New API は、`.env` ファイルから環境変数を読み込むことをサ�
 | `STREAMING_TIMEOUT`            | ストリーミングの1回あたりの応答タイムアウト時間（秒）  | `60`         | `STREAMING_TIMEOUT=120`           |
 | `MAX_FILE_DOWNLOAD_MB`         | 最大ファイルダウンロードサイズ（MB）                   | `20`         | `MAX_FILE_DOWNLOAD_MB=50`         |
 
-{/* TODO: Convert to Callout - warning: RELAY_TIMEOUT 設定の警告 */}
-環境変数 `RELAY_TIMEOUT` を設定する際は注意してください。短すぎる設定は以下の問題を引き起こす可能性があります：
+<Callout type="warn" title="RELAY_TIMEOUT 設定の警告">
+  環境変数 `RELAY_TIMEOUT`
+  を設定する際は注意してください。短すぎる設定は以下の問題を引き起こす可能性があります：
+</Callout>
 
     - アップストリームAPIがリクエストを完了し課金済みであるにもかかわらず、ローカルでタイムアウトにより課金が完了しない
 
@@ -113,8 +119,9 @@ New API は、`.env` ファイルから環境変数を読み込むことをサ�
 | `TIKTOKEN_CACHE_DIR`         | Tiktokenエンコーダーキャッシュディレクトリ。トークン分割ファイルを格納し、ネットワークダウンロードを回避するために使用 | -            | `TIKTOKEN_CACHE_DIR=/cache/tiktoken` |
 | `DATA_GYM_CACHE_DIR`         | DataGymキャッシュディレクトリ                                                                                          | -            | `DATA_GYM_CACHE_DIR=/cache/data_gym` |
 
-{/* TODO: Convert to Callout - tip: Tiktokenファイル設定 */}
-tiktokenファイルをダウンロードした後、以下の方法でリネームしてください：
+<Callout type="info" title="Tiktokenファイル設定">
+  tiktokenファイルをダウンロードした後、以下の方法でリネームしてください：
+</Callout>
 
     - `cl100k_base.tiktoken` を `9b5ad71b2ce5302211f9c61530b329a4922fc6a4` にリネーム
 
@@ -122,10 +129,9 @@ tiktokenファイルをダウンロードした後、以下の方法でリネー
 
     これらのファイルは、トークン計算のパフォーマンスを向上させ、ネットワーク依存を減らすために、`TIKTOKEN_CACHE_DIR`で指定されたディレクトリに配置する必要があります。
 
-{/* TODO: Convert to Callout - example: Tiktoken設定例 */}
-
-````bash # Docker環境の例
-TIKTOKEN_CACHE_DIR=/app/data/tiktoken
+<Callout type="info" title="Tiktoken設定例">
+  ````bash # Docker環境の例 TIKTOKEN_CACHE_DIR=/app/data/tiktoken
+</Callout>
 
     # その後、tiktokenファイルをダウンロードしてリネームし、このディレクトリに配置します：
     /app/data/tiktoken/9b5ad71b2ce5302211f9c61530b329a4922fc6a4
@@ -178,7 +184,7 @@ CRYPTO_SECRET=your_unique_crypto_secret
 
 # Redisキャッシュ設定
 REDIS_CONN_STRING=redis://default:password@redis-server:6379
-````
+```
 
 ### スレーブノード設定
 
@@ -203,8 +209,9 @@ FRONTEND_BASE_URL=https://your-domain.com
 SYNC_FREQUENCY=60
 ```
 
-{/* TODO: Convert to Callout - tip: 完全なクラスター設定 */}
-これは基本的なマルチノード設定の例にすぎません。完全なクラスターデプロイ設定、アーキテクチャの説明、およびベストプラクティスについては、[集群部署指南](cluster-deployment.md)を参照してください。
+<Callout type="info" title="完全なクラスター設定">
+  これは基本的なマルチノード設定の例にすぎません。完全なクラスターデプロイ設定、アーキテクチャの説明、およびベストプラクティスについては、[集群部署指南](cluster-deployment.md)を参照してください。
+</Callout>
 
 ## Docker Composeにおける環境変数の例
 

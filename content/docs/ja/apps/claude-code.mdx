@@ -22,8 +22,11 @@ title: Claude Code
   />
 </div>
 
-{/* TODO: Convert to Callout - info: プロジェクト紹介 */}
-Unleash Claude’s raw power directly in your terminal. Search million-line codebases instantly. Turn hours-long workflows into a single command. Your tools. Your workflow. Your codebase, evolving at thought speed.
+<Callout type="info" title="プロジェクト紹介">
+  Unleash Claude’s raw power directly in your terminal. Search million-line
+  codebases instantly. Turn hours-long workflows into a single command. Your
+  tools. Your workflow. Your codebase, evolving at thought speed.
+</Callout>
 
     ターミナルで直接、Claudeの強力なパワーを解き放ちます。数百万行のコードベースを瞬時に検索。数時間かかるワークフローを単一のコマンドに変えます。あなたのツール。あなたのワークフロー。あなたのコードベースが、思考のスピードで進化します。
 
@@ -70,7 +73,12 @@ Unleash Claude’s raw power directly in your terminal. Search million-line code
 
 Claude Codeを実行するにはNode.js環境が必要です。
 
-{/* TODO: Convert to Callout - info: Node.js環境のインストール手順 */} - ブラウザで https://nodejs.org/ にアクセスします - 「LTS」バージョンをクリックしてダウンロードします（長期サポートバージョンを推奨）- ダウンロードが完了したら、.msiファイルをダブルクリックします - インストールウィザードに従ってインストールを完了します。デフォルト設定のままで問題ありません
+<Callout type="info" title="Node.js環境のインストール手順">
+  - ブラウザで https://nodejs.org/ にアクセスします -
+  「LTS」バージョンをクリックしてダウンロードします（長期サポートバージョンを推奨）-
+  ダウンロードが完了したら、.msiファイルをダブルクリックします -
+  インストールウィザードに従ってインストールを完了します。デフォルト設定のままで問題ありません
+</Callout>
 
 !!! caution "Windowsでの注意事項" - CMDではなくPowerShellの使用を推奨します - 権限の問題が発生した場合は、管理者として実行してみてください - 一部のウイルス対策ソフトが誤検知する可能性があるため、ホワイトリストに追加する必要があります
 
@@ -96,7 +104,12 @@ Claude Codeを実行するにはNode.js環境が必要です。
 !!! caution "Windowsでの注意事項"
 Windows環境では、Claude codeのインストールにGit Bashを使用する必要があります。インストール完了後、環境変数の設定とClaude Codeの使用は、引き続き通常のPowerShellまたはCMDで行われます。
 
-{/* TODO: Convert to Callout - info: Git for Windowsのダウンロードとインストール */} - https://git-scm.com/downloads/win にアクセスします - 「Download for Windows」をクリックしてインストールパッケージをダウンロードします - ダウンロードした.exeインストールファイルを実行します - インストールプロセス中はデフォルト設定を維持し、そのまま「Next」をクリックしてインストールを完了します
+<Callout type="info" title="Git for Windowsのダウンロードとインストール">
+  - https://git-scm.com/downloads/win にアクセスします - 「Download for
+  Windows」をクリックしてインストールパッケージをダウンロードします -
+  ダウンロードした.exeインストールファイルを実行します -
+  インストールプロセス中はデフォルト設定を維持し、そのまま「Next」をクリックしてインストールを完了します
+</Callout>
 
 ![windows-img-06.webp](/assets/claude_code/windows-img-06.webp)
 
@@ -112,28 +125,37 @@ Windows環境では、Claude codeのインストールにGit Bashを使用する
 
 #### 3. Claude Codeのインストール
 
-{/* TODO: Convert to Callout - info: Claude Codeのインストール */}
-PowerShellを開き、以下のコマンドを実行します：
-`     npm install -g @anthropic-ai/claude-code
-    `
-このコマンドは、npm公式リポジトリから最新バージョンのClaude Codeをダウンロードしてインストールします。
+<Callout type="info" title="Claude Codeのインストール">
+  PowerShellを開き、以下のコマンドを実行します： ` npm install -g
+  @anthropic-ai/claude-code `
+  このコマンドは、npm公式リポジトリから最新バージョンのClaude
+  Codeをダウンロードしてインストールします。
+</Callout>
 
 ![windows-img-09.webp](/assets/claude_code/windows-img-09.webp)
 
-{/* TODO: Convert to Callout - info: ~/.local/bin をPATHに追加（プロンプトで要求された場合のみ） */}
-`     [Environment]::SetEnvironmentVariable('Path', ([Environment]::GetEnvironmentVariable('Path','User') + ";$HOME\.local\bin"), 'User')
-    `
+<Callout
+  type="info"
+  title="~/.local/bin をPATHに追加（プロンプトで要求された場合のみ）"
+>
+  ` [Environment]::SetEnvironmentVariable('Path',
+  ([Environment]::GetEnvironmentVariable('Path','User') + ";$HOME\.local\bin"),
+  'User') `
+</Callout>
 
-{/* TODO: Convert to Callout - info: Claude Codeインストールの確認 */}
-インストール完了後、以下のコマンドを入力してインストールが成功したか確認します：
-`     claude --version
-    `
-バージョン番号が表示されたら、おめでとうございます！Claude Codeのインストールは成功です。
+<Callout type="info" title="Claude Codeインストールの確認">
+  インストール完了後、以下のコマンドを入力してインストールが成功したか確認します：
+  ` claude --version `
+  バージョン番号が表示されたら、おめでとうございます！Claude
+  Codeのインストールは成功です。
+</Callout>
 
 #### 4. 環境変数の設定
 
-{/* TODO: Convert to Callout - info: ワンクリック設定コマンド (Windows システム) */}
-Claude Codeを中継サービスに接続するために、複数の環境変数を設定する必要があります：
+<Callout type="info" title="ワンクリック設定コマンド (Windows システム)">
+  Claude
+  Codeを中継サービスに接続するために、複数の環境変数を設定する必要があります：
+</Callout>
 
 ```powershell
 iex (irm 'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.ps1')
@@ -145,18 +167,11 @@ iex (irm 'https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/
 
 これでClaude Codeの使用を開始できます！
 
-{/* TODO: Convert to Callout - info: Claude Codeの起動 */}
-PowerShellを開き、直接Claude Codeを起動します：
-`     # Claude Codeの起動
-    claude
-    `
-特定のプロジェクトで使用する場合:
-`     # プロジェクトディレクトリに移動
-    cd C:\path\to\your\project
-    `
-`     # Claude Codeの起動
-    claude
-    `
+<Callout type="info" title="Claude Codeの起動">
+  PowerShellを開き、直接Claude Codeを起動します： ` # Claude Codeの起動 claude `
+  特定のプロジェクトで使用する場合: ` # プロジェクトディレクトリに移動 cd
+  C:\path\to\your\project ` ` # Claude Codeの起動 claude `
+</Callout>
 
 ![windows-img-11.webp](/assets/claude_code/windows-img-11.webp)
 
@@ -168,11 +183,10 @@ PowerShellを開き、直接Claude Codeを起動します：
 
 ![windows-img-15.webp](/assets/claude_code/windows-img-15.webp)
 
-{/* TODO: Convert to Callout - info: モデルの選択 */}
-コマンドを入力します：
-`     /model
-    `
-Enterを押してモデルを選択します。通常はデフォルト設定で問題ありません。
+<Callout type="info" title="モデルの選択">
+  コマンドを入力します： ` /model `
+  Enterを押してモデルを選択します。通常はデフォルト設定で問題ありません。
+</Callout>
 
 ![windows-img-16.webp](/assets/claude_code/windows-img-16.webp)
 
@@ -188,13 +202,12 @@ Enterを押してモデルを選択します。通常はデフォルト設定で
 
 ![macos-img-01.webp](/assets/claude_code/macos-img-01.webp)
 
-{/* TODO: Convert to Callout - info: Claude Codeのインストール */}
-ターミナルを開き、以下のコマンドを実行します：
-`     curl -fsSL https://claude.ai/install.sh | bash
-    `
-オプション：プロンプトが表示された後に提供されたコマンドを実行します
-`     echo 'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc
-    `
+<Callout type="info" title="Claude Codeのインストール">
+  ターミナルを開き、以下のコマンドを実行します： ` curl -fsSL
+  https://claude.ai/install.sh | bash `
+  オプション：プロンプトが表示された後に提供されたコマンドを実行します ` echo
+  'export PATH="$HOME/.local/bin:$PATH"' >> ~/.bashrc && source ~/.bashrc `
+</Callout>
 
 ![macos-img-02.webp](/assets/claude_code/macos-img-02.webp)
 
@@ -202,35 +215,30 @@ Enterを押してモデルを選択します。通常はデフォルト設定で
 
 Claude Codeをサードパーティの中継サービスに接続するために、環境変数を設定する必要があります：
 
-{/* TODO: Convert to Callout - info: Claude Code環境変数のワンクリック設定 */}
-コマンドを入力します：
-`     curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh | bash
-    `
+<Callout type="info" title="Claude Code環境変数のワンクリック設定">
+  コマンドを入力します： ` curl -fsSL
+  https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh
+  | bash `
+</Callout>
 
 ![macos-configure](/assets/claude_code/macos_configure.png)
 
-{/* TODO: Convert to Callout - info: Claude Codeインストールの確認 */}
-インストール完了後、以下のコマンドを入力してインストールが成功したか確認します：
-`     claude --version
-    `
-バージョン番号が表示されたら、おめでとうございます！Claude Codeのインストールは成功です。
+<Callout type="info" title="Claude Codeインストールの確認">
+  インストール完了後、以下のコマンドを入力してインストールが成功したか確認します：
+  ` claude --version `
+  バージョン番号が表示されたら、おめでとうございます！Claude
+  Codeのインストールは成功です。
+</Callout>
 
 #### 3. Claude Codeの使用開始
 
 これでClaude Codeの使用を開始できます！
 
-{/* TODO: Convert to Callout - info: Claude Codeの起動 */}
-直接Claude Codeを起動します：
-`     # Claude Codeの起動
-    claude
-    `
-特定のプロジェクトで使用する場合:
-`     # プロジェクトディレクトリに移動
-    cd /path/to/your/project
-    `
-`     # Claude Codeの起動
-    claude
-    `
+<Callout type="info" title="Claude Codeの起動">
+  直接Claude Codeを起動します： ` # Claude Codeの起動 claude `
+  特定のプロジェクトで使用する場合: ` # プロジェクトディレクトリに移動 cd
+  /path/to/your/project ` ` # Claude Codeの起動 claude `
+</Callout>
 
 ![macos-img-04.webp](/assets/claude_code/macos-img-04.webp)
 
@@ -242,11 +250,10 @@ Claude Codeをサードパーティの中継サービスに接続するために
 
 ![macos-img-08.webp](/assets/claude_code/macos-img-08.webp)
 
-{/* TODO: Convert to Callout - info: モデルの選択 (オプション) */}
-コマンドを入力します：
-`     /model
-    `
-Enterを押して公式モデルを選択します。通常はデフォルトモデルで問題ありません
+<Callout type="info" title="モデルの選択 (オプション)">
+  コマンドを入力します： ` /model `
+  Enterを押して公式モデルを選択します。通常はデフォルトモデルで問題ありません
+</Callout>
 
 ![macos-img-09.webp](/assets/claude_code/macos-img-09.webp)
 
@@ -258,8 +265,13 @@ Enterを押して公式モデルを選択します。通常はデフォルトモ
 
 #### 6. macOSのよくある問題解決
 
-{/* TODO: Collapsible example: macOSのセキュリティ設定による実行のブロック */}
-システムがClaude Codeの実行をブロックした場合：
+<Callout
+  type="info"
+  title="macOSのセキュリティ設定による実行のブロック"
+  collapsible
+>
+  システムがClaude Codeの実行をブロックした場合：
+</Callout>
 
     - 「システム環境設定」→「セキュリティとプライバシー」を開きます
     - 「このまま開く」または「許可」をクリックします
@@ -271,29 +283,30 @@ Enterを押して公式モデルを選択します。通常はデフォルトモ
 
 ![linux-img-01.webp](/assets/claude_code/linux-img-01.webp)
 
-{/* TODO: Convert to Callout - info: Claude Codeのインストール */}
-ターミナルを開き、以下のコマンドを実行します：
-`     curl -fsSL https://claude.ai/install.sh | bash
-    `
-権限の問題が発生した場合は、sudoを使用できます：
-`     sudo curl -fsSL https://claude.ai/install.sh | bash
-    `
-![linux-img-03.webp](/assets/claude_code/linux-img-03.webp)
+<Callout type="info" title="Claude Codeのインストール">
+  ターミナルを開き、以下のコマンドを実行します： ` curl -fsSL
+  https://claude.ai/install.sh | bash `
+  権限の問題が発生した場合は、sudoを使用できます： ` sudo curl -fsSL
+  https://claude.ai/install.sh | bash `
+  ![linux-img-03.webp](/assets/claude_code/linux-img-03.webp)
+</Callout>
 
-{/* TODO: Convert to Callout - info: Claude Codeインストールの確認 */}
-インストール完了後、以下のコマンドを入力してインストールが成功したか確認します：
-`     claude --version
-    `
-バージョン番号が表示されたら、おめでとうございます！Claude Codeのインストールは成功です。
+<Callout type="info" title="Claude Codeインストールの確認">
+  インストール完了後、以下のコマンドを入力してインストールが成功したか確認します：
+  ` claude --version `
+  バージョン番号が表示されたら、おめでとうございます！Claude
+  Codeのインストールは成功です。
+</Callout>
 
 #### 2. 環境変数の設定
 
 Claude Codeを中継サービスに接続するために、2つの環境変数を設定する必要があります：
 
-{/* TODO: Convert to Callout - info: 環境変数のワンクリック変更 */}
-コマンドを入力します：
-`     curl -fsSL https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh | bash
-    `
+<Callout type="info" title="環境変数のワンクリック変更">
+  コマンドを入力します： ` curl -fsSL
+  https://raw.githubusercontent.com/QuantumNous/new-api-docs/refs/heads/main/helper/claude-cli-setup.sh
+  | bash `
+</Callout>
 
 ![macos-configure](/assets/claude_code/macos_configure.png)
 
@@ -301,18 +314,11 @@ Claude Codeを中継サービスに接続するために、2つの環境変数�
 
 これでClaude Codeの使用を開始できます！
 
-{/* TODO: Convert to Callout - info: Claude Codeの起動 */}
-直接Claude Codeを起動します：
-`     # Claude Codeの起動
-    claude
-    `
-特定のプロジェクトで使用する場合:
-`     # プロジェクトディレクトリに移動
-    cd /path/to/your/project
-    `
-`     # Claude Codeの起動
-    claude
-    `
+<Callout type="info" title="Claude Codeの起動">
+  直接Claude Codeを起動します： ` # Claude Codeの起動 claude `
+  特定のプロジェクトで使用する場合: ` # プロジェクトディレクトリに移動 cd
+  /path/to/your/project ` ` # Claude Codeの起動 claude `
+</Callout>
 
 ![linux-img-03.webp](/assets/claude_code/linux-img-03.webp)
 
@@ -320,11 +326,10 @@ Claude Codeを中継サービスに接続するために、2つの環境変数�
 
 ![linux-img-05.webp](/assets/claude_code/linux-img-05.webp)
 
-{/* TODO: Convert to Callout - info: モデルの選択 */}
-コマンドを入力します：
-`     /model
-    `
-Enterを押して公式モデルを選択します。通常はデフォルトモデルで問題ありません
+<Callout type="info" title="モデルの選択">
+  コマンドを入力します： ` /model `
+  Enterを押して公式モデルを選択します。通常はデフォルトモデルで問題ありません
+</Callout>
 
 ![linux-img-06.webp](/assets/claude_code/linux-img-06.webp)
 
@@ -338,17 +343,15 @@ Enterを押して公式モデルを選択します。通常はデフォルトモ
 
 #### 5. Linuxのよくある問題解決
 
-{/* TODO: Collapsible example: 依存ライブラリの不足 */}
-一部のLinuxディストリビューションでは、追加の依存関係をインストールする必要があります：
-`     # Ubuntu/Debian
-    sudo apt install build-essential
-    `
-`     # CentOS/RHEL
-    sudo dnf groupinstall "Development Tools"
-    `
+<Callout type="info" title="依存ライブラリの不足" collapsible>
+  一部のLinuxディストリビューションでは、追加の依存関係をインストールする必要があります：
+  ` # Ubuntu/Debian sudo apt install build-essential ` ` # CentOS/RHEL sudo dnf
+  groupinstall "Development Tools" `
+</Callout>
 
-{/* TODO: Collapsible example: 環境変数が有効にならない */}
-以下の点を確認してください：
+<Callout type="info" title="環境変数が有効にならない" collapsible>
+  以下の点を確認してください：
+</Callout>
 
     - 正しい設定ファイル（`.bashrc`または`.zshrc`）を変更したことを確認
     - ターミナルを再起動するか、`source ~/.bashrc`を実行
