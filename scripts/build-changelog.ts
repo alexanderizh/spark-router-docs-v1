@@ -1,12 +1,12 @@
 /**
- * Changelog 构建脚本
- * 在构建时从 GitHub Releases API 获取版本信息并生成更新日志
+ * Changelog Build Script
+ * Fetches version information from GitHub Releases API and generates changelog during build time
  */
 
 import * as fs from 'fs';
 import * as path from 'path';
 
-// 配置
+// Configuration
 const SOURCE_REPO = process.env.SOURCE_REPO || 'QuantumNous/new-api';
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
 const MAX_RELEASES = 30;
@@ -24,7 +24,7 @@ interface Release {
   }>;
 }
 
-// i18n 配置
+// i18n Configuration
 const CHANGELOG_I18N = {
   zh: {
     title: '# 📝 更新日志',
@@ -80,28 +80,30 @@ async function fetchGitHubReleases(): Promise<Release[]> {
 
   if (GITHUB_TOKEN) {
     headers['Authorization'] = `token ${GITHUB_TOKEN}`;
-    console.log('✓ 使用 GitHub Token 进行认证');
+    console.log('✓ Using GitHub Token for authentication');
   } else {
-    console.warn('⚠ 未配置 GitHub Token，API 限制为 60次/小时');
+    console.warn(
+      '⚠ GitHub Token not configured, API rate limit: 60 requests/hour'
+    );
   }
 
   const url = `https://api.github.com/repos/${SOURCE_REPO}/releases?per_page=${MAX_RELEASES}`;
 
   try {
-    console.log(`正在获取 Releases: ${url}`);
+    console.log(`Fetching Releases: ${url}`);
     const response = await fetch(url, { headers });
 
     if (!response.ok) {
       throw new Error(
-        `GitHub API 请求失败: ${response.status} ${response.statusText}`
+        `GitHub API request failed: ${response.status} ${response.statusText}`
       );
     }
 
     const data = (await response.json()) as Release[];
-    console.log(`✓ 成功获取 ${data.length} 个版本`);
+    console.log(`✓ Successfully fetched ${data.length} releases`);
     return data;
   } catch (error) {
-    console.error('✗ 获取 GitHub Releases 失败:', error);
+    console.error('✗ Failed to fetch GitHub Releases:', error);
     throw error;
   }
 }
@@ -130,7 +132,7 @@ function formatTimeToChina(
 function processMarkdownHeaders(body: string): string {
   if (!body) return '';
 
-  // 降低标题级别（从高到低处理，避免多次降级）
+  // Decrease header levels (process from highest to lowest to avoid multiple downgrades)
   let processed = body;
   processed = processed.replace(/^######\s+/gm, '###### ');
   processed = processed.replace(/^#####\s+/gm, '###### ');
@@ -158,14 +160,14 @@ function formatDownloadLinks(
   const i18n = CHANGELOG_I18N[lang];
   let html = `**${i18n.downloadResources}**\n\n<ul>\n`;
 
-  // 添加资源文件
+  // Add asset files
   for (const asset of assets) {
     const { name, browser_download_url, size } = asset;
     const sizeStr = formatFileSize(size);
     html += `<li><a href="${browser_download_url}">${name}</a> (${sizeStr})</li>\n`;
   }
 
-  // 添加源代码下载链接
+  // Add source code download links
   if (tagName) {
     for (const [ext, extName] of [
       ['zip', 'zip'],
@@ -204,7 +206,7 @@ function formatReleasesMarkdown(
 
   const i18n = CHANGELOG_I18N[lang];
 
-  // 添加 frontmatter
+  // Add frontmatter
   const titleMap = {
     zh: '更新日志',
     en: 'Changelog',
@@ -214,7 +216,7 @@ function formatReleasesMarkdown(
 
   markdown += `import { Callout } from 'fumadocs-ui/components/callout';\n\n`;
 
-  // 添加警告信息
+  // Add warning information
   const currentTime = new Date()
     .toLocaleString('zh-CN', {
       timeZone: 'Asia/Shanghai',
@@ -226,7 +228,7 @@ function formatReleasesMarkdown(
   markdown += `${i18n.warningDesc}\n`;
   markdown += `</Callout>\n\n`;
 
-  // 处理每个版本
+  // Process each release version
   for (let index = 0; index < releases.length; index++) {
     const release = releases[index];
     const {
@@ -238,11 +240,11 @@ function formatReleasesMarkdown(
       assets = [],
     } = release;
 
-    // 处理内容
+    // Process content
     const formattedDate = formatTimeToChina(published_at, lang);
     const processedBody = processMarkdownHeaders(body);
 
-    // 生成版本块
+    // Generate version block
     markdown += `## ${name}\n\n`;
 
     const versionType = getVersionType(index, prerelease, lang);
@@ -251,7 +253,7 @@ function formatReleasesMarkdown(
     markdown += `<Callout type="${calloutType}" title="${versionType} · ${i18n.publishedAt} ${formattedDate}">\n\n`;
     markdown += `${processedBody}\n\n`;
 
-    // 添加下载链接
+    // Add download links
     const downloadLinks = formatDownloadLinks(tag_name, assets, lang);
     if (downloadLinks) {
       markdown += `${downloadLinks}\n\n`;
@@ -265,17 +267,17 @@ function formatReleasesMarkdown(
 }
 
 async function generateChangelog() {
-  console.log('\n🚀 开始生成 Changelog...\n');
+  console.log('\n🚀 Starting to generate Changelog...\n');
 
   try {
-    // 获取 releases 数据
+    // Fetch releases data
     const releases = await fetchGitHubReleases();
 
-    // 为每种语言生成文件
+    // Generate files for each language
     const languages = ['zh', 'en', 'ja'] as const;
 
     for (const lang of languages) {
-      console.log(`\n📝 正在生成 ${lang.toUpperCase()} 版本...`);
+      console.log(`\n📝 Generating ${lang.toUpperCase()} version...`);
 
       const markdown = formatReleasesMarkdown(releases, lang);
       const outputPath = path.join(
@@ -287,26 +289,26 @@ async function generateChangelog() {
         'changelog.mdx'
       );
 
-      // 确保目录存在
+      // Ensure directory exists
       const dir = path.dirname(outputPath);
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
 
-      // 写入文件
+      // Write file
       fs.writeFileSync(outputPath, markdown, 'utf-8');
-      console.log(`✓ 已生成: ${outputPath}`);
+      console.log(`✓ Generated: ${outputPath}`);
     }
 
-    console.log('\n✅ Changelog 生成完成！\n');
+    console.log('\n✅ Changelog generation completed!\n');
   } catch (error) {
-    console.error('\n❌ Changelog 生成失败:', error);
-    // 不抛出错误，使用现有文件（如果存在）
-    console.log('⚠ 将使用现有的 changelog 文件（如果存在）\n');
+    console.error('\n❌ Changelog generation failed:', error);
+    // Don't throw error, use existing files if they exist
+    console.log('⚠ Will use existing changelog files if available\n');
   }
 }
 
-// 执行生成
+// Execute generation
 if (require.main === module) {
   generateChangelog();
 }

@@ -1,12 +1,12 @@
 /**
- * Special Thanks 构建脚本
- * 在构建时从 GitHub Contributors API 和爱发电 API 获取数据并生成特别鸣谢页面
+ * Special Thanks Build Script
+ * Fetches data from GitHub Contributors API and Afdian API and generates special thanks page during build time
  */
 
 import * as fs from 'fs';
 import * as path from 'path';
 
-// 配置
+// Configuration
 const SOURCE_REPO = process.env.SOURCE_REPO || 'QuantumNous/new-api';
 const GITHUB_TOKEN = process.env.GITHUB_TOKEN || '';
 const AFDIAN_USER_ID = process.env.AFDIAN_USER_ID || '';
@@ -32,11 +32,25 @@ interface SponsorsData {
   bronze: Sponsor[];
 }
 
-// 不使用 CSS 样式，改用内联样式
+interface AfdianSponsorUser {
+  name: string;
+  avatar: string;
+}
 
-// 不使用 CSS 样式，改用内联样式
+interface AfdianSponsorItem {
+  user: AfdianSponsorUser;
+  all_sum_amount: string;
+}
 
-// i18n 配置
+interface AfdianResponse {
+  ec: number;
+  em: string;
+  data: {
+    list: AfdianSponsorItem[];
+  };
+}
+
+// i18n Configuration
 const SPECIAL_THANKS_I18N = {
   zh: {
     title: '# 🙏 特别鸣谢',
@@ -132,46 +146,124 @@ async function fetchGitHubContributors(): Promise<Contributor[]> {
 
   if (GITHUB_TOKEN) {
     headers['Authorization'] = `token ${GITHUB_TOKEN}`;
-    console.log('✓ 使用 GitHub Token 进行认证');
+    console.log('✓ Using GitHub Token for authentication');
   } else {
-    console.warn('⚠ 未配置 GitHub Token，API 限制为 60次/小时');
+    console.warn(
+      '⚠ GitHub Token not configured, API rate limit: 60 requests/hour'
+    );
   }
 
   const url = `https://api.github.com/repos/${SOURCE_REPO}/contributors?per_page=${MAX_CONTRIBUTORS}`;
 
   try {
-    console.log(`正在获取 Contributors: ${url}`);
+    console.log(`Fetching Contributors: ${url}`);
     const response = await fetch(url, { headers });
 
     if (!response.ok) {
       throw new Error(
-        `GitHub API 请求失败: ${response.status} ${response.statusText}`
+        `GitHub API request failed: ${response.status} ${response.statusText}`
       );
     }
 
     const data = (await response.json()) as Contributor[];
-    console.log(`✓ 成功获取 ${data.length} 个贡献者`);
+    console.log(`✓ Successfully fetched ${data.length} contributors`);
     return data;
   } catch (error) {
-    console.error('✗ 获取 GitHub Contributors 失败:', error);
+    console.error('✗ Failed to fetch GitHub Contributors:', error);
     return [];
   }
 }
 
 async function fetchAfdianSponsors(): Promise<SponsorsData | null> {
   if (!AFDIAN_USER_ID || !AFDIAN_TOKEN) {
-    console.warn('⚠ 未配置爱发电 API 凭据，跳过赞助商数据获取');
+    console.warn(
+      '⚠ Afdian API credentials not configured, skipping sponsor data fetch'
+    );
     return null;
   }
 
-  // 这里需要根据爱发电的实际 API 实现
-  // 目前返回空数据
-  console.log('⚠ 爱发电 API 集成待实现');
-  return {
-    gold: [],
-    silver: [],
-    bronze: [],
-  };
+  try {
+    console.log('Fetching Afdian sponsor data...');
+
+    // Afdian API endpoint
+    const API_URL = 'https://afdian.com/api/open/query-sponsor';
+
+    // Generate timestamp and signature
+    const timestamp = Math.floor(Date.now() / 1000);
+    const params = JSON.stringify({
+      page: 1,
+    });
+
+    // Calculate signature: MD5(token + "params" + params + "ts" + ts + "user_id" + user_id)
+    const crypto = await import('crypto');
+    const signStr = `${AFDIAN_TOKEN}params${params}ts${timestamp}user_id${AFDIAN_USER_ID}`;
+    const sign = crypto.createHash('md5').update(signStr).digest('hex');
+
+    const response = await fetch(API_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: AFDIAN_USER_ID,
+        params,
+        ts: timestamp,
+        sign,
+      }),
+    });
+
+    if (!response.ok) {
+      throw new Error(
+        `Afdian API request failed: ${response.status} ${response.statusText}`
+      );
+    }
+
+    const data = (await response.json()) as AfdianResponse;
+
+    if (data.ec !== 200) {
+      throw new Error(`Afdian API returned error: ${data.em}`);
+    }
+
+    const sponsors = data.data.list || [];
+    console.log(`✓ Successfully fetched ${sponsors.length} sponsors`);
+
+    // Categorize by sponsorship amount
+    const result: SponsorsData = {
+      gold: [],
+      silver: [],
+      bronze: [],
+    };
+
+    for (const sponsor of sponsors) {
+      const totalAmount = parseFloat(sponsor.all_sum_amount || '0');
+      const sponsorData: Sponsor = {
+        name: sponsor.user.name || 'Anonymous Sponsor',
+        avatar:
+          sponsor.user.avatar ||
+          'https://pic1.afdiancdn.com/default/avatar/default-avatar.png',
+        amount: totalAmount,
+      };
+
+      if (totalAmount >= 10001) {
+        result.gold.push(sponsorData);
+      } else if (totalAmount >= 1001) {
+        result.silver.push(sponsorData);
+      } else {
+        result.bronze.push(sponsorData);
+      }
+    }
+
+    // Sort by amount
+    result.gold.sort((a, b) => b.amount - a.amount);
+    result.silver.sort((a, b) => b.amount - a.amount);
+    result.bronze.sort((a, b) => b.amount - a.amount);
+
+    return result;
+  } catch (error) {
+    console.error('✗ Failed to fetch Afdian sponsors:', error);
+    console.log('⚠ Will skip sponsor data');
+    return null;
+  }
 }
 
 function formatContributorsMarkdown(
@@ -189,7 +281,7 @@ function formatContributorsMarkdown(
     const { login, avatar_url, html_url, contributions } = contributors[index];
     const username = login || i18n.unknownUser;
 
-    // 根据排名确定边框样式类
+    // Determine border style class based on ranking
     let borderClass = '';
     let medalEmoji = '';
     if (index === 0) {
@@ -306,7 +398,7 @@ function generateSpecialThanksContent(
   const i18n = SPECIAL_THANKS_I18N[lang];
   const parts: string[] = [];
 
-  // 添加 frontmatter
+  // Add frontmatter
   const titleMap = {
     zh: '特别鸣谢',
     en: 'Special Thanks',
@@ -317,7 +409,7 @@ function generateSpecialThanksContent(
   parts.push(`import { Callout } from 'fumadocs-ui/components/callout';\n\n`);
   parts.push(`${i18n.intro}\n\n`);
 
-  // 赞助商部分
+  // Sponsors section
   if (
     sponsors &&
     (sponsors.gold.length || sponsors.silver.length || sponsors.bronze.length)
@@ -332,7 +424,7 @@ function generateSpecialThanksContent(
     parts.push(formatSponsorsMarkdown(sponsors, lang));
   }
 
-  // 贡献者部分
+  // Contributors section
   if (contributors.length) {
     parts.push(`${i18n.contributorsTitle}\n\n`);
     parts.push(`${i18n.contributorsIntro}\n\n`);
@@ -348,25 +440,25 @@ function generateSpecialThanksContent(
 }
 
 async function generateSpecialThanks() {
-  console.log('\n🚀 开始生成 Special Thanks...\n');
+  console.log('\n🚀 Starting to generate Special Thanks...\n');
 
   try {
-    // 获取数据
+    // Fetch data
     const [contributors, sponsors] = await Promise.all([
       fetchGitHubContributors(),
       fetchAfdianSponsors(),
     ]);
 
     if (!contributors.length && !sponsors) {
-      console.warn('⚠ 没有获取到任何数据');
+      console.warn('⚠ No data was fetched');
       return;
     }
 
-    // 为每种语言生成文件
+    // Generate files for each language
     const languages = ['zh', 'en', 'ja'] as const;
 
     for (const lang of languages) {
-      console.log(`\n📝 正在生成 ${lang.toUpperCase()} 版本...`);
+      console.log(`\n📝 Generating ${lang.toUpperCase()} version...`);
 
       const markdown = generateSpecialThanksContent(
         contributors,
@@ -382,26 +474,26 @@ async function generateSpecialThanks() {
         'special-thanks.mdx'
       );
 
-      // 确保目录存在
+      // Ensure directory exists
       const dir = path.dirname(outputPath);
       if (!fs.existsSync(dir)) {
         fs.mkdirSync(dir, { recursive: true });
       }
 
-      // 写入文件
+      // Write file
       fs.writeFileSync(outputPath, markdown, 'utf-8');
-      console.log(`✓ 已生成: ${outputPath}`);
+      console.log(`✓ Generated: ${outputPath}`);
     }
 
-    console.log('\n✅ Special Thanks 生成完成！\n');
+    console.log('\n✅ Special Thanks generation completed!\n');
   } catch (error) {
-    console.error('\n❌ Special Thanks 生成失败:', error);
-    // 不抛出错误，使用现有文件（如果存在）
-    console.log('⚠ 将使用现有的 special-thanks 文件（如果存在）\n');
+    console.error('\n❌ Special Thanks generation failed:', error);
+    // Don't throw error, use existing files if they exist
+    console.log('⚠ Will use existing special-thanks files if available\n');
   }
 }
 
-// 执行生成
+// Execute generation
 if (require.main === module) {
   generateSpecialThanks();
 }
