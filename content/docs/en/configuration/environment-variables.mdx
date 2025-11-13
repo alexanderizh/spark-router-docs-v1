@@ -122,24 +122,25 @@ This document provides all environment variables supported by New API and their 
 
 <Callout type="info" title="Tiktoken File Configuration">
   After downloading the tiktoken files, please rename them as follows:
+
+  - `cl100k_base.tiktoken` renamed to `9b5ad71b2ce5302211f9c61530b329a4922fc6a4`
+  - `o200k_base.tiktoken` renamed to `fb374d419588a4632f3f557e76b4b70aebbca790`
+
+  These files should be placed in the directory specified by `TIKTOKEN_CACHE_DIR` to improve token calculation performance and reduce network dependency.
 </Callout>
-
-    - `cl100k_base.tiktoken` renamed to `9b5ad71b2ce5302211f9c61530b329a4922fc6a4`
-
-    - `o200k_base.tiktoken` renamed to `fb374d419588a4632f3f557e76b4b70aebbca790`
-
-    These files should be placed in the directory specified by `TIKTOKEN_CACHE_DIR` to improve token calculation performance and reduce network dependency.
 
 <Callout type="info" title="Tiktoken Configuration Example">
-  ````bash # Docker environment example TIKTOKEN_CACHE_DIR=/app/data/tiktoken
+  ```bash
+  # Docker environment example
+  TIKTOKEN_CACHE_DIR=/app/data/tiktoken
+
+  # Then download and rename the tiktoken files and place them in this directory:
+  # /app/data/tiktoken/9b5ad71b2ce5302211f9c61530b329a4922fc6a4
+  # /app/data/tiktoken/fb374d419588a4632f3f557e76b4b70aebbca790
+  ```
+
+  Tiktoken is the tokenizer used by OpenAI to calculate the number of tokens in the text. By caching these files locally, the system can avoid downloading them from the network every time it starts, improving stability and performance, especially in network-restricted environments.
 </Callout>
-
-    # Then download and rename the tiktoken files and place them in this directory:
-    /app/data/tiktoken/9b5ad71b2ce5302211f9c61530b329a4922fc6a4
-    /app/data/tiktoken/fb374d419588a4632f3f557e76b4b70aebbca790
-    ```
-
-    Tiktoken is the tokenizer used by OpenAI to calculate the number of tokens in the text. By caching these files locally, the system can avoid downloading them from the network every time it starts, improving stability and performance, especially in network-restricted environments.
 
 ## Specific Model Configuration
 

@@ -121,24 +121,25 @@ title: 環境変数設定ガイド
 
 <Callout type="info" title="Tiktokenファイル設定">
   tiktokenファイルをダウンロードした後、以下の方法でリネームしてください：
+
+  - `cl100k_base.tiktoken` を `9b5ad71b2ce5302211f9c61530b329a4922fc6a4` にリネーム
+  - `o200k_base.tiktoken` を `fb374d419588a4632f3f557e76b4b70aebbca790` にリネーム
+
+  これらのファイルは、トークン計算のパフォーマンスを向上させ、ネットワーク依存を減らすために、`TIKTOKEN_CACHE_DIR`で指定されたディレクトリに配置する必要があります。
 </Callout>
-
-    - `cl100k_base.tiktoken` を `9b5ad71b2ce5302211f9c61530b329a4922fc6a4` にリネーム
-
-    - `o200k_base.tiktoken` を `fb374d419588a4632f3f557e76b4b70aebbca790` にリネーム
-
-    これらのファイルは、トークン計算のパフォーマンスを向上させ、ネットワーク依存を減らすために、`TIKTOKEN_CACHE_DIR`で指定されたディレクトリに配置する必要があります。
 
 <Callout type="info" title="Tiktoken設定例">
-  ````bash # Docker環境の例 TIKTOKEN_CACHE_DIR=/app/data/tiktoken
+  ```bash
+  # Docker環境の例
+  TIKTOKEN_CACHE_DIR=/app/data/tiktoken
+
+  # その後、tiktokenファイルをダウンロードしてリネームし、このディレクトリに配置します：
+  # /app/data/tiktoken/9b5ad71b2ce5302211f9c61530b329a4922fc6a4
+  # /app/data/tiktoken/fb374d419588a4632f3f557e76b4b70aebbca790
+  ```
+
+  TiktokenはOpenAIが使用するトークナイザーであり、テキストのトークン数を計算するために使用されます。これらのファイルをローカルにキャッシュすることで、システム起動のたびにネットワークからダウンロードすることを回避し、特にネットワークが制限された環境での安定性とパフォーマンスを向上させることができます。
 </Callout>
-
-    # その後、tiktokenファイルをダウンロードしてリネームし、このディレクトリに配置します：
-    /app/data/tiktoken/9b5ad71b2ce5302211f9c61530b329a4922fc6a4
-    /app/data/tiktoken/fb374d419588a4632f3f557e76b4b70aebbca790
-    ```
-
-    TiktokenはOpenAIが使用するトークナイザーであり、テキストのトークン数を計算するために使用されます。これらのファイルをローカルにキャッシュすることで、システム起動のたびにネットワークからダウンロードすることを回避し、特にネットワークが制限された環境での安定性とパフォーマンスを向上させることができます。
 
 ## 特定モデル設定
 

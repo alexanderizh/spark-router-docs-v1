@@ -534,11 +534,11 @@ Add a new conversation item to the conversation.
 | item.type        | String | No       | Type of conversation item                   | message/function_call/function_call_output |
 | item.status      | String | No       | Status of conversation item                 | completed/in_progress/incomplete           |
 | item.role        | String | No       | Role of message sender                      | user/assistant/system                      |
-| item.content     | Array  | No       | Message content                             | [text/audio/transcript]                    |
+| item.content     | Array  | No       | Message content                             | `[text/audio/transcript]`                    |
 | item.call_id     | String | No       | ID of function call                         | call_001                                   |
 | item.name        | String | No       | Name of called function                     | function_name                              |
-| item.arguments   | String | No       | Arguments for function call                 | {"param": "value"}                         |
-| item.output      | String | No       | Output result of function call              | {"result": "value"}                        |
+| item.arguments   | String | No       | Arguments for function call                 | `{"param": "value"}`                         |
+| item.output      | String | No       | Output result of function call              | `{"result": "value"}`                        |
 
 #### conversation.item.truncate
 
