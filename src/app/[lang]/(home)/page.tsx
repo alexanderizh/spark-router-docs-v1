@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { cn } from '@/lib/cn';
 import { Github, BookOpen } from 'lucide-react';
 import { Hero } from './page.client';
 import { getLocalePath, i18n } from '@/lib/i18n';
@@ -66,9 +65,7 @@ export default async function Page({
               href="https://github.com/QuantumNous/new-api"
               target="_blank"
               rel="noreferrer noopener"
-              className={cn(
-                'bg-fd-secondary text-fd-secondary-foreground hover:bg-fd-accent inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 font-medium tracking-tight transition-colors max-sm:text-sm'
-              )}
+              className="bg-fd-secondary text-fd-secondary-foreground hover:bg-fd-accent inline-flex items-center justify-center gap-2 rounded-full border px-5 py-3 font-medium tracking-tight transition-colors max-sm:text-sm"
             >
               <Github className="size-4" />
               {content.github}

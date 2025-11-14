@@ -1,6 +1,5 @@
 import type { BaseLayoutProps } from 'fumadocs-ui/layouts/shared';
 import { i18n, getLocalePath } from '@/lib/i18n';
-import { withBasePath } from '@/lib/base-path';
 import Image from 'next/image';
 import type { LinkItemType } from 'fumadocs-ui/layouts/docs';
 
@@ -39,7 +38,7 @@ const localeMap: Record<string, { docs: string }> = {
 export const logo = (
   <Image
     alt="New API"
-    src={withBasePath('/assets/logo.png')}
+    src="/assets/logo.png"
     width={24}
     height={24}
     className="size-8"

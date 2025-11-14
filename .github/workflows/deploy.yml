@@ -47,7 +47,8 @@ jobs:
           AFDIAN_USER_ID: ${{ secrets.AFDIAN_USER_ID }}
           AFDIAN_TOKEN: ${{ secrets.AFDIAN_TOKEN }}
           # Next.js 构建配置
-          NEXT_PUBLIC_BASE_PATH: /new-api-docs-v1
+          # 使用自定义域名时不需要 basePath
+          # NEXT_PUBLIC_BASE_PATH: /new-api-docs-v1
           NODE_ENV: production
 
       - name: 📝 Add .nojekyll file

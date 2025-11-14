@@ -1,19 +1,18 @@
 import type { Metadata } from 'next';
-import { withBasePath } from '@/lib/base-path';
 
 export function createMetadata(override: Metadata): Metadata {
   return {
     ...override,
     icons: {
-      icon: withBasePath('/favicon.ico'),
-      shortcut: withBasePath('/favicon.ico'),
-      apple: withBasePath('/assets/logo.png'),
+      icon: '/favicon.ico',
+      shortcut: '/favicon.ico',
+      apple: '/assets/logo.png',
     },
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
       url: 'https://www.newapi.ai',
-      images: withBasePath('/assets/logo.png'),
+      images: '/assets/logo.png',
       siteName: 'New API',
       type: 'website',
       ...override.openGraph,
@@ -22,7 +21,7 @@ export function createMetadata(override: Metadata): Metadata {
       card: 'summary_large_image',
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      images: withBasePath('/assets/logo.png'),
+      images: '/assets/logo.png',
       ...override.twitter,
     },
   };
