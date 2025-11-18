@@ -1,5 +1,12 @@
-import type { Viewport } from 'next';
+import type { Viewport, Metadata } from 'next';
 import './global.css';
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://www.newapi.ai'),
+  other: {
+    charset: 'utf-8',
+  },
+};
 
 export const viewport: Viewport = {
   themeColor: [
@@ -16,7 +23,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html suppressHydrationWarning>
+      <head>
+        <meta charSet="utf-8" />
+      </head>
       <body>{children}</body>
     </html>
   );
