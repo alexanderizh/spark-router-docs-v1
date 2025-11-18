@@ -1,28 +1,19 @@
 import { useMemo } from 'react';
-import { create, type AnyOrama } from '@orama/orama';
-import { tokenizerCache } from './tokenizer-cache';
 
 interface UseSearchConfigOptions {
   locale?: string;
-  from?: string;
+  api?: string;
 }
 
 export function useSearchConfig(options: UseSearchConfigOptions) {
-  const { locale, from = '/api/search' } = options;
+  const { locale, api = '/api/search' } = options;
 
   return useMemo(
     () => ({
-      type: 'static' as const,
-      initOrama: (): AnyOrama =>
-        create({
-          schema: { _: 'string' },
-          components: {
-            tokenizer: tokenizerCache.getTokenizer(locale),
-          },
-        }),
+      type: 'fetch' as const,
       locale,
-      from,
+      api,
     }),
-    [locale, from]
+    [locale, api]
   );
 }

@@ -11,6 +11,9 @@ export const docs = defineDocs({
   dir: 'content/docs',
   docs: {
     schema: frontmatterSchema,
+    postprocess: {
+      includeProcessedMarkdown: true,
+    },
   },
   meta: {
     schema: metaSchema,
@@ -19,9 +22,6 @@ export const docs = defineDocs({
 
 export default defineConfig({
   mdxOptions: {
-    // Enable production optimizations
-    development: process.env.NODE_ENV === 'development',
-    // Use MDX format for better performance
-    format: 'mdx',
+    // MDX options
   },
 });

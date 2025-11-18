@@ -20,9 +20,9 @@ export function getPageImage(page: InferPageType<typeof source>) {
 }
 
 export async function getLLMText(page: InferPageType<typeof source>) {
-  const text = await page.data.getText('raw');
+  const processed = await page.data.getText('processed');
 
   return `# ${page.data.title}
 
-${text}`;
+${processed}`;
 }
