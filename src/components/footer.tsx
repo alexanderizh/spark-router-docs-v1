@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 import { Github, Container, MessageCircle } from 'lucide-react';
 import { getLocalePath } from '@/lib/i18n';
 
@@ -16,7 +15,7 @@ const footerContent: Record<
     }[];
     social: { name: string; href: string; icon: React.ReactNode }[];
     copyright: string;
-    beian: { text: string; href?: string; img?: string }[];
+    beian: { text: string; href?: string }[];
   }
 > = {
   zh: {
@@ -120,7 +119,7 @@ const footerContent: Record<
       },
       {
         name: 'QQ',
-        href: 'https://qm.qq.com/q/Y79glR8raU',
+        href: 'docs/support/community-interaction',
         icon: <MessageCircle className="size-4" />,
       },
     ],
@@ -237,7 +236,7 @@ const footerContent: Record<
       },
       {
         name: 'QQ',
-        href: 'https://qm.qq.com/q/Y79glR8raU',
+        href: 'docs/support/community-interaction',
         icon: <MessageCircle className="size-4" />,
       },
     ],
@@ -354,7 +353,7 @@ const footerContent: Record<
       },
       {
         name: 'QQ',
-        href: 'https://qm.qq.com/q/Y79glR8raU',
+        href: 'docs/support/community-interaction',
         icon: <MessageCircle className="size-4" />,
       },
     ],
@@ -436,18 +435,26 @@ export function Footer({ lang }: FooterProps) {
 
           {/* Right: Social Icons */}
           <div className="flex items-center gap-4">
-            {content.social.map((social) => (
-              <a
-                key={social.name}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-fd-muted-foreground hover:text-fd-foreground transition-colors"
-                aria-label={social.name}
-              >
-                {social.icon}
-              </a>
-            ))}
+            {content.social.map((social) => {
+              const isExternal = social.href.startsWith('http');
+              const Component = isExternal ? 'a' : Link;
+              return (
+                <Component
+                  key={social.name}
+                  href={
+                    isExternal ? social.href : getLocalePath(lang, social.href)
+                  }
+                  {...(isExternal && {
+                    target: '_blank',
+                    rel: 'noopener noreferrer',
+                  })}
+                  className="text-fd-muted-foreground hover:text-fd-foreground transition-colors"
+                  aria-label={social.name}
+                >
+                  {social.icon}
+                </Component>
+              );
+            })}
           </div>
         </div>
       </div>
