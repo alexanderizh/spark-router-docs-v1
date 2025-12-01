@@ -12,6 +12,8 @@ const contentMap: Record<
     highlight: string;
     getStarted: string;
     github: string;
+    partnersTitle: string;
+    partnersSubtitle: string;
   }
 > = {
   en: {
@@ -21,6 +23,8 @@ const contentMap: Record<
     highlight: 'future',
     getStarted: 'Getting Started',
     github: 'GitHub',
+    partnersTitle: 'Our Partners & Clients',
+    partnersSubtitle: 'In no particular order',
   },
   zh: {
     badge: '人工智能应用基座',
@@ -29,6 +33,8 @@ const contentMap: Record<
     highlight: '未来',
     getStarted: '快速开始',
     github: 'GitHub',
+    partnersTitle: '我们的合作伙伴与客户',
+    partnersSubtitle: '排名不分先后',
   },
   ja: {
     badge: 'あなたの AI ユニバースの基盤',
@@ -37,6 +43,8 @@ const contentMap: Record<
     highlight: '未来を構築',
     getStarted: 'はじめに',
     github: 'GitHub',
+    partnersTitle: '私たちのパートナーとお客様',
+    partnersSubtitle: '順不同',
   },
 } as const;
 
@@ -47,6 +55,34 @@ export default async function Page({
 }) {
   const { lang } = await params;
   const content = contentMap[lang] || contentMap.en;
+
+  const partners = [
+    {
+      name: 'Cherry Studio',
+      url: 'https://www.cherry-ai.com/',
+      logo: '/assets/partner/cherry-studio.png',
+    },
+    {
+      name: 'Peking University',
+      url: 'https://bda.pku.edu.cn/',
+      logo: '/assets/partner/pku.png',
+    },
+    {
+      name: 'UCloud',
+      url: 'https://www.compshare.cn/?ytag=GPU_yy_gh_newapi',
+      logo: '/assets/partner/ucloud.png',
+    },
+    {
+      name: 'Alibaba Cloud',
+      url: 'https://www.aliyun.com/',
+      logo: '/assets/partner/aliyun.png',
+    },
+    {
+      name: 'IO.NET',
+      url: 'https://io.net/',
+      logo: '/assets/partner/io-net.png',
+    },
+  ];
 
   return (
     <main className="text-landing-foreground dark:text-landing-foreground-dark pt-4 pb-6 md:pb-12">
@@ -82,6 +118,35 @@ export default async function Page({
           </div>
         </div>
       </div>
+
+      {/* Partners Section */}
+      <section className="mx-auto mt-12 max-w-[1400px] px-4 text-center">
+        <h2 className="text-2xl font-semibold md:text-3xl">
+          {content.partnersTitle}
+        </h2>
+        <p className="text-muted-foreground mt-2 text-sm">
+          {content.partnersSubtitle}
+        </p>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10">
+          {partners.map((partner) => (
+            <a
+              key={partner.name}
+              href={partner.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-70 grayscale-[50%] transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+            >
+              <img
+                src={partner.logo}
+                alt={partner.name}
+                width={72}
+                height={60}
+                className="h-[50px] w-auto md:h-[60px]"
+              />
+            </a>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
