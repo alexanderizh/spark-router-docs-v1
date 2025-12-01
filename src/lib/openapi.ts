@@ -23,6 +23,8 @@ const DEFAULT_SERVERS = [
 ];
 
 export const openapi = createOpenAPI({
+  // 设置代理 URL，解决 CORS 问题
+  proxyUrl: '/api/proxy',
   // Use a function to inject servers into OpenAPI specs
   async input() {
     const schemas: Record<string, unknown> = {};
