@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Github, BookOpen } from 'lucide-react';
 import { Hero } from './page.client';
 import { getLocalePath, i18n } from '@/lib/i18n';
+import Image from 'next/image';
 
 const contentMap: Record<
   string,
@@ -144,12 +145,14 @@ export default async function Page({
               rel="noopener noreferrer"
               className="opacity-70 grayscale-[50%] transition-all duration-300 hover:opacity-100 hover:grayscale-0"
             >
-              <img
+              <Image
                 src={partner.logo}
                 alt={partner.name}
                 width={72}
                 height={60}
                 className="h-[50px] w-auto md:h-[60px]"
+                loading="lazy"
+                decoding="async"
               />
             </a>
           ))}

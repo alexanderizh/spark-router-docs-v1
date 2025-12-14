@@ -173,6 +173,8 @@ export default async function Layout({
                         src={Preview}
                         alt="Preview"
                         className="rounded-t-lg object-cover"
+                        loading="lazy"
+                        fetchPriority="low"
                         style={{
                           maskImage:
                             'linear-gradient(to bottom,white 60%,transparent)',
