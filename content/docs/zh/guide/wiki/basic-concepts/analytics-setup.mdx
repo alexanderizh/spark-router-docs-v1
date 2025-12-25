@@ -9,7 +9,7 @@ New API 现在支持与流行的分析平台集成，帮助你追踪用户行为
 - **Google Analytics 4 (GA4)**：谷歌分析平台的最新版本
 - **Umami Analytics**：注重隐私的开源分析工具
 
-两种分析工具可以同时启用，互不冲突。需要持续性能分析时可额外配置 Pyroscope。
+两种分析工具可以同时启用，互不冲突。
 
 ### 功能特点
 
@@ -114,48 +114,6 @@ export UMAMI_SCRIPT_URL=https://your-umami-domain.com/script.js  # 可选
 #### 3. 重启应用
 
 与 Google Analytics 相同 - 重启应用以应用更改。
-
----
-
-### Pyroscope 配置
-
-Pyroscope 是持续性能分析工具，用于采集 CPU/Mutex/Block 等剖析数据。
-
-#### 1. 准备 Pyroscope 服务
-
-确保 Pyroscope 服务可访问，并记录服务地址。
-
-#### 2. 配置环境变量
-
-```yaml
-environment:
-# Pyroscope config
- - PYROSCOPE_URL=http://localhost:4040
- - PYROSCOPE_APP_NAME=new-api
- - PYROSCOPE_BASIC_AUTH_USER=your-user
- - PYROSCOPE_BASIC_AUTH_PASSWORD=your-password
- - PYROSCOPE_MUTEX_RATE=5
- - PYROSCOPE_BLOCK_RATE=5
- - HOSTNAME=your-hostname
-```
-
-#### 3. 重启应用
-
-与 Google Analytics 相同 - 重启应用以应用更改。
-
-#### 4. 说明
-
-- `PYROSCOPE_URL`: Pyroscope 服务地址
-- `PYROSCOPE_APP_NAME`: 应用标识（建议区分环境/集群）
-- `PYROSCOPE_BASIC_AUTH_USER` / `PYROSCOPE_BASIC_AUTH_PASSWORD`: 仅在启用 Basic Auth 时需要
-- `PYROSCOPE_MUTEX_RATE` / `PYROSCOPE_BLOCK_RATE`: 采样率，值越小采样越频繁
-- `HOSTNAME`: 实例标识（可选）
-
-#### 5. 验证
-
-1. 打开 Pyroscope UI
-2. 选择 `PYROSCOPE_APP_NAME` 对应的应用
-3. 如设置了 `HOSTNAME`，可在实例维度区分来源
 
 ---
 
