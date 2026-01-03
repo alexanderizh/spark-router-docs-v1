@@ -1,5 +1,5 @@
 ---
-title: Channel
+title: Channels
 ---
 
 Here you can manage NewAPI's upstream channels
@@ -16,26 +16,26 @@ Here you can manage NewAPI's upstream channels
 
 ## Special Channel Parameters for Coding Plan Packages
 
-If using a Coding Plan package, do not fill in the actual URL for the `API Address` field; instead, fill in the corresponding special identifier:
+If using a Coding Plan package, the `API Address` field should not be filled with an actual URL, but with the corresponding special identifier:
 
-| Package Name | Channel Type Selection | API Address (Fill in Identifier) |
+| Package Name | Channel Type Selection | API Address (Enter Identifier) |
 | --- | --- | --- |
 | GLM Coding Plan | Zhipu GLM 4V | `glm-coding-plan` |
 | GLM Coding Plan (International Version) | Zhipu GLM 4V | `glm-coding-plan-international` |
 | Kimi Coding Plan | Moonshot | `kimi-coding-plan` |
-| Doubao Coding Plan | ByteDance Volcengine, Doubao General | Select `doubao-coding-plan` from dropdown |
+| Doubao Coding Plan | ByteDance Volcano Engine, Doubao General | Select `doubao-coding-plan` from dropdown |
 
 # Parameter Override Settings Documentation
 
 ## Overview
 
-The parameter override system supports two modes: Simple Override Mode (backward compatible) and Advanced Operation Mode. Complex dynamic parameter adjustments can be achieved through flexible conditional judgments and operation types.
+The parameter override system supports two modes: simple override mode (backward compatible) and advanced operation mode. Complex dynamic parameter adjustments can be achieved through flexible conditional judgments and operation types.
 
 ## Usage
 
 ### Simple Override Mode
 
-Backward compatibility, directly specify the fields and values to be overridden, and the system will merge these fields into the original request.
+For backward compatibility, directly specify the fields and values to be overridden, and the system will merge these fields into the original request.
 
 ```json
 {
@@ -47,7 +47,7 @@ Backward compatibility, directly specify the fields and values to be overridden,
 
 ### Advanced Operation Mode
 
-Define complex parameter operations via the `operations` array, supporting advanced features such as conditional judgments, array operations, and string concatenation.
+Define complex parameter operations using the `operations` array, supporting advanced features such as conditional judgments, array operations, string concatenation, and string normalization.
 
 #### Basic Structure
 
@@ -64,6 +64,14 @@ Define complex parameter operations via the `operations` array, supporting advan
   ]
 }
 ```
+
+**Field Description (Fill as needed):**
+
+- `mode`: Required
+- `path`: Applicable to `set` / `delete` / `append` / `prepend` / `trim_prefix` / `trim_suffix` / `ensure_prefix` / `ensure_suffix` / `trim_space` / `to_lower` / `to_upper` / `replace` / `regex_replace`
+- `value`: Commonly used with `set` / `append` / `prepend` / `trim_prefix` / `trim_suffix` / `ensure_prefix` / `ensure_suffix`
+- `from` / `to`: Applicable to `move` / `copy` / `replace` / `regex_replace`
+- `keep_origin`: Used for `set` (skips if value already exists) and for object merging in `append` / `prepend`
 
 ## Operation Modes (mode)
 
@@ -82,7 +90,7 @@ Sets the value at the specified path.
 
 **Parameter Description:**
 
-- `keep_origin`: When `true`, if a value already exists at the target path, the setting is skipped.
+- `keep_origin`: When `true`, skips setting if a value already exists at the target path.
 
 ### 2. delete - Delete Field
 
@@ -122,7 +130,7 @@ Appends new content after existing content.
 **Supported Data Types:**
 
 - **String**: Appends to the end of the original string.
-- **Array**: Adds elements to the end of the array (supports adding a single element or an array).
+- **Array**: Adds elements to the end of the array (supports adding single elements or arrays).
 - **Object**: Merges object properties.
 
 ### 5. prepend - Prepend Content
@@ -140,12 +148,162 @@ Adds new content before existing content.
 **Supported Data Types:**
 
 - **String**: Prepends to the beginning of the original string.
-- **Array**: Adds elements to the beginning of the array (supports adding a single element or an array).
+- **Array**: Adds elements to the beginning of the array (supports adding single elements or arrays).
 - **Object**: Merges object properties.
 
-## Conditional Judgments
+### 6. copy - Copy Field
 
-Set the conditions for operation execution via the `conditions` array; the corresponding operation will only be executed when the conditions are met.
+Copies the value from the `from` path to the `to` path (does not delete the source field).
+
+```json
+{
+  "mode": "copy",
+  "from": "model",
+  "to": "original_model"
+}
+```
+
+**Parameter Requirements:**
+
+- `from` / `to`: Required
+- An error will be reported if the source path does not exist.
+
+### 7. trim_prefix - Trim Prefix
+
+Removes the specified prefix from a string field (remains unchanged if no match).
+
+```json
+{
+  "path": "model",
+  "mode": "trim_prefix",
+  "value": "openai/"
+}
+```
+
+**Parameter Requirements:**
+
+- `value`: Required
+
+### 8. trim_suffix - Trim Suffix
+
+Removes the specified suffix from a string field (remains unchanged if no match).
+
+```json
+{
+  "path": "model",
+  "mode": "trim_suffix",
+  "value": "-latest"
+}
+```
+
+**Parameter Requirements:**
+
+- `value`: Required
+
+### 9. ensure_prefix - Ensure Prefix
+
+Ensures a string field starts with the specified prefix (remains unchanged if already present).
+
+```json
+{
+  "path": "model",
+  "mode": "ensure_prefix",
+  "value": "openai/"
+}
+```
+
+**Parameter Requirements:**
+
+- `value`: Required and cannot be an empty string.
+
+### 10. ensure_suffix - Ensure Suffix
+
+Ensures a string field ends with the specified suffix (remains unchanged if already present).
+
+```json
+{
+  "path": "model",
+  "mode": "ensure_suffix",
+  "value": "-latest"
+}
+```
+
+**Parameter Requirements:**
+
+- `value`: Required and cannot be an empty string.
+
+### 11. trim_space - Trim Whitespace
+
+Performs `TrimSpace` on a string field (spaces, newlines, tabs, etc., will be removed).
+
+```json
+{
+  "path": "model",
+  "mode": "trim_space"
+}
+```
+
+### 12. to_lower - Convert to Lowercase
+
+Converts a string field to lowercase.
+
+```json
+{
+  "path": "model",
+  "mode": "to_lower"
+}
+```
+
+### 13. to_upper - Convert to Uppercase
+
+Converts a string field to uppercase.
+
+```json
+{
+  "path": "model",
+  "mode": "to_upper"
+}
+```
+
+### 14. replace - String Replacement
+
+Performs substring replacement on a string field.
+
+```json
+{
+  "path": "model",
+  "mode": "replace",
+  "from": "openai/",
+  "to": ""
+}
+```
+
+**Parameter Requirements:**
+
+- `from`: Required and cannot be an empty string.
+- `to`: Optional, equivalent to an empty string if omitted.
+
+### 15. regex_replace - Regex Replacement
+
+Performs regex matching and replacement on a string field.
+
+```json
+{
+  "path": "model",
+  "mode": "regex_replace",
+  "from": "^gpt-",
+  "to": "openai/gpt-"
+}
+```
+
+**Parameter Requirements:**
+
+- `from`: Required (regular expression, Go regexp syntax).
+- `to`: Optional, equivalent to an empty string if omitted.
+
+## Conditional Judgment
+
+Set conditions for operation execution using the `conditions` array; the corresponding operation will only be executed when the conditions are met.
 
 ### Condition Structure
 
@@ -166,7 +324,7 @@ Set the conditions for operation execution via the `conditions` array; the corre
 
 ### Condition Matching Modes
 
-- `full`: Full match (default)
+- `full`: Exact match (default)
 - `prefix`: Prefix match
 - `suffix`: Suffix match
 - `contains`: Contains match
@@ -176,9 +334,8 @@ Set the conditions for operation execution via the `conditions` array; the corre
 - `lte`: Less than or equal to (numeric types only)
 
 - Note:
-
-* Numeric comparisons can only be used for numeric types.
-* String operations (prefix, suffix, contains) will convert values to strings for comparison.
+  * Numeric comparisons can only be used for numeric types.
+  * String operations (prefix, suffix, contains) will convert values to strings for comparison.
 
 ### Condition Parameter Description
 
@@ -190,23 +347,23 @@ Set the conditions for operation execution via the `conditions` array; the corre
 ### Logical Relationship (logic)
 
 - `AND`: All conditions must be met.
-- `OR`: Any condition met is sufficient (default).
+- `OR`: Any one condition being met is sufficient (default).
 
 ## Path Syntax
 
 Use JSON path syntax to access nested fields:
 
 - `temperature` - Root-level field
-- `messages.0.content` - The content field of the first element in the array.
-- `messages.-1.content` - The content field of the last element in the array.
-- `metadata.user.name` - Nested object field.
+- `messages.0.content` - The `content` field of the first element in the array.
+- `messages.-1.content` - The `content` field of the last element in the array.
+- `metadata.user.name` - Nested object field
 
-Additionally, `path` supports the following built-in variables (no need to explicitly exist in the request body), which can be directly used for conditional judgments:
+Additionally, `path` supports the following built-in variables (which do not need to explicitly exist in the request body) and can be directly used for conditional judgments:
 
 | Variable | Meaning | Typical Use |
 | --- | --- | --- |
-| `model` / `upstream_model` | Target model after redirection | Conditional matching based on the actual upstream model called |
-| `original_model` | Target model before redirection | Conditional matching based on the original model requested by the user |
+| `model` / `upstream_model` | The target model after redirection | Conditional matching based on the actual upstream model called |
+| `original_model` | The target model before redirection | Conditional matching based on the original model requested by the user |
 
 ## Practical Examples
 
@@ -268,7 +425,7 @@ Add a system message at the beginning of the message array:
 
 ### 3. Adjust Parameters Based on Model Type
 
-Set different max_tokens based on different models:
+Set different `max_tokens` based on different models:
 
 ```json
 {
@@ -303,7 +460,7 @@ Set different max_tokens based on different models:
 
 ### 4. Multiple Condition Combination (AND Logic)
 
-Execute operations only when multiple conditions are met simultaneously:
+Operations are executed only when multiple conditions are met simultaneously:
 
 ```json
 {
@@ -332,7 +489,7 @@ Execute operations only when multiple conditions are met simultaneously:
 
 ### 5. Numeric Comparison Conditions
 
-Perform conditional judgments based on numerical values:
+Perform conditional judgment based on numerical values:
 
 ```json
 {
@@ -353,7 +510,7 @@ Perform conditional judgments based on numerical values:
 }
 ```
 
-### 6. Invert Conditions
+### 6. Invert Condition
 
 Use `invert` to implement inverse logic:
 
@@ -417,6 +574,6 @@ Append instructions after the user message:
 }
 ```
 
-## Important Notes
+## Notes
 
-**Execution Order**: Operations are executed sequentially according to their order in the `operations` array, and earlier operations may affect subsequent ones.
+**Execution Order**: Operations are executed sequentially in the order they appear in the `operations` array; earlier operations may affect subsequent ones.
