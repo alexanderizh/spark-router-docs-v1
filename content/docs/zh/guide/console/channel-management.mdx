@@ -36,7 +36,7 @@ title: 渠道
 
 ### 高级操作模式
 
-通过 `operations` 数组定义复杂的参数操作，支持条件判断、数组操作、字符串拼接等高级功能
+通过 `operations` 数组定义复杂的参数操作，支持条件判断、数组操作、字符串拼接与字符串规范化等高级功能
 
 #### 基本结构
 
@@ -53,6 +53,14 @@ title: 渠道
   ]
 }
 ```
+
+**字段说明（按需填写）：**
+
+- `mode`: 必填
+- `path`: 适用于 `set` / `delete` / `append` / `prepend` / `trim_prefix` / `trim_suffix` / `ensure_prefix` / `ensure_suffix` / `trim_space` / `to_lower` / `to_upper` / `replace` / `regex_replace`
+- `value`: 常见于 `set` / `append` / `prepend` / `trim_prefix` / `trim_suffix` / `ensure_prefix` / `ensure_suffix`
+- `from` / `to`: 适用于 `move` / `copy` / `replace` / `regex_replace`
+- `keep_origin`: 用于 `set`（已有值则跳过）以及对象合并时的 `append` / `prepend`
 
 ## 操作模式 (mode)
 
@@ -131,6 +139,156 @@ title: 渠道
 - **字符串**: 在原字符串开头前置
 - **数组**: 在数组开头添加元素（支持添加单个元素或数组）
 - **对象**: 合并对象属性
+
+### 6. copy - 复制字段
+
+将 `from` 指定路径的值复制到 `to` 指定路径（不删除源字段）
+
+```json
+{
+  "mode": "copy",
+  "from": "model",
+  "to": "original_model"
+}
+```
+
+**参数要求：**
+
+- `from` / `to`: 必填
+- 源路径不存在时会报错
+
+### 7. trim_prefix - 去除前缀
+
+对字符串字段去除指定前缀（若不匹配则不变）
+
+```json
+{
+  "path": "model",
+  "mode": "trim_prefix",
+  "value": "openai/"
+}
+```
+
+**参数要求：**
+
+- `value`: 必填
+
+### 8. trim_suffix - 去除后缀
+
+对字符串字段去除指定后缀（若不匹配则不变）
+
+```json
+{
+  "path": "model",
+  "mode": "trim_suffix",
+  "value": "-latest"
+}
+```
+
+**参数要求：**
+
+- `value`: 必填
+
+### 9. ensure_prefix - 确保前缀
+
+确保字符串字段以指定前缀开头（已存在则不变）
+
+```json
+{
+  "path": "model",
+  "mode": "ensure_prefix",
+  "value": "openai/"
+}
+```
+
+**参数要求：**
+
+- `value`: 必填且不能为空字符串
+
+### 10. ensure_suffix - 确保后缀
+
+确保字符串字段以指定后缀结尾（已存在则不变）
+
+```json
+{
+  "path": "model",
+  "mode": "ensure_suffix",
+  "value": "-latest"
+}
+```
+
+**参数要求：**
+
+- `value`: 必填且不能为空字符串
+
+### 11. trim_space - 去除首尾空白
+
+对字符串字段执行 `TrimSpace`（空格、换行、制表符等都会被移除）
+
+```json
+{
+  "path": "model",
+  "mode": "trim_space"
+}
+```
+
+### 12. to_lower - 转小写
+
+将字符串字段转换为小写
+
+```json
+{
+  "path": "model",
+  "mode": "to_lower"
+}
+```
+
+### 13. to_upper - 转大写
+
+将字符串字段转换为大写
+
+```json
+{
+  "path": "model",
+  "mode": "to_upper"
+}
+```
+
+### 14. replace - 字符串替换
+
+对字符串字段执行子串替换
+
+```json
+{
+  "path": "model",
+  "mode": "replace",
+  "from": "openai/",
+  "to": ""
+}
+```
+
+**参数要求：**
+
+- `from`: 必填且不能为空字符串
+- `to`: 可选，省略时等同于空字符串
+
+### 15. regex_replace - 正则替换
+
+对字符串字段执行正则匹配替换
+
+```json
+{
+  "path": "model",
+  "mode": "regex_replace",
+  "from": "^gpt-",
+  "to": "openai/gpt-"
+}
+```
+
+**参数要求：**
+
+- `from`: 必填（正则表达式，Go regexp 语法）
+- `to`: 可选，省略时等同于空字符串
 
 ## 条件判断
 
