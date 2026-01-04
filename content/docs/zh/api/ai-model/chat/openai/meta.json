@@ -1,5 +1,3 @@
 {
-  "title": "原生 OpenAI 格式",
-  "pages": ["create-chat-completion", "create-response"]
+  "title": "原生OpenAI格式"
 }
-

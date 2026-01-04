@@ -1,15 +1,3 @@
 {
-  "title": "模型管理",
-  "icon": "Blocks",
-  "pages": [
-    "models-get",
-    "models-post",
-    "models-put",
-    "models-id-get",
-    "models-id-delete",
-    "models-search-get",
-    "models-missing-get",
-    "models-sync_upstream-preview-get",
-    "models-sync_upstream-post"
-  ]
+  "title": "模型管理"
 }

@@ -1,18 +1,3 @@
 {
-  "title": "AI 模型接口",
-  "icon": "Bot",
-  "pages": [
-    "models",
-    "chat",
-    "completions",
-    "images",
-    "videos",
-    "audio",
-    "realtime",
-    "embeddings",
-    "rerank",
-    "moderations",
-    "unimplemented"
-  ]
+  "title": "AI 模型接口"
 }
-

@@ -1,5 +1,0 @@
-{
-  "title": "セキュリティ検証",
-  "icon": "ShieldAlert",
-  "pages": ["verify-status-get", "verify-post"]
-}

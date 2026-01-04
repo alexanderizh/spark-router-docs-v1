@@ -1,0 +1,60 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "使用兑换码",
+    "version": "1.0.0",
+    "description": "🔐 需要登录（User权限）"
+  },
+  "tags": [
+    {
+      "name": "default"
+    }
+  ],
+  "paths": {
+    "/api/user/topup": {
+      "post": {
+        "tags": [
+          "default"
+        ],
+        "summary": "使用兑换码",
+        "description": "🔐 需要登录（User权限）",
+        "operationId": "post-api-user-topup",
+        "parameters": [],
+        "requestBody": {
+          "required": false,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  }
+                },
+                "required": [
+                  "key"
+                ],
+                "x-apifox-orders": [
+                  "key"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "成功",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {}
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

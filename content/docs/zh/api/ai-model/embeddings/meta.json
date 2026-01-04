@@ -1,6 +1,3 @@
 {
-  "title": "嵌入",
-  "icon": "Boxes",
-  "pages": ["create-embedding", "create-embedding-legacy"]
+  "title": "嵌入（Embeddings）"
 }
-

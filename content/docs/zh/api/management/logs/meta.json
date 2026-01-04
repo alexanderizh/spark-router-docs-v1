@@ -1,14 +1,3 @@
 {
-  "title": "日志",
-  "icon": "ScrollText",
-  "pages": [
-    "log-get",
-    "log-search-get",
-    "log-stat-get",
-    "log-delete",
-    "log-self-get",
-    "log-self-search-get",
-    "log-self-stat-get",
-    "log-token-get"
-  ]
+  "title": "日志"
 }

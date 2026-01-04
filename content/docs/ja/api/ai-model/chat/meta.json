@@ -1,5 +1,0 @@
-{
-  "title": "チャット",
-  "icon": "MessageSquare",
-  "pages": ["openai", "gemini", "claude"]
-}

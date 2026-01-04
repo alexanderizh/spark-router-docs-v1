@@ -1,5 +1,3 @@
 {
-  "title": "原生 OpenAI 格式",
-  "pages": ["create-speech", "create-transcription", "create-translation"]
+  "title": "原生OpenAI格式"
 }
-

@@ -1,16 +1,3 @@
 {
-  "title": "支付",
-  "icon": "CreditCard",
-  "pages": [
-    "user-topup-info-get",
-    "user-topup-self-get",
-    "user-pay-post",
-    "user-amount-post",
-    "user-epay-notify-get",
-    "user-stripe-pay-post",
-    "user-stripe-amount-post",
-    "user-creem-pay-post",
-    "stripe-webhook-post",
-    "creem-webhook-post"
-  ]
+  "title": "充值"
 }

@@ -1,5 +1,0 @@
-{
-  "title": "画像",
-  "icon": "Image",
-  "pages": ["openai", "qwen", "gemini"]
-}

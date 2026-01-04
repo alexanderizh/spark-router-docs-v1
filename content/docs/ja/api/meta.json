@@ -1,7 +1,0 @@
-{
-  "title": "API リファレンス",
-  "description": "New API ドキュメント",
-  "icon": "Code",
-  "root": true,
-  "pages": ["index", "ai-model", "management"]
-}

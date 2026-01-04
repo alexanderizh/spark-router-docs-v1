@@ -1,6 +1,3 @@
 {
-  "title": "实时语音",
-  "icon": "Radio",
-  "pages": ["create-realtime-session"]
+  "title": "实时语音（Realtime）"
 }
-

@@ -1,6 +1,3 @@
 {
-  "title": "聊天",
-  "icon": "MessageSquare",
-  "pages": ["openai", "gemini", "claude"]
+  "title": "聊天（Chat）"
 }
-

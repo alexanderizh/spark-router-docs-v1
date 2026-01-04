@@ -1,5 +1,0 @@
-{
-  "title": "Tasks",
-  "icon": "ListTodo",
-  "pages": ["task-get", "task-self-get", "mj-get", "mj-self-get"]
-}

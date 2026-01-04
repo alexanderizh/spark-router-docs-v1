@@ -1,5 +1,3 @@
 {
-  "title": "统计",
-  "icon": "ChartBar",
-  "pages": ["data-get", "data-self-get"]
+  "title": "数据统计"
 }

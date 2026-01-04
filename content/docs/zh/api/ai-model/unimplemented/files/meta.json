@@ -1,5 +1,3 @@
 {
-  "title": "文件",
-  "pages": ["list-files", "create-file", "retrieve-file", "delete-file", "download-file"]
+  "title": "文件（Files）"
 }
-

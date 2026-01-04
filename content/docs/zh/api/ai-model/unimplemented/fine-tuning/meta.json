@@ -1,5 +1,3 @@
 {
-  "title": "微调",
-  "pages": ["list-fine-tunes", "create-fine-tune", "retrieve-fine-tune", "cancel-fine-tune", "list-fine-tune-events"]
+  "title": "微调（Fine-tuning）"
 }
-

@@ -92,6 +92,25 @@ const BASE_TRANSLATION_RULES = `
 7. 保持原文的语气和风格
 8. 对于特殊的专有名词（如产品名 "New API"、"Cherry Studio" 等），保持不变`;
 
+function getPlainTextTranslationPrompt(
+  targetLang: LanguageCode,
+  text: string
+): string {
+  const { nativeName, dir } = LANGUAGES[targetLang];
+
+  return `你是一个专业的技术文档翻译专家。请将以下中文短文本翻译为${nativeName}。
+要求：
+1. 只输出翻译后的纯文本，不要加引号，不要添加解释，不要换行（保持单行）。
+2. 专业术语使用行业标准翻译；专有名词（如 "New API"）保持不变。
+3. URL/路径保持不变；如果出现 /zh/ 路径前缀，请替换为 /${dir}/。
+
+术语表（不要放在翻译内容中）：
+${GLOSSARY}
+
+原文：
+${text}`;
+}
+
 function getTranslationPrompt(
   targetLang: LanguageCode,
   content: string
@@ -192,6 +211,32 @@ async function translateContent(
   throw lastError!;
 }
 
+async function translatePlainText(
+  text: string,
+  targetLang: LanguageCode
+): Promise<string> {
+  let retryCount = 0;
+  let lastError: Error | null = null;
+
+  while (retryCount <= MAX_RETRIES) {
+    try {
+      const prompt = getPlainTextTranslationPrompt(targetLang, text);
+      return await callOpenAI(prompt, targetLang);
+    } catch (error) {
+      lastError = error as Error;
+      retryCount++;
+      if (retryCount <= MAX_RETRIES) {
+        const delay = RETRY_DELAY * Math.pow(RETRY_BACKOFF, retryCount - 1);
+        await new Promise((resolve) => setTimeout(resolve, delay * 1000));
+      } else {
+        throw lastError;
+      }
+    }
+  }
+
+  throw lastError!;
+}
+
 // ============================================================================
 // Git Integration
 // ============================================================================
@@ -273,8 +318,12 @@ function collectMarkdownFiles(dir: string): string[] {
 
       if (entry.isDirectory()) {
         walkDir(fullPath);
-      } else if (entry.isFile() && /\.(md|mdx)$/i.test(entry.name)) {
-        files.push(fullPath);
+      } else if (entry.isFile()) {
+        if (/\.(md|mdx)$/i.test(entry.name)) {
+          files.push(fullPath);
+        } else if (entry.name === 'meta.json') {
+          files.push(fullPath);
+        }
       }
     }
   }
@@ -334,6 +383,8 @@ async function translateFile(
   console.log(
     `\n${prefix} 📄 Processing: ${path.relative(process.cwd(), sourceFile)}`
   );
+
+  const isMetaJson = path.basename(sourceFile) === 'meta.json';
 
   // Read source file
   let content: string;
@@ -434,15 +485,42 @@ async function translateFile(
       );
     }
 
-    // Perform translation
-    const success = await translateToLanguage(
-      content,
-      langCode,
-      langInfo,
-      targetFile,
-      prefix,
-      isIncremental
-    );
+    let success: boolean;
+
+    if (isMetaJson) {
+      // Safe JSON translation: only translate values, keep JSON structure untouched.
+      try {
+        const meta = JSON.parse(content) as Record<string, unknown>;
+        const out: Record<string, unknown> = { ...meta };
+
+        for (const key of ['title', 'description']) {
+          const v = out[key];
+          if (typeof v === 'string' && v.trim().length > 0) {
+            out[key] = await translatePlainText(v, langCode as LanguageCode);
+          }
+        }
+
+        ensureDirectoryExists(targetFile);
+        fs.writeFileSync(targetFile, JSON.stringify(out, null, 2), 'utf-8');
+        console.log(`${prefix} ✓ Saved ${langInfo.nativeName} meta.json`);
+        success = true;
+      } catch (error) {
+        console.error(
+          `${prefix} ✗ Failed to translate meta.json (${langInfo.nativeName}): ${(error as Error).message}`
+        );
+        success = false;
+      }
+    } else {
+      // Perform markdown translation
+      success = await translateToLanguage(
+        content,
+        langCode,
+        langInfo,
+        targetFile,
+        prefix,
+        isIncremental
+      );
+    }
 
     if (success) {
       result.translated++;
@@ -561,8 +639,11 @@ async function translateDocs(specificPaths?: string[]) {
         filesToTranslate.push(...dirFiles);
       } else if (stat.isFile()) {
         // It's a file
-        if (!/\.(md|mdx)$/i.test(resolvedPath)) {
-          console.warn(`⚠ Not a markdown file: ${resolvedPath}`);
+        if (
+          !/\.(md|mdx)$/i.test(resolvedPath) &&
+          !/meta\.json$/i.test(resolvedPath)
+        ) {
+          console.warn(`⚠ Not a translatable file: ${resolvedPath}`);
           continue;
         }
         filesToTranslate.push(resolvedPath);

@@ -1,12 +1,3 @@
 {
-  "title": "双因素认证",
-  "icon": "KeyRound",
-  "pages": [
-    "user-2fa-status-get",
-    "user-2fa-setup-post",
-    "user-2fa-enable-post",
-    "user-2fa-disable-post",
-    "user-2fa-backup_codes-post",
-    "user-2fa-stats-get"
-  ]
+  "title": "两步验证"
 }

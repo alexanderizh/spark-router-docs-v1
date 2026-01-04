@@ -32,6 +32,9 @@ next-env.d.ts
 # fumadocs
 .source
 
+# generated openapi (large json files, keep out of prettier)
+openapi/**
+
 # lock files
 pnpm-lock.yaml
 bun.lock

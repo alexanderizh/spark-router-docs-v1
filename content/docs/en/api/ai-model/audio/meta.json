@@ -1,5 +1,0 @@
-{
-  "title": "Audio",
-  "icon": "Headphones",
-  "pages": ["openai", "gemini-relay-v1-beta"]
-}

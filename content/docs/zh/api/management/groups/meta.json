@@ -1,11 +1,3 @@
 {
-  "title": "分组",
-  "icon": "FolderKanban",
-  "pages": [
-    "group-get",
-    "prefill_group-get",
-    "prefill_group-post",
-    "prefill_group-put",
-    "prefill_group-id-delete"
-  ]
+  "title": "分组"
 }

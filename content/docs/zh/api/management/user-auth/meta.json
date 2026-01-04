@@ -1,16 +1,3 @@
 {
-  "title": "用户认证",
-  "icon": "UserCheck",
-  "pages": [
-    "user-login-post",
-    "user-login-2fa-post",
-    "user-register-post",
-    "user-logout-get",
-    "user-reset-post",
-    "reset_password-get",
-    "verification-get",
-    "user-groups-get",
-    "user-passkey-login-begin-post",
-    "user-passkey-login-finish-post"
-  ]
+  "title": "用户登陆注册"
 }

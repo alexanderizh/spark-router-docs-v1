@@ -1,5 +1,3 @@
 {
-  "title": "任务",
-  "icon": "ListTodo",
-  "pages": ["task-get", "task-self-get", "mj-get", "mj-self-get"]
+  "title": "任务"
 }

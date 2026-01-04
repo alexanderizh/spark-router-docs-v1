@@ -1,12 +1,3 @@
 {
-  "title": "供应商",
-  "icon": "Store",
-  "pages": [
-    "vendors-get",
-    "vendors-post",
-    "vendors-put",
-    "vendors-id-get",
-    "vendors-id-delete",
-    "vendors-search-get"
-  ]
+  "title": "供应商"
 }

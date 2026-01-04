@@ -1,5 +1,0 @@
-{
-  "title": "Embeddings",
-  "icon": "Database",
-  "pages": ["create-embedding", "create-engine-embedding"]
-}

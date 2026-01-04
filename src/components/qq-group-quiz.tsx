@@ -42,10 +42,14 @@ const translations = {
         id: 'q3',
         question: '3. Does New API have a closed-source paid version?',
         options: [
-          { value: 'true', label: 'Yes, there is a closed-source paid version' },
+          {
+            value: 'true',
+            label: 'Yes, there is a closed-source paid version',
+          },
           {
             value: 'false',
-            label: 'No, New API is open-source software, but a commercial license is required in certain scenarios',
+            label:
+              'No, New API is open-source software, but a commercial license is required in certain scenarios',
           },
         ],
         correct: 'false',
@@ -128,10 +132,14 @@ const translations = {
         question: '3. New API 是否有闭源的付费版本？',
         options: [
           { value: 'true', label: '有，存在付费的闭源版本' },
-          { value: 'false', label: '没有，NewAPI是开源软件，但在某些场景下需要商业许可证' },
+          {
+            value: 'false',
+            label: '没有，NewAPI是开源软件，但在某些场景下需要商业许可证',
+          },
         ],
         correct: 'false',
-        errorMessage: '根据群规第4条：New API 是开源软件，但在某些场景下需要商业许可证。详情请查看项目介绍。',
+        errorMessage:
+          '根据群规第4条：New API 是开源软件，但在某些场景下需要商业许可证。详情请查看项目介绍。',
       },
       {
         id: 'q4',
@@ -205,7 +213,8 @@ const translations = {
           { value: 'true', label: 'はい、クローズドソースの有料版があります' },
           {
             value: 'false',
-            label: 'いいえ、New APIはオープンソースソフトウェアですが、特定のシナリオでは商用ライセンスが必要です',
+            label:
+              'いいえ、New APIはオープンソースソフトウェアですが、特定のシナリオでは商用ライセンスが必要です',
           },
         ],
         correct: 'false',
