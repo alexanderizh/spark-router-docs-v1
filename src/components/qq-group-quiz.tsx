@@ -40,18 +40,17 @@ const translations = {
       },
       {
         id: 'q3',
-        question: '3. Does New API have a paid version?',
+        question: '3. Does New API have a closed-source paid version?',
         options: [
-          { value: 'true', label: 'Yes, there is a paid version' },
+          { value: 'true', label: 'Yes, there is a closed-source paid version' },
           {
             value: 'false',
-            label:
-              'No, there is no paid version; it is completely free and open-source',
+            label: 'No, New API is open-source software, but a commercial license is required in certain scenarios',
           },
         ],
         correct: 'false',
         errorMessage:
-          'According to Group Rule 4: New API does not have a paid version and is completely free and open-source.',
+          'According to Group Rule 4: New API is open-source software, but a commercial license is required in certain scenarios. For details, please see the Project Introduction.',
       },
       {
         id: 'q4',
@@ -126,13 +125,13 @@ const translations = {
       },
       {
         id: 'q3',
-        question: '3. New API 是否有付费版本？',
+        question: '3. New API 是否有闭源的付费版本？',
         options: [
-          { value: 'true', label: '有，存在付费版本' },
-          { value: 'false', label: '没有，完全免费开源' },
+          { value: 'true', label: '有，存在付费的闭源版本' },
+          { value: 'false', label: '没有，NewAPI是开源软件，但在某些场景下需要商业许可证' },
         ],
         correct: 'false',
-        errorMessage: '根据群规第4条：New API 没有付费版本，完全免费开源。',
+        errorMessage: '根据群规第4条：New API 是开源软件，但在某些场景下需要商业许可证。详情请查看项目介绍。',
       },
       {
         id: 'q4',
@@ -201,17 +200,17 @@ const translations = {
       },
       {
         id: 'q3',
-        question: '3. New APIには有料版がありますか？',
+        question: '3. New APIにはクローズドソースの有料版がありますか？',
         options: [
-          { value: 'true', label: 'はい、有料版があります' },
+          { value: 'true', label: 'はい、クローズドソースの有料版があります' },
           {
             value: 'false',
-            label: 'いいえ、有料版はなく、完全に無料でオープンソースです',
+            label: 'いいえ、New APIはオープンソースソフトウェアですが、特定のシナリオでは商用ライセンスが必要です',
           },
         ],
         correct: 'false',
         errorMessage:
-          'グループルール4により：New APIには有料版がなく、完全に無料でオープンソースです。',
+          'グループルール4により：New APIはオープンソースソフトウェアですが、特定のシナリオでは商用ライセンスが必要です。詳細については、プロジェクト紹介をご覧ください。',
       },
       {
         id: 'q4',
