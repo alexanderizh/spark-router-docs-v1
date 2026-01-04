@@ -69,12 +69,14 @@ interface TranslationResult {
 }
 
 // ============================================================================
-// Validation
+// Validation (deferred)
 // ============================================================================
-
-if (!OPENAI_API_KEY) {
-  console.error('❌ Error: OPENAI_API_KEY environment variable is not set');
-  process.exit(1);
+// NOTE: Do not exit at import time. This file is also imported by tooling/scripts.
+function assertOpenAIKey() {
+  if (!OPENAI_API_KEY) {
+    console.error('❌ Error: OPENAI_API_KEY environment variable is not set');
+    process.exit(1);
+  }
 }
 
 // ============================================================================
@@ -90,7 +92,57 @@ const BASE_TRANSLATION_RULES = `
 5. 图片路径、链接路径保持不变（如果路径中包含中文目录，保持原样）
 6. Front matter (YAML 头部) 中的内容需要翻译
 7. 保持原文的语气和风格
-8. 对于特殊的专有名词（如产品名 "New API"、"Cherry Studio" 等），保持不变`;
+8. 对于特殊的专有名词（如产品名 "New API"、"Cherry Studio" 等），保持不变
+9. 如果文本中出现占位符（例如 @@FD_PROTECT_0@@），必须原样保留，不得翻译、改写、换行或添加空格`;
+
+// ============================================================================
+// MDX Protection (Prevent AI from translating API/OpenAPI paths)
+// ============================================================================
+
+const PROTECT_PREFIX = '@@FD_PROTECT_';
+const PROTECT_SUFFIX = '@@';
+
+function protectMdxSegments(input: string): {
+  protectedText: string;
+  restore: (translated: string) => string;
+  tokens: string[];
+} {
+  const replacements: Array<{ token: string; value: string }> = [];
+  let protectedText = input;
+
+  function protectByRegex(re: RegExp) {
+    protectedText = protectedText.replace(re, (match) => {
+      const token = `${PROTECT_PREFIX}${replacements.length}${PROTECT_SUFFIX}`;
+      replacements.push({ token, value: match });
+      return token;
+    });
+  }
+
+  // Protect the entire <APIPage ... /> component (it often contains OpenAPI JSON paths).
+  protectByRegex(/<APIPage\b[\s\S]*?\/>/g);
+
+  // Extra safety: protect any remaining OpenAPI generated JSON path outside APIPage.
+  protectByRegex(/openapi\/generated\/[^\s"'<>)}\]]+?\.json/g);
+
+  const tokens = replacements.map((r) => r.token);
+  const restore = (translated: string) => {
+    // Ensure model didn't drop/alter tokens. If it did, retry to avoid corrupting paths.
+    for (const t of tokens) {
+      if (!translated.includes(t)) {
+        throw new Error(
+          `Translation output is missing protected token: ${t}. Refusing to write corrupted content.`
+        );
+      }
+    }
+    let out = translated;
+    for (const r of replacements) {
+      out = out.split(r.token).join(r.value);
+    }
+    return out;
+  };
+
+  return { protectedText, restore, tokens };
+}
 
 function getPlainTextTranslationPrompt(
   targetLang: LanguageCode,
@@ -187,8 +239,12 @@ async function translateContent(
         );
       }
 
-      const prompt = getTranslationPrompt(targetLang, content);
-      return await callOpenAI(prompt, targetLang);
+      // Protect critical MDX segments (e.g. <APIPage document={...} />) so AI won't translate paths.
+      const { protectedText, restore } = protectMdxSegments(content);
+
+      const prompt = getTranslationPrompt(targetLang, protectedText);
+      const translated = await callOpenAI(prompt, targetLang);
+      return restore(translated);
     } catch (error) {
       lastError = error as Error;
       retryCount++;
@@ -601,6 +657,7 @@ async function processFiles(
 // ============================================================================
 
 async function translateDocs(specificPaths?: string[]) {
+  assertOpenAIKey();
   console.log('═══════════════════════════════════════════════');
   console.log('🌐 Starting document translation...');
   console.log('═══════════════════════════════════════════════\n');
@@ -711,3 +768,5 @@ if (require.main === module) {
 }
 
 export { translateDocs };
+// Export for testing/tooling (e.g. to verify OpenAPI path protection).
+export { protectMdxSegments };
