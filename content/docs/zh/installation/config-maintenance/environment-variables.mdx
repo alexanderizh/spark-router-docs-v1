@@ -69,6 +69,7 @@ title: 环境变量配置指南
 | `RELAY_TIMEOUT`                | 中继请求超时时间(秒)        | `0`    | `RELAY_TIMEOUT=60`                |
 | `STREAMING_TIMEOUT`            | 流式一次回复的超时时间(秒)  | `300`  | `STREAMING_TIMEOUT=120`           |
 | `MAX_FILE_DOWNLOAD_MB`         | 最大文件下载大小(MB)        | `20`   | `MAX_FILE_DOWNLOAD_MB=50`         |
+| `MAX_REQUEST_BODY_MB`          | 最大请求体大小(MB，解压后计；防止超大请求/zip bomb导致内存暴涨) | `64`   | `MAX_REQUEST_BODY_MB=100`         |
 | `GLOBAL_API_RATE_LIMIT_ENABLE` | 全局API速率限制开关         | `true` | `GLOBAL_API_RATE_LIMIT_ENABLE=false` |
 | `GLOBAL_API_RATE_LIMIT_DURATION` | 全局API速率限制窗口(秒)   | `180`  | `GLOBAL_API_RATE_LIMIT_DURATION=120` |
 | `GLOBAL_WEB_RATE_LIMIT_ENABLE` | 全局Web速率限制开关         | `true` | `GLOBAL_WEB_RATE_LIMIT_ENABLE=false` |
