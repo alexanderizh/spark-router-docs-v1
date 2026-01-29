@@ -15,6 +15,8 @@ const contentMap: Record<
     github: string;
     partnersTitle: string;
     partnersSubtitle: string;
+    businessPartnersTitle: string;
+    businessPartnersSubtitle: string;
     devContributorsTitle: string;
     docsContributorsTitle: string;
   }
@@ -28,6 +30,8 @@ const contentMap: Record<
     github: 'GitHub',
     partnersTitle: 'Our Partners & Clients',
     partnersSubtitle: 'In no particular order',
+    businessPartnersTitle: 'Business Partners',
+    businessPartnersSubtitle: 'Trusted business collaborations',
     devContributorsTitle: 'Development Contributors',
     docsContributorsTitle: 'Documentation Contributors',
   },
@@ -40,6 +44,8 @@ const contentMap: Record<
     github: 'GitHub',
     partnersTitle: '我们的合作伙伴与客户',
     partnersSubtitle: '排名不分先后',
+    businessPartnersTitle: '商业合作伙伴',
+    businessPartnersSubtitle: '值得信赖的商业合作',
     devContributorsTitle: '开发贡献者',
     docsContributorsTitle: '文档贡献者',
   },
@@ -52,6 +58,8 @@ const contentMap: Record<
     github: 'GitHub',
     partnersTitle: '私たちのパートナーとお客様',
     partnersSubtitle: '順不同',
+    businessPartnersTitle: 'ビジネスパートナー',
+    businessPartnersSubtitle: '信頼できるビジネス協力',
     devContributorsTitle: '開発貢献者',
     docsContributorsTitle: 'ドキュメント貢献者',
   },
@@ -90,6 +98,15 @@ export default async function Page({
       name: 'IO.NET',
       url: 'https://io.net/',
       logo: '/assets/partner/io-net.png',
+    },
+  ];
+
+  const businessPartners = [
+    {
+      name: 'RixAPI',
+      url: 'https://rixapi.com/',
+      lightLogo: '/assets/partner/rixapi-black.png',
+      darkLogo: '/assets/partner/rixapi-white.png',
     },
   ];
 
@@ -151,6 +168,43 @@ export default async function Page({
                 width={72}
                 height={60}
                 className="h-[50px] w-auto md:h-[60px]"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          ))}
+        </div>
+      </section>
+
+      {/* Business Partners Section */}
+      <section className="mx-auto mt-16 max-w-[1400px] px-4 text-center">
+        <h2 className="text-2xl font-semibold md:text-3xl">
+          {content.businessPartnersTitle}
+        </h2>
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10">
+          {businessPartners.map((partner) => (
+            <a
+              key={partner.name}
+              href={partner.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="opacity-70 grayscale-[50%] transition-all duration-300 hover:opacity-100 hover:grayscale-0"
+            >
+              <Image
+                src={partner.lightLogo}
+                alt={partner.name}
+                width={120}
+                height={60}
+                className="block h-[50px] w-auto dark:hidden md:h-[60px]"
+                loading="lazy"
+                decoding="async"
+              />
+              <Image
+                src={partner.darkLogo}
+                alt={partner.name}
+                width={120}
+                height={60}
+                className="hidden h-[50px] w-auto dark:block md:h-[60px]"
                 loading="lazy"
                 decoding="async"
               />
