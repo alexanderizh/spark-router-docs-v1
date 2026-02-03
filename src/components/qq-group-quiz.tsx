@@ -134,12 +134,12 @@ const translations = {
           { value: 'true', label: '有，存在付费的闭源版本' },
           {
             value: 'false',
-            label: '没有，NewAPI是开源软件，但在某些场景下需要商业许可证',
+            label: '没有，New API 采用 AGPLv3 开源协议，遵守协议即可免费使用',
           },
         ],
         correct: 'false',
         errorMessage:
-          '根据群规第4条：New API 是开源软件，但在某些场景下需要商业许可证。详情请查看项目介绍。',
+          '根据群规第4条：New API 采用 GNU AGPLv3 开源协议，只要遵守开源协议即可免费使用。',
       },
       {
         id: 'q4',

@@ -15,8 +15,8 @@ const contentMap: Record<
     github: string;
     partnersTitle: string;
     partnersSubtitle: string;
-    businessPartnersTitle: string;
-    businessPartnersSubtitle: string;
+    sponsorPartnersTitle: string;
+    sponsorPartnersSubtitle: string;
     devContributorsTitle: string;
     docsContributorsTitle: string;
   }
@@ -30,8 +30,8 @@ const contentMap: Record<
     github: 'GitHub',
     partnersTitle: 'Our Partners & Clients',
     partnersSubtitle: 'In no particular order',
-    businessPartnersTitle: 'Business Partners',
-    businessPartnersSubtitle: 'Trusted business collaborations',
+    sponsorPartnersTitle: 'Sponsor Partners',
+    sponsorPartnersSubtitle: 'Trusted sponsor collaborations',
     devContributorsTitle: 'Development Contributors',
     docsContributorsTitle: 'Documentation Contributors',
   },
@@ -44,8 +44,8 @@ const contentMap: Record<
     github: 'GitHub',
     partnersTitle: '我们的合作伙伴与客户',
     partnersSubtitle: '排名不分先后',
-    businessPartnersTitle: '商业合作伙伴',
-    businessPartnersSubtitle: '值得信赖的商业合作',
+    sponsorPartnersTitle: '赞助合作伙伴',
+    sponsorPartnersSubtitle: '值得信赖的赞助合作',
     devContributorsTitle: '开发贡献者',
     docsContributorsTitle: '文档贡献者',
   },
@@ -58,8 +58,8 @@ const contentMap: Record<
     github: 'GitHub',
     partnersTitle: '私たちのパートナーとお客様',
     partnersSubtitle: '順不同',
-    businessPartnersTitle: 'ビジネスパートナー',
-    businessPartnersSubtitle: '信頼できるビジネス協力',
+    sponsorPartnersTitle: 'スポンサーパートナー',
+    sponsorPartnersSubtitle: '信頼できるスポンサー協力',
     devContributorsTitle: '開発貢献者',
     docsContributorsTitle: 'ドキュメント貢献者',
   },
@@ -101,7 +101,7 @@ export default async function Page({
     },
   ];
 
-  const businessPartners = [
+  const sponsorPartners = [
     {
       name: 'RixAPI',
       url: 'https://rixapi.com/',
@@ -176,13 +176,13 @@ export default async function Page({
         </div>
       </section>
 
-      {/* Business Partners Section */}
+      {/* Sponsor Partners Section */}
       <section className="mx-auto mt-16 max-w-[1400px] px-4 text-center">
         <h2 className="text-2xl font-semibold md:text-3xl">
-          {content.businessPartnersTitle}
+          {content.sponsorPartnersTitle}
         </h2>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-6 md:gap-10">
-          {businessPartners.map((partner) => (
+          {sponsorPartners.map((partner) => (
             <a
               key={partner.name}
               href={partner.url}
