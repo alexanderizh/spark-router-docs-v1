@@ -5,15 +5,15 @@ interface FooterProps {
 const newApiGithubUrl = 'https://github.com/QuantumNous/new-api';
 
 const translations: Record<string, string> = {
-  zh: '详情请参见原项目 GitHub 上的 ',
+  zh: '详情请参见原项目',
   en: 'For details, please refer to the original project ',
   ja: '詳細は元プロジェクトの GitHub 上の ',
 };
 
 const linkSuffix: Record<string, string> = {
-  zh: ' new-api 项目。',
-  en: ' new-api project on GitHub.',
-  ja: ' new-api プロジェクトをご参照ください。',
+  zh: ' ',
+  en: ' ',
+  ja: ' ',
 };
 
 export function Footer({ lang }: FooterProps) {
@@ -31,7 +31,7 @@ export function Footer({ lang }: FooterProps) {
             rel="noopener noreferrer"
             className="text-fd-foreground hover:underline"
           >
-            new-api
+            New-Api
           </a>
           {suffix}
         </p>

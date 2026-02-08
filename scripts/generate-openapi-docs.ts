@@ -157,13 +157,8 @@ async function walkJsonFiles(dir: string): Promise<string[]> {
   return out;
 }
 
-async function getSchemaInputs(
-  kind: 'aiModel' | 'management'
-): Promise<string[]> {
-  const generatedDir =
-    kind === 'aiModel'
-      ? './openapi/generated/ai-model'
-      : './openapi/generated/management';
+async function getSchemaInputs(kind: 'aiModel'): Promise<string[]> {
+  const generatedDir = './openapi/generated/ai-model';
   const generated = await walkJsonFiles(generatedDir);
   if (generated.length === 0) {
     throw new Error(
@@ -197,16 +192,12 @@ async function generate() {
   // Clean old generated docs (all locales) to keep the output absolutely clean
   const locales = ['zh', 'en', 'ja'];
   await Promise.all(
-    locales.flatMap((locale) => [
+    locales.map((locale) =>
       rm(`./content/docs/${locale}/api/ai-model`, {
         recursive: true,
         force: true,
-      }),
-      rm(`./content/docs/${locale}/api/management`, {
-        recursive: true,
-        force: true,
-      }),
-    ])
+      })
+    )
   );
 
   // Ensure /zh/docs/api root can be fully restored even if deleted
@@ -272,66 +263,6 @@ async function generate() {
   for (const [dir, title] of aiModelMeta.entries()) {
     await writeMetaJson(`./content/docs/zh/api/ai-model/${dir}`, { title });
   }
-
-  // Generate Management API docs with custom path control
-  const managementMeta = new Map<string, string>(); // dir -> title
-  await generateFiles({
-    input: createOpenAPI({ input: await getSchemaInputs('management') }),
-    output: './content/docs/zh/api/management',
-    per: 'custom',
-    includeDescription: true,
-    addGeneratedComment: true,
-    toPages(builder) {
-      const items = builder.extract();
-
-      for (const op of items.operations) {
-        const extracted = builder.fromExtractedOperation(op);
-        if (!extracted) continue;
-
-        const pathItem = extracted.pathItem as unknown as PathItemObject;
-        const operation = extracted.operation as unknown as OperationObject;
-        const { displayName } = extracted;
-
-        const tag = operation.tags?.[0] || 'default';
-        const { slugPath, metaByDir } = tagToSlugPath(tag, slugOverrides);
-        for (const m of metaByDir) managementMeta.set(m.dir, m.title);
-        // Convert route path to simple file name
-        const fileName = op.path
-          .replace(/^\/api\//, '')
-          .replace(/\/+$/, '')
-          .replace(/\//g, '-')
-          .replace(/[{}]/g, '')
-          .replace(/^-/, '');
-
-        const entry: OperationOutput = {
-          type: 'operation',
-          schemaId: builder.id,
-          item: op,
-          path: `${slugPath}/${fileName}-${op.method}.mdx`,
-          info: {
-            title: displayName,
-            description: operation.description || pathItem.description,
-          },
-        };
-
-        builder.create(entry);
-      }
-    },
-  });
-  console.log('✅ Management API docs generated!');
-
-  await writeMetaJson('./content/docs/zh/api/management', {
-    title: '管理接口',
-  });
-  for (const [dir, title] of managementMeta.entries()) {
-    await writeMetaJson(`./content/docs/zh/api/management/${dir}`, { title });
-  }
-
-  // Add management auth guide page (Apifox has a dedicated doc page in backend management)
-  await ensureFileFromTemplate(
-    './content/docs/zh/api/management/auth.mdx',
-    './scripts/templates/zh-management-auth.mdx'
-  );
 }
 
 generate()

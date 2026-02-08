@@ -1,0 +1,41 @@
+---
+title: 其他工具
+description: 支持 OpenAI 标准接口的工具均可接入 Spark Router
+---
+
+## 支持 OpenAI 标准格式
+
+Spark Router 提供**标准 OpenAI 兼容 API**。只要应用或工具支持通过「自定义 Base URL + API Key」的方式接入 OpenAI 格式接口，即可按相同方式接入 Spark Router，无需单独适配。
+
+常见情况包括：
+
+- 在设置中选择「OpenAI API」或「自定义 OpenAI 兼容端点」
+- 可配置「API Base URL」或「OpenAI Base URL」
+- 可填写「API Key」或「Auth Token」
+
+此类工具均可按下方通用配置要点进行配置，配置方式与 [Cursor](/zh/docs/programming-tools/cursor) 一致。
+
+## 通用配置要点
+
+配置步骤与 Cursor 相同，可参考 [Cursor 配置文档](/zh/docs/programming-tools/cursor) 中的界面流程，在您使用的工具中找到对应设置项即可。
+
+### 必填项
+
+| 配置项 | 说明 | 示例 |
+| --- | --- | --- |
+| **Base URL** | 接口基础地址，末尾必须带 `/v1` | `http://sparkrouter.ai/v1` |
+| **API Key / Token** | 在 Spark Router 控制台生成的 API 令牌 | 以 `sk-` 开头的令牌 |
+
+### Base URL 说明
+
+<Callout type="warn" title="务必添加 /v1 后缀">
+  Base URL 必须在末尾加上 `/v1`，例如：`http://sparkrouter.ai/v1`。这是 OpenAI 标准接口路径，缺少会导致请求失败。
+</Callout>
+
+### 配置后
+
+保存后，在工具内选择模型时，将使用 Spark Router 上的模型列表与计费，无需再配置各模型单独地址。
+
+## 小结
+
+只要工具支持 **OpenAI 标准接入格式**（自定义 Base URL + API Key），即可按上述方式接入 Spark Router。若您使用的工具不在本站单独列出，可按「其他工具」本页与 [Cursor](/zh/docs/programming-tools/cursor) 的说明自行配置。

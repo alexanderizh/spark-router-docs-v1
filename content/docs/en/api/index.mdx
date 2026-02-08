@@ -1,4 +1,4 @@
-﻿---
+---
 title: API Reference
 description: Spark Router Complete API Documentation
 ---
@@ -16,32 +16,12 @@ import {
   Image,
   Video,
   FileQuestion,
-  Server,
-  SlidersHorizontal,
-  UserCheck,
-  Users,
-  KeyRound,
-  Link2,
-  Network,
-  Blocks,
-  Key,
-  Ticket,
-  CreditCard,
-  ScrollText,
-  ChartBar,
-  ListTodo,
-  FolderKanban,
-  Store,
-  ShieldAlert,
 } from 'lucide-react';
 
 ## Overview
 
-Spark Router provides a complete set of RESTful API interfaces, categorized into two main types: **AI Model APIs** and **Management APIs**. You can use these interfaces to invoke AI capabilities and perform system management functions.
+Spark Router provides a complete set of RESTful API interfaces (AI Model APIs). You can use these interfaces to invoke AI capabilities.
 
-<Callout title="Online Debugging">
-  You can visit [Apifox Playground](https://apifox.Spark Router.ai/) to test and debug API interfaces online, or browse the API documentation below.
-</Callout>
 
 ## AI Model APIs
 
@@ -113,114 +93,5 @@ AI Model APIs provide calls for various AI capabilities, compatible with the Ope
     title="Unimplemented"
     description="Placeholder API, not yet implemented."
     href="/en/docs/api/ai-model/unimplemented/files/listfiles"
-  />
-</Cards>
-
-## Management APIs
-
-Management APIs are used for backend operations such as system configuration, user management, and business management.
-
-<Cards>
-  <Card
-    icon={<Server />}
-    title="System"
-    description="System information and status API."
-    href="/en/docs/api/management/system/status-get"
-  />
-  <Card
-    icon={<SlidersHorizontal />}
-    title="System Settings"
-    description="System configuration management API."
-    href="/en/docs/api/management/system-settings/option-get"
-  />
-  <Card
-    icon={<UserCheck />}
-    title="User Authentication"
-    description="User login, registration, password management, and other APIs."
-    href="/en/docs/api/management/user-auth/user-login-post"
-  />
-  <Card
-    icon={<Users />}
-    title="User Management"
-    description="User information management API."
-    href="/en/docs/api/management/user-management/user-self-get"
-  />
-  <Card
-    icon={<KeyRound />}
-    title="Two-Factor Authentication"
-    description="2FA Two-Factor Authentication API."
-    href="/en/docs/api/management/two-factor-auth/user-2fa-status-get"
-  />
-  <Card
-    icon={<Link2 />}
-    title="OAuth"
-    description="Third-party OAuth login API."
-    href="/en/docs/api/management/oauth/oauth-github-get"
-  />
-  <Card
-    icon={<Network />}
-    title="Channel Management"
-    description="API channel configuration management API."
-    href="/en/docs/api/management/channel-management/channel-get"
-  />
-  <Card
-    icon={<Blocks />}
-    title="Model Management"
-    description="Model configuration management API."
-    href="/en/docs/api/management/model-management/models-get"
-  />
-  <Card
-    icon={<Key />}
-    title="Token Management"
-    description="API token management API."
-    href="/en/docs/api/management/token-management/token-get"
-  />
-  <Card
-    icon={<Ticket />}
-    title="Redemption Codes"
-    description="Redemption code management API."
-    href="/en/docs/api/management/redemption/redemption-get"
-  />
-  <Card
-    icon={<CreditCard />}
-    title="Payment"
-    description="Payment and top-up API."
-    href="/en/docs/api/management/payment/user-topup-info-get"
-  />
-  <Card
-    icon={<ScrollText />}
-    title="Logs"
-    description="Usage log query API."
-    href="/en/docs/api/management/logs/log-get"
-  />
-  <Card
-    icon={<ChartBar />}
-    title="Statistics"
-    description="Data statistics API."
-    href="/en/docs/api/management/statistics/data-get"
-  />
-  <Card
-    icon={<ListTodo />}
-    title="Tasks"
-    description="Asynchronous task management API."
-    href="/en/docs/api/management/tasks/task-get"
-  />
-  <Card
-    icon={<FolderKanban />}
-    title="Groups"
-    description="User group management API."
-    href="/en/docs/api/management/groups/group-get"
-  />
-  <Card
-    icon={<Store />}
-    title="Vendors"
-    description="Vendor management API."
-    href="/en/docs/api/management/vendors/vendors-get"
-  />
-  <Card
-    icon={<ShieldAlert />}
-    title="Security Verification"
-    description="Security verification related APIs."
-    href="/en/docs/api/management/security-verification/verify-status-get"
   />
 </Cards>

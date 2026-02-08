@@ -1,0 +1,7 @@
+{
+  "title": "编程工具使用",
+  "description": "Claude、Cursor 等编程工具接入 Spark Router 的配置与最佳实践",
+  "icon": "Wrench",
+  "root": true,
+  "pages": ["index", "claude-code", "cursor", "other-tools"]
+}

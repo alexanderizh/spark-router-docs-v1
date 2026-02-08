@@ -1,0 +1,79 @@
+---
+title: Claude Code
+description: 在 Claude Code 中配置 Spark Router（Claude API）的完整指南
+---
+
+## 供应商配置方式
+
+在 Claude Code 中使用 Claude API 服务，您可以通过以下三种方式进行供应商配置。
+
+## 方式一：Claude Code 配置文件设置
+
+为确保模型接口正常工作，需要在配置文件中添加以下环境变量和参数：
+
+```json
+{
+  "env": {
+    "ANTHROPIC_AUTH_TOKEN": "sk-nxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+    "ANTHROPIC_BASE_URL": "http://sparkrouter.ai",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "anthropic/claude-haiku-4.5",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "anthropic/claude-haiku-4.5",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "anthropic/claude-haiku-4.5",
+    "ANTHROPIC_MODEL": "anthropic/claude-haiku-4.5",
+    "ANTHROPIC_REASONING_MODEL": "anthropic/claude-haiku-4.5"
+  },
+  "includeCoAuthoredBy": false
+}
+```
+
+| 配置项 | 说明 |
+| --- | --- |
+| `ANTHROPIC_AUTH_TOKEN` | 您的 API 认证令牌，以 "sk-" 开头 |
+| `ANTHROPIC_BASE_URL` | API 服务的基础地址，不需要后缀 |
+| 各模型参数 | 指定不同场景下使用的 Claude 模型版本 |
+| `includeCoAuthoredBy` | 协作作者信息包含设置 |
+
+## 方式二：结合 cc-switch 使用
+
+`cc-switch` 是 Claude Code 的供应商切换扩展，可方便地管理和切换不同 API 供应商（如 Spark Router）。
+
+### 下载与安装 cc-switch
+
+cc-switch 目前仅支持**手动下载**安装。
+
+- **下载地址**：[https://github.com/farion1231/cc-switch](https://github.com/farion1231/cc-switch)  
+  打开上述 GitHub 仓库，在 **Releases** 页面中根据您的系统选择对应安装包（Windows 可用 `.msi` 或便携版 `.zip`，macOS 为 `.zip`，Linux 为 `.deb` / `.rpm` / `.AppImage` / `.flatpak` 等）。
+- **安装**：下载完成后按各平台常规方式安装或解压运行即可。
+
+安装完成后，按以下步骤添加 Spark Router：
+
+![cc-switch 添加新供应商](/assets/programming-tools/1.png)
+
+1. 进入 `cc-switch` 配置界面
+2. 选择【添加新供应商】
+3. 选择【claude 供应商】类型
+4. 使用【自定义配置】选项进行个性化设置
+
+## 方式三：cc-switch 中统一供应商配置
+
+- 在统一供应商管理中选择【NewAPi】选项
+- 按照 Claude 供应商标准进行配置
+
+## 最佳实践建议
+
+### 安全性建议
+
+- API 令牌应妥善保管，避免在公开场合展示完整令牌
+- 建议使用环境变量管理敏感配置信息
+- 定期轮换 API 密钥以提高安全性
+
+### 性能优化
+
+- 根据实际需求选择合适的模型版本
+- 合理设置请求超时和重试机制
+- 监控 API 使用情况，优化调用频率
+
+### 故障排除
+
+1. **连接问题**：检查 Base URL 是否正确，网络是否通畅
+2. **认证失败**：验证 API 令牌是否有效
