@@ -43,10 +43,12 @@ export const linkItems: LinkItemType[] = [
   },
 ];
 
+const LOGO_SRC = 'https://www.sparkrouter.to/cos/icon.png';
+
 export const logo = (
   <Image
-    alt="New API"
-    src="/assets/newapi.svg"
+    alt="Spark Router"
+    src={LOGO_SRC}
     width={20}
     height={20}
     className="size-5"
@@ -63,7 +65,7 @@ export function baseOptions(locale: string): BaseLayoutProps {
         <>
           {logo}
           <span className="font-medium in-[header]:text-[15px] [.uwu_&]:hidden">
-            New API
+            Spark Router
           </span>
         </>
       ),

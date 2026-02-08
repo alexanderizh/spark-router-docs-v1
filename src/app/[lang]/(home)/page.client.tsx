@@ -99,8 +99,8 @@ export function Hero() {
   const shaderColors = useMemo(
     () =>
       resolvedTheme === 'dark'
-        ? ['#06B6D4', '#8B5CF6', '#EC4899', '#1E3A8A00']
-        : ['#22D3EE', '#A78BFA', '#F9A8D4', '#DBEAFE20'],
+        ? ['#525252', '#737373', '#a3a3a3', '#17171700']
+        : ['#737373', '#a3a3a3', '#d4d4d4', '#f5f5f520'],
     [resolvedTheme]
   );
 
@@ -155,8 +155,8 @@ export function Hero() {
         style={{
           background:
             resolvedTheme === 'dark'
-              ? 'radial-gradient(1200px 800px at 20% 15%, rgba(6,182,212,.28), transparent 60%), radial-gradient(1000px 700px at 70% 25%, rgba(139,92,246,.24), transparent 55%), radial-gradient(900px 700px at 55% 70%, rgba(236,72,153,.18), transparent 60%)'
-              : 'radial-gradient(1200px 800px at 20% 15%, rgba(34,211,238,.25), transparent 60%), radial-gradient(1000px 700px at 70% 25%, rgba(167,139,250,.22), transparent 55%), radial-gradient(900px 700px at 55% 70%, rgba(249,168,212,.18), transparent 60%)',
+              ? 'radial-gradient(1200px 800px at 20% 15%, rgba(82,82,82,.28), transparent 60%), radial-gradient(1000px 700px at 70% 25%, rgba(115,115,115,.24), transparent 55%), radial-gradient(900px 700px at 55% 70%, rgba(163,163,163,.18), transparent 60%)'
+              : 'radial-gradient(1200px 800px at 20% 15%, rgba(115,115,115,.25), transparent 60%), radial-gradient(1000px 700px at 70% 25%, rgba(163,163,163,.22), transparent 55%), radial-gradient(900px 700px at 55% 70%, rgba(212,212,212,.18), transparent 60%)',
         }}
       />
 
@@ -186,8 +186,8 @@ export function Hero() {
           )}
         >
           <Image
-            src="/assets/newapi.svg"
-            alt="logo"
+            src="https://www.sparkrouter.to/cos/icon.png"
+            alt="Spark Router logo"
             width={288}
             height={288}
             className="size-32 drop-shadow-2xl sm:size-40 md:size-56 lg:size-72"

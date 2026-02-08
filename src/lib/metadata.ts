@@ -4,16 +4,16 @@ export function createMetadata(override: Metadata): Metadata {
   return {
     ...override,
     icons: {
-      icon: '/favicon.ico',
-      shortcut: '/favicon.ico',
-      apple: '/assets/logo.png',
+      icon: 'https://www.sparkrouter.to/cos/icon.png',
+      shortcut: 'https://www.sparkrouter.to/cos/icon.png',
+      apple: 'https://www.sparkrouter.to/cos/icon.png',
     },
     openGraph: {
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      url: 'https://www.newapi.ai',
-      images: '/assets/logo.png',
-      siteName: 'New API',
+      url: 'https://www.sparkrouter.to',
+      images: 'https://www.sparkrouter.to/cos/icon.png',
+      siteName: 'Spark Router',
       type: 'website',
       ...override.openGraph,
     },
@@ -21,7 +21,7 @@ export function createMetadata(override: Metadata): Metadata {
       card: 'summary_large_image',
       title: override.title ?? undefined,
       description: override.description ?? undefined,
-      images: '/assets/logo.png',
+      images: 'https://www.sparkrouter.to/cos/icon.png',
       ...override.twitter,
     },
   };

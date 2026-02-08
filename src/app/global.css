@@ -7,19 +7,20 @@
 @theme {
   --spacing-fd-container: 1436px;
 
-  /* Pink theme color */
-  --color-brand: hsl(330, 70%, 55%);
+  /* Business black-white-gray theme */
+  --color-brand: hsl(0, 0%, 18%);
   --color-brand-foreground: white;
-  --color-brand-secondary: hsl(340, 75%, 65%);
-  --color-brand-secondary-foreground: hsl(330, 60%, 20%);
-  --color-brand-200: hsl(330, 65%, 75%);
+  --color-brand-secondary: hsl(0, 0%, 40%);
+  --color-brand-secondary-foreground: white;
+  --color-brand-200: hsl(0, 0%, 32%);
 
   /* Fumadocs UI theme color (for navigation, TOC, etc.) */
-  --color-fd-primary: hsl(330, 70%, 55%);
+  --color-fd-primary: hsl(0, 0%, 18%);
   --color-fd-primary-foreground: white;
 
-  --color-landing-foreground: #5c3a4a;
-  --color-landing-foreground-200: #a87b8b;
+  --color-landing-foreground: #2d2d2d;
+  --color-landing-foreground-200: #5c5c5c;
+  --color-landing-foreground-dark: #2d2d2d;
 
   /* System fonts */
   --font-sans:
@@ -31,18 +32,19 @@
 }
 
 .dark {
-  --color-landing-foreground: #f5e0ea;
-  --color-landing-foreground-200: #e0b8d0;
+  --color-landing-foreground: #e5e5e5;
+  --color-landing-foreground-200: #a3a3a3;
+  --color-landing-foreground-dark: #e5e5e5;
 
-  /* Pink theme color (dark mode) */
-  --color-brand: hsl(330, 85%, 70%);
-  --color-brand-secondary: hsl(340, 80%, 75%);
-  --color-brand-secondary-foreground: hsl(330, 60%, 10%);
+  /* Business theme (dark mode) */
+  --color-brand: hsl(0, 0%, 92%);
+  --color-brand-secondary: hsl(0, 0%, 75%);
+  --color-brand-secondary-foreground: hsl(0, 0%, 12%);
   --color-brand-foreground: black;
-  --color-brand-200: hsl(330, 80%, 85%);
+  --color-brand-200: hsl(0, 0%, 85%);
 
-  /* Fumadocs UI theme color (for navigation, TOC, etc. - dark mode) */
-  --color-fd-primary: hsl(330, 85%, 70%);
+  /* Fumadocs UI theme color (dark mode) */
+  --color-fd-primary: hsl(0, 0%, 92%);
   --color-fd-primary-foreground: black;
 }
 

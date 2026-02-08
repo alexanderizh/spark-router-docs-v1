@@ -11,7 +11,7 @@ const translations = {
     questions: [
       {
         id: 'q1',
-        question: '1. What is New API?',
+        question: '1. What is Spark Router?',
         options: [
           { value: 'a', label: 'A commercial API sales platform' },
           {
@@ -24,7 +24,7 @@ const translations = {
         ],
         correct: 'b',
         errorMessage:
-          'Please re-read the project introduction. New API is an open-source AI interface management and distribution system.',
+          'Please re-read the project introduction. Spark Router is an open-source AI interface management and distribution system.',
       },
       {
         id: 'q2',
@@ -40,7 +40,7 @@ const translations = {
       },
       {
         id: 'q3',
-        question: '3. Does New API have a closed-source paid version?',
+        question: '3. Does Spark Router have a closed-source paid version?',
         options: [
           {
             value: 'true',
@@ -49,12 +49,12 @@ const translations = {
           {
             value: 'false',
             label:
-              'No, New API is open-source software, but a commercial license is required in certain scenarios',
+              'No, Spark Router is open-source software, but a commercial license is required in certain scenarios',
           },
         ],
         correct: 'false',
         errorMessage:
-          'According to Group Rule 4: New API is open-source software, but a commercial license is required in certain scenarios. For details, please see the Project Introduction.',
+          'According to Group Rule 4: Spark Router is open-source software, but a commercial license is required in certain scenarios. For details, please see the Project Introduction.',
       },
       {
         id: 'q4',
@@ -105,7 +105,7 @@ const translations = {
     questions: [
       {
         id: 'q1',
-        question: '1. New API 是什么？',
+        question: '1. Spark Router 是什么？',
         options: [
           { value: 'a', label: '一个商业API销售平台' },
           { value: 'b', label: '一个开源的AI接口管理和分发系统' },
@@ -114,7 +114,7 @@ const translations = {
         ],
         correct: 'b',
         errorMessage:
-          '请重新阅读项目介绍。New API 是一个开源的AI接口管理和分发系统。',
+          '请重新阅读项目介绍。Spark Router 是一个开源的AI接口管理和分发系统。',
       },
       {
         id: 'q2',
@@ -129,17 +129,17 @@ const translations = {
       },
       {
         id: 'q3',
-        question: '3. New API 是否有闭源的付费版本？',
+        question: '3. Spark Router 是否有闭源的付费版本？',
         options: [
           { value: 'true', label: '有，存在付费的闭源版本' },
           {
             value: 'false',
-            label: '没有，New API 采用 AGPLv3 开源协议，遵守协议即可免费使用',
+            label: '没有，Spark Router 采用 AGPLv3 开源协议，遵守协议即可免费使用',
           },
         ],
         correct: 'false',
         errorMessage:
-          '根据群规第4条：New API 采用 GNU AGPLv3 开源协议，只要遵守开源协议即可免费使用。',
+          '根据群规第4条：Spark Router 采用 GNU AGPLv3 开源协议，只要遵守开源协议即可免费使用。',
       },
       {
         id: 'q4',
@@ -180,7 +180,7 @@ const translations = {
     questions: [
       {
         id: 'q1',
-        question: '1. New APIとは何ですか？',
+        question: '1. Spark Routerとは何ですか？',
         options: [
           { value: 'a', label: '商用API販売プラットフォーム' },
           {
@@ -192,7 +192,7 @@ const translations = {
         ],
         correct: 'b',
         errorMessage:
-          'プロジェクト紹介を再度お読みください。New APIはオープンソースのAIインターフェース管理・配布システムです。',
+          'プロジェクト紹介を再度お読みください。Spark RouterはオープンソースのAIインターフェース管理・配布システムです。',
       },
       {
         id: 'q2',
@@ -208,18 +208,18 @@ const translations = {
       },
       {
         id: 'q3',
-        question: '3. New APIにはクローズドソースの有料版がありますか？',
+        question: '3. Spark Routerにはクローズドソースの有料版がありますか？',
         options: [
           { value: 'true', label: 'はい、クローズドソースの有料版があります' },
           {
             value: 'false',
             label:
-              'いいえ、New APIはオープンソースソフトウェアですが、特定のシナリオでは商用ライセンスが必要です',
+              'いいえ、Spark Routerはオープンソースソフトウェアですが、特定のシナリオでは商用ライセンスが必要です',
           },
         ],
         correct: 'false',
         errorMessage:
-          'グループルール4により：New APIはオープンソースソフトウェアですが、特定のシナリオでは商用ライセンスが必要です。詳細については、プロジェクト紹介をご覧ください。',
+          'グループルール4により：Spark Routerはオープンソースソフトウェアですが、特定のシナリオでは商用ライセンスが必要です。詳細については、プロジェクト紹介をご覧ください。',
       },
       {
         id: 'q4',

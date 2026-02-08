@@ -1,9 +1,9 @@
----
+﻿---
 title: LunaTranslator - オープンソース GalGame 翻訳ツール
 ---
 
 <Callout type="info" title="チャット設定オプション">
-  New API コンソールのシステム設定 ->
+  Spark Router コンソールのシステム設定 ->
   チャット設定で、以下のショートカットオプションを追加できます。これにより、トークン管理ページからLunaTranslatorへワンクリックで設定を投入できます。
 </Callout>
 
@@ -40,13 +40,13 @@ title: LunaTranslator - オープンソース GalGame 翻訳ツール
 
 [LunaTranslator ドキュメント - ダウンロード & 起動 & 更新](https://docs.lunatranslator.org/ja/README.html) からダウンロードしてインストールしてください。
 
-## LunaTranslatorでのNewAPI連携
+## LunaTranslatorでのSpark Router連携
 
-LunaTranslatorは、ローカルにデプロイされたNewAPIおよびNewAPIを使用して構築されたサードパーティのNewAPIサービスとの連携をサポートしています。
+LunaTranslatorは、ローカルにデプロイされたSpark RouterおよびSpark Routerを使用して構築されたサードパーティのSpark Routerサービスとの連携をサポートしています。
 
 ### ワンクリック設定
 
-1.  New API コンソールの`システム設定` -> `チャット設定`で、以下のショートカットオプションを追加します。
+1.  Spark Router コンソールの`システム設定` -> `チャット設定`で、以下のショートカットオプションを追加します。
 
     ```json
     { "LunaTranslator": "lunatranslator://llmapi/base64?data={cheryConfig}" }
@@ -54,7 +54,7 @@ LunaTranslatorは、ローカルにデプロイされたNewAPIおよびNewAPIを
 
     ![add_config](/assets/luna_translator/add_config.png)
 
-2.  **`NewAPI`** -> `コンソール` -> `トークン管理`タブで、LunaTranslatorで使用するトークンを選択し、チャットボタンの横にあるドロップダウンオプションをクリックして`LunaTranslator`を選択すると、LunaTranslatorにジャンプし、APIアドレスとAPIキーが自動的に設定されます。
+2.  **`Spark Router`** -> `コンソール` -> `トークン管理`タブで、LunaTranslatorで使用するトークンを選択し、チャットボタンの横にあるドロップダウンオプションをクリックして`LunaTranslator`を選択すると、LunaTranslatorにジャンプし、APIアドレスとAPIキーが自動的に設定されます。
 
     ![跳转到 LunaTranslator](/assets/luna_translator/jump_to_app.png)
 
@@ -62,7 +62,7 @@ LunaTranslatorは、ローカルにデプロイされたNewAPIおよびNewAPIを
 
     ![设置api](/assets/luna_translator/api_setting.png)
 
-4.  **model** ドロップダウンボックスの横にある更新ボタンをクリックして、NewAPIプラットフォームのモデルリストを取得し、モデル名を選択または入力した後、確定をクリックして保存します。
+4.  **model** ドロップダウンボックスの横にある更新ボタンをクリックして、Spark Routerプラットフォームのモデルリストを取得し、モデル名を選択または入力した後、確定をクリックして保存します。
 
     ![设置模型](/assets/luna_translator/setting_model.png)
 
@@ -72,7 +72,7 @@ LunaTranslatorは、ローカルにデプロイされたNewAPIおよびNewAPIを
 
 ### 手動設定
 
-1.  **`NewAPI`** -> `コンソール` -> `トークン管理`タブでAPIキーを取得します。
+1.  **`Spark Router`** -> `コンソール` -> `トークン管理`タブでAPIキーを取得します。
 
     ![获取 API Key](/assets/luna_translator/copy_api_key.png)
 
@@ -90,11 +90,11 @@ LunaTranslatorは、ローカルにデプロイされたNewAPIおよびNewAPIを
 
     ![设置 API2](/assets/luna_translator/setting_api2.png)
 
-5.  **model** ドロップダウンボックスの横にある更新ボタンをクリックして、NewAPIプラットフォームのモデルリストを取得し、モデル名を選択または入力した後、確定をクリックして保存します。
+5.  **model** ドロップダウンボックスの横にある更新ボタンをクリックして、Spark Routerプラットフォームのモデルリストを取得し、モデル名を選択または入力した後、確定をクリックして保存します。
 
     ![设置 API3](/assets/luna_translator/setting_api3.png)
 
-6.  **NewAPI**の横にあるスイッチボタンをクリックしてインターフェースを有効にすると、使用を開始できます。
+6.  **Spark Router**の横にあるスイッチボタンをクリックしてインターフェースを有効にすると、使用を開始できます。
 
     ![打开API](/assets/luna_translator/open_api.png)
 

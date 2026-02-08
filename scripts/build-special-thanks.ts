@@ -57,7 +57,7 @@ const SPECIAL_THANKS_I18N = {
   zh: {
     title: '# 🙏 特别鸣谢',
     intro:
-      'New API 的开发离不开社区的支持和贡献。在此特别感谢所有为项目提供帮助的个人和组织。',
+      'Spark Router 的开发离不开社区的支持和贡献。在此特别感谢所有为项目提供帮助的个人和组织。',
     sponsorsTitle: '## ❤️ 赞助商',
     sponsorsIntro:
       '以下是所有为项目提供资金支持的赞助商。感谢他们的慷慨捐助，让项目能够持续发展！',
@@ -84,7 +84,7 @@ const SPECIAL_THANKS_I18N = {
   en: {
     title: '# 🙏 Special Thanks',
     intro:
-      'The development of New API would not be possible without the support and contributions of the community. We would like to express our special gratitude to all individuals and organizations who have helped with this project.',
+      'The development of Spark Router would not be possible without the support and contributions of the community. We would like to express our special gratitude to all individuals and organizations who have helped with this project.',
     sponsorsTitle: '## ❤️ Sponsors',
     sponsorsIntro:
       'Below are all the sponsors who have provided financial support for the project. Thank you for their generous donations that allow the project to continue developing!',
@@ -113,7 +113,7 @@ const SPECIAL_THANKS_I18N = {
   ja: {
     title: '# 🙏 スペシャルサンクス',
     intro:
-      'New API の開発は、コミュニティのサポートと貢献なしには実現できませんでした。プロジェクトに協力してくださったすべての個人と組織に特別な感謝を申し上げます。',
+      'Spark Router の開発は、コミュニティのサポートと貢献なしには実現できませんでした。プロジェクトに協力してくださったすべての個人と組織に特別な感謝を申し上げます。',
     sponsorsTitle: '## ❤️ スポンサー',
     sponsorsIntro:
       '以下は、プロジェクトに財政的支援を提供してくださったすべてのスポンサーです。プロジェクトが継続的に発展できるよう、寛大な寄付をしてくださったことに感謝します！',

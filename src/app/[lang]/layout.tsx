@@ -43,20 +43,20 @@ const titleMap: Record<
   { default: string; template: string; description: string }
 > = {
   en: {
-    default: 'New API - The Foundation of Your AI Universe',
-    template: '%s | New API',
+    default: 'Spark Router - The Foundation of Your AI Universe',
+    template: '%s | Spark Router',
     description:
       'Connect all AI providers, manage your AI assets, and build the future on a unified infrastructure platform. Deploy in minutes, scale effortlessly.',
   },
   zh: {
-    default: 'New API - AI 基座',
-    template: '%s | New API',
+    default: 'Spark Router - AI 基座',
+    template: '%s | Spark Router',
     description:
       '承载所有 AI 应用，管理你的数字资产，连接未来的统一基础设施平台。快速部署，轻松扩展。',
   },
   ja: {
-    default: 'New API - あなたの AI ユニバースの基盤',
-    template: '%s | New API',
+    default: 'Spark Router - あなたの AI ユニバースの基盤',
+    template: '%s | Spark Router',
     description:
       'すべての AI プロバイダーを接続し、AI アセットを管理し、統一されたインフラストラクチャプラットフォームで未来を構築。数分でデプロイ、簡単にスケール。',
   },
@@ -90,9 +90,9 @@ export async function generateMetadata({
       'Intelligent API Management',
     ],
     authors: [
-      { name: 'New API Team', url: 'https://github.com/QuantumNous/new-api' },
+      { name: 'Spark Router Team', url: 'https://github.com/QuantumNous/new-api' },
     ],
-    creator: 'New API Team',
+    creator: 'Spark Router Team',
     alternates: {
       languages: {
         en: '/en',
@@ -105,7 +105,7 @@ export async function generateMetadata({
       locale: lang,
       title: titles.default,
       description: titles.description,
-      siteName: 'New API',
+      siteName: 'Spark Router',
     },
     twitter: {
       card: 'summary_large_image',
@@ -134,7 +134,7 @@ export default async function RootLayout({
   }
 
   return (
-    <Provider i18n={provider(lang)} lang={lang}>
+    <Provider i18n={provider(lang)}>
       {children}
     </Provider>
   );

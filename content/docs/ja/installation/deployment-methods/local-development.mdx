@@ -1,8 +1,8 @@
----
+﻿---
 title: ローカル開発とデプロイ
 ---
 
-このドキュメントは、New API プロジェクトをローカル環境でセットアップし開発するための詳細な手順を提供します。プロジェクト開発に参加したい、またはカスタム開発を行いたい開発者向けです。
+このドキュメントは、Spark Router プロジェクトをローカル環境でセットアップし開発するための詳細な手順を提供します。プロジェクト開発に参加したい、またはカスタム開発を行いたい開発者向けです。
 
 ## 開発環境要件
 
@@ -25,7 +25,7 @@ title: ローカル開発とデプロイ
 
 ## プロジェクトのクローン
 
-まず、GitHub から New API リポジトリをローカルにクローンします。
+まず、GitHub から Spark Router リポジトリをローカルにクローンします。
 
 ```bash
 git clone https://github.com/Calcium-Ion/new-api.git
@@ -42,7 +42,7 @@ go mod download
 
 ### 開発環境の構成
 
-New API は `.env` ファイルを介した環境変数の設定をサポートしています。`.env` ファイルを作成します（`.env.example` からコピーできます）。
+Spark Router は `.env` ファイルを介した環境変数の設定をサポートしています。`.env` ファイルを作成します（`.env.example` からコピーできます）。
 
 ```bash
 cp .env.example .env
@@ -76,7 +76,7 @@ go build -o new-api
 
 ## フロントエンド開発設定
 
-New API のフロントエンドコードは `web` ディレクトリにあり、React と [semi design コンポーネントライブラリ](https://semi.design/zh-CN) を使用して開発されています。
+Spark Router のフロントエンドコードは `web` ディレクトリにあり、React と [semi design コンポーネントライブラリ](https://semi.design/zh-CN) を使用して開発されています。
 
 ### Bun のインストール（推奨）
 
@@ -155,7 +155,7 @@ bun run build   # bun を使用してフロントエンドリソースをビル�
 
 ## プロジェクト構造
 
-New API プロジェクトのディレクトリ構造：
+Spark Router プロジェクトのディレクトリ構造：
 
 ```
 new-api/                                 # プロジェクトルートディレクトリ

@@ -1,4 +1,4 @@
----
+﻿---
 title: LangBot - Instant Messaging Bot Development Platform
 ---
 
@@ -7,7 +7,7 @@ title: LangBot - Instant Messaging Bot Development Platform
   supports various instant messaging platforms such as Feishu, DingTalk, WeChat,
   QQ, Telegram, Discord, Slack, etc. It integrates with mainstream global AI
   models, supports various AI application capabilities like Knowledge Base,
-  Agent, MCP, and is perfectly compatible with NewAPI.
+  Agent, MCP, and is perfectly compatible with Spark Router.
 </Callout>
 
     - Official Website: `<https://langbot.app/>`
@@ -15,19 +15,19 @@ title: LangBot - Instant Messaging Bot Development Platform
     - Official Documentation: `<https://docs.langbot.app/>`
     - Open Source Address: `<https://github.com/langbot-app/LangBot>`
 
-## Integrating NewAPI
+## Integrating Spark Router
 
-LangBot supports integrating with locally deployed NewAPI and third-party NewAPI services built using NewAPI.
+LangBot supports integrating with locally deployed Spark Router and third-party Spark Router services built using Spark Router.
 
 ### Usage
 
-1.  Obtain an API key from NewAPI
+1.  Obtain an API key from Spark Router
     ![获取 API key](/assets/langbot/get_api_key.png)
 
-        If NewAPI is deployed locally, please configure the API address yourself (refer to [Container Network Connection](https://docs.langbot.app/en/workshop/network-details.html)). If using a third-party NewAPI service, you can copy the address from the page. Note that `/v1` needs to be appended to the address.
+        If Spark Router is deployed locally, please configure the API address yourself (refer to [Container Network Connection](https://docs.langbot.app/en/workshop/network-details.html)). If using a third-party Spark Router service, you can copy the address from the page. Note that `/v1` needs to be appended to the address.
 
-2.  Add a model in LangBot, select NewAPI as the provider, and fill in the corresponding API key and API address
-    ![添加 NewAPI 模型](/assets/langbot/add_newapi_model.png)
+2.  Add a model in LangBot, select Spark Router as the provider, and fill in the corresponding API key and API address
+    ![添加 Spark Router 模型](/assets/langbot/add_Spark Router_model.png)
 
 3.  Select the model to use in the pipeline
 
@@ -43,9 +43,9 @@ LangBot supports integrating with locally deployed NewAPI and third-party NewAPI
 
 ### Using LangBot Knowledge Base
 
-LangBot supports using NewAPI's embedding models and utilizing them as vector models for the knowledge base.
+LangBot supports using Spark Router's embedding models and utilizing them as vector models for the knowledge base.
 
-1. Add an embedding model in LangBot, select NewAPI as the provider
+1. Add an embedding model in LangBot, select Spark Router as the provider
    ![添加嵌入模型](/assets/langbot/add_embedding_model.png)
 
 2. Select the embedding model when creating a new knowledge base

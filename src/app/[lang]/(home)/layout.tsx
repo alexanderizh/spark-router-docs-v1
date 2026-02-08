@@ -12,8 +12,6 @@ import Image from 'next/image';
 import Preview from '@/../public/assets/dashboard-dark.png';
 import {
   Rocket,
-  Download,
-  HelpCircle,
   Sparkles,
   FileCode,
   BookOpen,
@@ -21,11 +19,9 @@ import {
 } from 'lucide-react';
 import { getLocalePath } from '@/lib/i18n';
 
-// Navigation items configuration
+// Navigation items configuration (guide/install/support/business hidden)
 const NAV_ITEMS = [
   { key: 'start', icon: Rocket, path: '' },
-  { key: 'install', icon: Download, path: '/installation' },
-  { key: 'support', icon: HelpCircle, path: '/support' },
   { key: 'api', icon: BookOpen, path: '/api' },
   { key: 'apps', icon: Sparkles, path: '/apps' },
 ] as const;
@@ -40,7 +36,7 @@ const i18nText: Record<
     apiDocs: { text: 'Apifox Playground', desc: '' },
     start: {
       text: 'Getting Started',
-      desc: 'Learn how to deploy and configure New API.',
+      desc: 'Learn how to deploy and configure Spark Router.',
     },
     install: {
       text: 'Installation',
@@ -59,7 +55,7 @@ const i18nText: Record<
   zh: {
     title: { text: '文档', desc: '' },
     apiDocs: { text: 'Apifox 操练场', desc: '' },
-    start: { text: '快速开始', desc: '学习如何部署和配置 New API。' },
+    start: { text: '快速开始', desc: '学习如何部署和配置 Spark Router。' },
     install: { text: '部署安装', desc: '多种部署方式和安装指南。' },
     support: { text: '帮助支持', desc: '常见问题和社区支持。' },
     api: { text: 'API 参考', desc: '完整的 API 文档和参考指南。' },
@@ -68,7 +64,7 @@ const i18nText: Record<
   ja: {
     title: { text: 'ドキュメント', desc: '' },
     apiDocs: { text: 'Apifox プレイグラウンド', desc: '' },
-    start: { text: 'はじめに', desc: 'New API のデプロイと設定方法を学ぶ。' },
+    start: { text: 'はじめに', desc: 'Spark Router のデプロイと設定方法を学ぶ。' },
     install: {
       text: 'インストール',
       desc: '様々なデプロイ方法とインストールガイド。',
@@ -189,15 +185,6 @@ export default async function Layout({
                   {/* Second column */}
                   <MenuLinkItem item={navItems[1]} className="lg:col-start-2" />
                   <MenuLinkItem item={navItems[2]} className="lg:col-start-2" />
-                  {/* Third column */}
-                  <MenuLinkItem
-                    item={navItems[3]}
-                    className="lg:col-start-3 lg:row-start-1"
-                  />
-                  <MenuLinkItem
-                    item={navItems[4]}
-                    className="lg:col-start-3 lg:row-start-2"
-                  />
                 </NavbarMenuContent>
               </NavbarMenu>
             ),

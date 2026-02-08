@@ -1,12 +1,9 @@
-import { i18n } from '@/lib/i18n';
 import { redirect } from 'next/navigation';
 
 /**
  * Fallback redirect for `/`.
- *
- * Locale detection is handled by `middleware.ts` (Accept-Language + cookies).
- * Keeping this page server-only avoids shipping extra client JS.
+ * 初次进入时跳转到中文 API 接口文档页面。
  */
 export default function RootPage() {
-  redirect(`/${i18n.defaultLanguage}`);
+  redirect('/zh/docs/api');
 }

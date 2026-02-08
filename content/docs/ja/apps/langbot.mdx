@@ -1,4 +1,4 @@
----
+﻿---
 title: LangBot - インスタントメッセージングボット開発プラットフォーム
 ---
 
@@ -6,7 +6,7 @@ title: LangBot - インスタントメッセージングボット開発プラッ
   LangBot
   はオープンソースのインスタントメッセージングボット開発プラットフォームで、飛書、釘釘、微信、QQ、Telegram、Discord、Slack
   など、様々なインスタントメッセージングプラットフォームをサポートしています。世界の主要なAIモデルに接続し、ナレッジベース、エージェント、MCPなどの多様なAI
-  アプリケーション機能をサポートし、NewAPIに完全に適合しています。
+  アプリケーション機能をサポートし、Spark Routerに完全に適合しています。
 </Callout>
 
     - 公式サイト：`<https://langbot.app/>`
@@ -14,19 +14,19 @@ title: LangBot - インスタントメッセージングボット開発プラッ
     - 公式ドキュメント：`<https://docs.langbot.app/>`
     - オープンソースリポジトリ：`<https://github.com/langbot-app/LangBot>`
 
-## NewAPIとの連携
+## Spark Routerとの連携
 
-LangBot は、ローカルにデプロイされたNewAPIと、NewAPIを使用して構築されたサードパーティのNewAPIサービスへの連携をサポートしています。
+LangBot は、ローカルにデプロイされたSpark Routerと、Spark Routerを使用して構築されたサードパーティのSpark Routerサービスへの連携をサポートしています。
 
 ### 使用方法
 
-1.  NewAPIからAPIキーを取得します
+1.  Spark RouterからAPIキーを取得します
     ![获取 API key](/assets/langbot/get_api_key.png)
 
-        ローカルにデプロイされたNewAPIの場合は、ご自身でAPIアドレスを設定してください（[コンテナネットワーク接続](https://docs.langbot.app/ja/workshop/network-details.html)を参照）。サードパーティのNewAPIサービスを使用する場合は、ページからアドレスをコピーできます。注意：アドレスの後に`/v1`を追加する必要があります。
+        ローカルにデプロイされたSpark Routerの場合は、ご自身でAPIアドレスを設定してください（[コンテナネットワーク接続](https://docs.langbot.app/ja/workshop/network-details.html)を参照）。サードパーティのSpark Routerサービスを使用する場合は、ページからアドレスをコピーできます。注意：アドレスの後に`/v1`を追加する必要があります。
 
-2.  LangBotでモデルを追加し、NewAPIプロバイダーを選択し、対応するAPIキーとAPIアドレスを入力します
-    ![添加 NewAPI 模型](/assets/langbot/add_newapi_model.png)
+2.  LangBotでモデルを追加し、Spark Routerプロバイダーを選択し、対応するAPIキーとAPIアドレスを入力します
+    ![添加 Spark Router 模型](/assets/langbot/add_Spark Router_model.png)
 
 3.  パイプラインでモデルを選択します
 
@@ -42,9 +42,9 @@ LangBot は、ローカルにデプロイされたNewAPIと、NewAPIを使用し
 
 ### LangBotナレッジベースの使用
 
-LangBot はNewAPIの埋め込みモデルの使用をサポートしており、これをナレッジベースのベクトルモデルとして利用できます。
+LangBot はSpark Routerの埋め込みモデルの使用をサポートしており、これをナレッジベースのベクトルモデルとして利用できます。
 
-1. LangBotで埋め込みモデルを追加し、NewAPIプロバイダーを選択します
+1. LangBotで埋め込みモデルを追加し、Spark Routerプロバイダーを選択します
    ![添加嵌入模型](/assets/langbot/add_embedding_model.png)
 
 2. 新しいナレッジベースを作成する際に埋め込みモデルを選択します

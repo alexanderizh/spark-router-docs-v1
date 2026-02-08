@@ -1,4 +1,1 @@
-{
-  "title": "Documentation",
-  "pages": ["guide", "installation", "api", "apps", "support", "business"]
-}
+{"title":"Documentation","pages":["api","apps"]}
