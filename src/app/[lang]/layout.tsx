@@ -3,7 +3,7 @@ import { i18n } from '@/lib/i18n';
 import { Provider } from '@/components/provider';
 import '../global.css';
 import type { Metadata } from 'next';
-import { createMetadata, baseUrl } from '@/lib/metadata';
+import { createMetadata, baseUrl, basePath } from '@/lib/metadata';
 import { notFound } from 'next/navigation';
 
 const { provider } = defineI18nUI(i18n, {
@@ -95,9 +95,9 @@ export async function generateMetadata({
     creator: 'Spark Router Team',
     alternates: {
       languages: {
-        en: '/en',
-        zh: '/zh',
-        ja: '/ja',
+        en: `${basePath}/en`,
+        zh: `${basePath}/zh`,
+        ja: `${basePath}/ja`,
       },
     },
     openGraph: {

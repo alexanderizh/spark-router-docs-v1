@@ -1,8 +1,8 @@
 import type { MetadataRoute } from 'next';
-import { baseUrl } from '@/lib/metadata';
+import { baseUrl, basePath } from '@/lib/metadata';
 
 export default function robots(): MetadataRoute.Robots {
-  const sitemapUrl = `${baseUrl.origin}/sitemap.xml`;
+  const sitemapUrl = `${baseUrl.origin}${basePath}/sitemap.xml`;
 
   return {
     rules: [

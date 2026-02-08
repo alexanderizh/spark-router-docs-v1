@@ -1,7 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { source } from '@/lib/source';
 import { i18n } from '@/lib/i18n';
-import { baseUrl } from '@/lib/metadata';
+import { baseUrl, basePath } from '@/lib/metadata';
 import { getLocalePath } from '@/lib/i18n';
 
 /**
@@ -33,13 +33,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ): Record<string, string> {
     const alternates: Record<string, string> = {};
     for (const lang of langs) {
-      alternates[lang] = `${url}${getLocalePath(lang, path)}`;
+      alternates[lang] = `${url}${basePath}${getLocalePath(lang, path)}`;
     }
     const defaultLang = langs.includes(i18n.defaultLanguage)
       ? i18n.defaultLanguage
       : langs[0];
     if (defaultLang) {
-      alternates['x-default'] = `${url}${getLocalePath(defaultLang, path)}`;
+      alternates['x-default'] = `${url}${basePath}${getLocalePath(defaultLang, path)}`;
     }
     return alternates;
   }
@@ -50,7 +50,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // Add homepage for each language with alternates
   for (const lang of i18n.languages) {
     entries.push({
-      url: `${url}${getLocalePath(lang)}`,
+      url: `${url}${basePath}${getLocalePath(lang)}`,
       changeFrequency: 'daily',
       priority: 1.0,
       alternates: {
@@ -121,7 +121,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
         : 'weekly';
 
       entries.push({
-        url: `${url}${getLocalePath(lang, docsPath)}`,
+        url: `${url}${basePath}${getLocalePath(lang, docsPath)}`,
         ...(lastModified ? { lastModified } : {}),
         changeFrequency,
         priority,

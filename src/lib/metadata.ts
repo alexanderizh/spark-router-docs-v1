@@ -1,5 +1,9 @@
 import type { Metadata } from 'next';
 
+/** 二级目录部署时的路径前缀，需与 next.config basePath 保持一致 */
+export const basePath =
+  (process.env.NEXT_PUBLIC_BASE_PATH as string | undefined) || '/doc';
+
 export function createMetadata(override: Metadata): Metadata {
   return {
     ...override,
@@ -27,8 +31,13 @@ export function createMetadata(override: Metadata): Metadata {
   };
 }
 
-export const baseUrl =
+const origin =
   process.env.NODE_ENV === 'development' ||
   !process.env.VERCEL_PROJECT_PRODUCTION_URL
-    ? new URL('http://localhost:3000')
-    : new URL(`https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`);
+    ? 'http://localhost:3000'
+    : `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`;
+
+export const baseUrl = new URL(
+  basePath.endsWith('/') ? basePath : `${basePath}/`,
+  origin
+);
