@@ -1,9 +1,8 @@
 /**
  * Prebuild Script
- * Generates changelog and special-thanks before build
+ * Generates special-thanks before build
  */
 
-import { generateChangelog } from './build-changelog';
 import { generateSpecialThanks } from './build-special-thanks';
 
 async function prebuild() {
@@ -14,8 +13,7 @@ async function prebuild() {
   const startTime = Date.now();
 
   try {
-    // Generate changelog and special-thanks in parallel
-    await Promise.all([generateChangelog(), generateSpecialThanks()]);
+    await generateSpecialThanks();
 
     const duration = ((Date.now() - startTime) / 1000).toFixed(2);
 

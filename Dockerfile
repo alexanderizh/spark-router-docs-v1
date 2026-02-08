@@ -14,12 +14,19 @@ ENV NEXT_TELEMETRY_DISABLED=1
 FROM oven/bun:1-alpine AS deps
 WORKDIR /app
 COPY package.json bun.lock* ./
+# fumadocs-mdx postinstall 需要这些文件来生成 .source 目录
+COPY source.config.ts ./
+COPY tsconfig.json ./
+COPY content ./content
 RUN bun install --frozen-lockfile
 
 # 阶段 2：构建应用
 FROM oven/bun:1-alpine AS builder
+ARG GITHUB_TOKEN
+ENV GITHUB_TOKEN=${GITHUB_TOKEN}
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
+COPY --from=deps /app/.source ./.source
 COPY . .
 RUN bun run build
 
