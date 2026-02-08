@@ -20,6 +20,7 @@ function sanitizeRemotePatterns(patterns) {
 
 /** @type {import('next').NextConfig} */
 const config = {
+  output: 'standalone',
   basePath: process.env.NEXT_PUBLIC_BASE_PATH || '/doc',
   reactStrictMode: true,
   poweredByHeader: false,

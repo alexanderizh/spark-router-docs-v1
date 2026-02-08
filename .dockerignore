@@ -1,0 +1,37 @@
+# deps
+node_modules
+.pnp
+.pnp.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# build & cache
+.next
+out
+build
+*.tsbuildinfo
+
+# git & ide
+.git
+.gitignore
+.cursor
+.idea
+.vscode
+*.md
+!README.md
+
+# env & local
+.env
+.env*.local
+.vercel
+
+# test & misc
+coverage
+.DS_Store
+*.pem
+
+# docker
+Dockerfile*
+.dockerignore
+.github

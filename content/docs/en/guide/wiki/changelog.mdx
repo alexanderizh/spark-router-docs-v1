@@ -1,16 +1,780 @@
-﻿---
+---
 title: Changelog
 ---
 
 import { Callout } from 'fumadocs-ui/components/callout';
 
-<Callout type="warn" title="Version Log Information · Data updated at 2026-1-13 17:45:46">
+<Callout type="warn" title="Version Log Information · Data updated at 2026-2-8 21:50:26">
 To view all historical versions, please visit the [GitHub Releases page](https://github.com/QuantumNous/new-api/releases). This page automatically fetches the latest update information from that page.
 </Callout>
 
+## v0.10.9-alpha.2
+
+<Callout type="info" title="Latest Release · Published at 2026-02-08 19:56:59 (UTC+8)">
+
+### What's Changed
+* fix: 如果模型管理有自定义配置则不合并默认配置 by @seefs001 in https://github.com/QuantumNous/new-api/pull/2895
+* fix: 修复模型管理"参与官方同步"与"状态"开关无法保存的问题 by @wans10 in https://github.com/QuantumNous/new-api/pull/2815
+
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.9-alpha.1...v0.10.9-alpha.2
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.9-alpha.2.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.9-alpha.2.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.9-alpha.1
+
+<Callout type="note" title="Release · Published at 2026-02-08 00:54:42 (UTC+8)">
+
+- Support for custom OAuth providers
+- 支持自定义Oauth提供商
+- 渠道测试支持流测试
+- 支持配置缓存创建倍率
+
+<img width="3166" height="624" alt="QQ_1770483202888" src="https://github.com/user-attachments/assets/4a32e9d1-2d10-4bc3-940c-861d7ae60770" />
+
+
+### What's Changed
+* feat: Force beta=true parameter for Anthropic channel by @MUTED64 in https://github.com/QuantumNous/new-api/pull/2874
+* feat(oauth): implement custom OAuth provider by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2857
+* fix: Claude stream block index/type transitions by @seefs001 in https://github.com/QuantumNous/new-api/pull/2854
+* fix: add paragraph breaks between reasoning summary chunks by @seefs001 in https://github.com/QuantumNous/new-api/pull/2864
+* feat: channel test with stream=true by @seefs001 in https://github.com/QuantumNous/new-api/pull/2875
+* fix: 使用openai兼容接口调用部分渠道在最终端点为claude原生端点下还是走了openai扣减input_token的逻辑 by @seefs001 in https://github.com/QuantumNous/new-api/pull/2883
+* fix: 补全 streaming message_delta 事件缺失的 input_tokens 和 cache 相关字段 by @seefs001 in https://github.com/QuantumNous/new-api/pull/2887
+* fix: 补全 streaming message_delta 事件缺失的 input_tokens 和 cache 相关字段 (#2881) by @naaive in https://github.com/QuantumNous/new-api/pull/2885
+* feat: /v1/messages -> /v1/responses by @seefs001 in https://github.com/QuantumNous/new-api/pull/2889
+* feat: make 5m cache-creation ratio configurable by @seefs001 in https://github.com/QuantumNous/new-api/pull/2870
+
+### New Contributors
+* @MUTED64 made their first contribution in https://github.com/QuantumNous/new-api/pull/2874
+* @naaive made their first contribution in https://github.com/QuantumNous/new-api/pull/2885
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.8...v0.10.9-alpha.1
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.9-alpha.1.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.9-alpha.1.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.8
+
+<Callout type="note" title="Release · Published at 2026-02-08 00:08:19 (UTC+8)">
+
+- **Paid Subscription Support (Beta):** Added support for a paid subscription model.
+- **System Performance Monitoring:** Introduced system performance monitoring. When enabled, the system will reject new Relay requests (e.g., `/v1`, `/v1beta`) if resource usage exceeds configured thresholds, ensuring system stability.
+- **Cache Optimization:** Further optimized caching functionality to reduce memory usage during large request bodies.
+- **Bug Fix:** Fixed an issue where `Chat2Responses` could not retrieve the chain of thought.
+- **Header Pass-through Support:** Added support for full request header pass-through based on Go Regex rules. Please refer to the PR description for usage details: https://github.com/QuantumNous/new-api/pull/2840
+- **Multi-language Backend Support:** Added backend support for multiple languages, respecting user-level language preferences and the `Accept-Language` request header.
+- **Task Logs Update:** Task logs now display the username.
+- **Gemini Billing Update:** Implemented billing for empty completions caused by Gemini content safety filters.
+- **Codex Channel Support:** Improved support for Codex channels.
+- **Model Removal:** Removed support for `claude-2` and `claude-1` series models.
+
+
+- 支持订阅付费模式（测试版）
+- 新增系统性能监控，启用性能监控后，当系统资源使用率超过设定阈值时，将拒绝新的 Relay 请求 (/v1, /v1beta 等)，以保护系统稳定性。
+- 进一步优化缓存功能，减少大请求体下内存占用
+- 修复Chat2Responses无法获取思维链的问题
+- 支持基于Go Regex规则和全量的请求头透传，使用方式请参考PR描述 https://github.com/QuantumNous/new-api/pull/2840
+- 支持后端多语言，支持用户级别语言偏好和Accept-Language请求头偏好
+- 任务日志显示用户名
+- 对Gemini因审核导致的空补全进行扣费处理
+- 完善Codex渠道支持
+- 移除对claude-2和claude-1系列模型支持
+
+<img width="975" height="891" alt="image" src="https://github.com/user-attachments/assets/60e69be9-7143-49a9-af43-1f7bb19eaee3" />
+<img width="4186" height="760" alt="image" src="https://github.com/user-attachments/assets/4b84bf15-21c3-4143-b293-3f2181644145" />
+
+
+### What's Changed
+* feat: add regex pattern to mask API keys in sensitive information by @xiangsx in https://github.com/QuantumNous/new-api/pull/2587
+* fix(task): 修复使用 auto 分组时 Task Relay 不记录日志和不扣费的问题 by @147API in https://github.com/QuantumNous/new-api/pull/2588
+* fix: 设置默认max req body 为128MB by @xyfacai in https://github.com/QuantumNous/new-api/pull/2590
+* fix: remove Minimax from FETCHABLE channels by @RedwindA in https://github.com/QuantumNous/new-api/pull/2619
+* fix(gemini): fetch model list via native v1beta/models endpoint by @RedwindA in https://github.com/QuantumNous/new-api/pull/2615
+* feat: /v1/chat/completion -> /v1/response by @seefs001 in https://github.com/QuantumNous/new-api/pull/2629
+* fix: support snake_case fields in GeminiChatGenerationConfig by @deanxv in https://github.com/QuantumNous/new-api/pull/2646
+* feat: status code auto-disable configuration by @seefs001 in https://github.com/QuantumNous/new-api/pull/2647
+* fix: chat2response setting ui by @seefs001 in https://github.com/QuantumNous/new-api/pull/2643
+* fix: clean propertyNames for gemini function by @seefs001 in https://github.com/QuantumNous/new-api/pull/2642
+* feat: channel testing supports parameter overriding by @seefs001 in https://github.com/QuantumNous/new-api/pull/2627
+* 新增: 豆包视频1.5pro by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2632
+* feat: codex channel by @seefs001 in https://github.com/QuantumNous/new-api/pull/2652
+* fix: log info input_token (chat -> claude model ) by @seefs001 in https://github.com/QuantumNous/new-api/pull/2670
+* fix: update warning threshold label from '5$' to '2$' by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2690
+* fix: fix email send when special character(./+) included in email string by @Bliod-Cook in https://github.com/QuantumNous/new-api/pull/2696
+* fix: video content api Priority use url field by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2691
+* fix: jimeng i2v support multi image by metadata by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2688
+* Revert "fix: video content api Priority use url field" by @seefs001 in https://github.com/QuantumNous/new-api/pull/2710
+* fix: openAI function to gemini function field adjusted to whitelist mode by @seefs001 in https://github.com/QuantumNous/new-api/pull/2667
+* feat: TLS_INSECURE_SKIP_VERIFY env by @seefs001 in https://github.com/QuantumNous/new-api/pull/2668
+* fix: the login method cannot be displayed under the aff link. by @seefs001 in https://github.com/QuantumNous/new-api/pull/2676
+* fix: codex Unsupported parameter: max_output_tokens by @seefs001 in https://github.com/QuantumNous/new-api/pull/2684
+* feat: customizable automatic retry status codes by @seefs001 in https://github.com/QuantumNous/new-api/pull/2663
+* fix: calls to multiple tools in gemini all return index=0 by @seefs001 in https://github.com/QuantumNous/new-api/pull/2701
+* fix: replace Alibaba's Claude-compatible url with new url by @seefs001 in https://github.com/QuantumNous/new-api/pull/2702
+* feat: log shows request conversion by @seefs001 in https://github.com/QuantumNous/new-api/pull/2703
+* feat(qwen): support qwen image sync image model config by @xyfacai in https://github.com/QuantumNous/new-api/pull/2717
+* feat: requestId time string use UTC by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2713
+* fix request pass-through aws channels can't test by @daggeryu in https://github.com/QuantumNous/new-api/pull/2693
+* feat: enhance Authorization header handling with Header Override support by @Li-Xingyu in https://github.com/QuantumNous/new-api/pull/2738
+* feat(gemini): 支持 tool_choice 参数转换，优化多个渠道错误处理 by @seefs001 in https://github.com/QuantumNous/new-api/pull/2742
+* 支持 tool_choice 参数转换，优化错误处理 by @laozuzhen in https://github.com/QuantumNous/new-api/pull/2540
+* 修复钱包页面刷新时显示错误余额数据的问题 by @wans10 in https://github.com/QuantumNous/new-api/pull/2749
+* feat: 可视化模型重定向设置中，允许用户从拉取的模型列表里直接选择模型 by @Bliod-Cook in https://github.com/QuantumNous/new-api/pull/2610
+* feat: header passthrough by @seefs001 in https://github.com/QuantumNous/new-api/pull/2735
+* fix: test using the correct path for rerank by @seefs001 in https://github.com/QuantumNous/new-api/pull/2736
+* feat: channel affinity by @seefs001 in https://github.com/QuantumNous/new-api/pull/2669
+* feat: openai response /v1/response/compact by @seefs001 in https://github.com/QuantumNous/new-api/pull/2644
+* feat: grok Usage Guidelines Violation Fee  by @seefs001 in https://github.com/QuantumNous/new-api/pull/2753
+* feat(gemini): map OpenAI stop to Gemini stopSequences by @RedwindA in https://github.com/QuantumNous/new-api/pull/2779
+* fix: remove disable_parallel_tool_use if tool_choice=none by @seefs001 in https://github.com/QuantumNous/new-api/pull/2765
+* fix: /v1/responses/compact default billing by @seefs001 in https://github.com/QuantumNous/new-api/pull/2766
+* feat: disk request body cache by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2780
+* feat: Support customizing the success and cancel url of Stripe. by @mehunk in https://github.com/QuantumNous/new-api/pull/2745
+* feat: doubao add first and last image to video by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2756
+* feat: task pre consume modelPrice default use setting value by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2733
+* feat: CodeViewer click link and auto wrap by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2783
+* feat(gemini): support cached token billing by @RedwindA in https://github.com/QuantumNous/new-api/pull/2798
+* fix(ui): use distinct color palette for group tags by @KiGamji in https://github.com/QuantumNous/new-api/pull/2759
+* fix: channel affinity by @seefs001 in https://github.com/QuantumNous/new-api/pull/2799
+* fix: make channel Host override take effect by @lanfunoe in https://github.com/QuantumNous/new-api/pull/2805
+* fix: claude panic by @seefs001 in https://github.com/QuantumNous/new-api/pull/2804
+* feat: /v1/responses qwen3 max && perplexity by @seefs001 in https://github.com/QuantumNous/new-api/pull/2803
+* feat: auto-adapt video modal by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2764
+* fix: openrouter claude cache usage by @seefs001 in https://github.com/QuantumNous/new-api/pull/2811
+* feat：default enable channel affinity by @seefs001 in https://github.com/QuantumNous/new-api/pull/2809
+* fix: vertex maas api addr by @seefs001 in https://github.com/QuantumNous/new-api/pull/2810
+* ✨ feat: add subscription billing system by @t0ng7u in https://github.com/QuantumNous/new-api/pull/2808
+* fix: 移除不必要的 unescapeMapOrSlice 调用，修复 Windows 路径转义问题 by @thirking in https://github.com/QuantumNous/new-api/pull/2814
+* feat: add useTimeSeconds in error log by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2819
+* feat: log search field request_id && conversion_path display by @seefs001 in https://github.com/QuantumNous/new-api/pull/2825
+* Revert "fix(ui): use distinct color palette for group tags" by @seefs001 in https://github.com/QuantumNous/new-api/pull/2832
+* feat(performance): implement system performance monitoring by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2835
+* feat: task log show username by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2635
+* ✨ fix: Improve subscription payment handling and card layout consistency by @t0ng7u in https://github.com/QuantumNous/new-api/pull/2838
+* 🐛 fix: sidebar scroll on mobile dynamic viewport by @t0ng7u in https://github.com/QuantumNous/new-api/pull/2839
+* fix: map Responses reasoning stream to chat completion deltas by @seefs001 in https://github.com/QuantumNous/new-api/pull/2837
+* feat: 支持基于Go Regex规则和全量的请求体透传 by @seefs001 in https://github.com/QuantumNous/new-api/pull/2840
+* feat: backend i18n by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2842
+* fix: optimize Codex relay by @dahetaoa in https://github.com/QuantumNous/new-api/pull/2826
+* fix: charge local input tokens when Gemini returns empty response by @seefs001 in https://github.com/QuantumNous/new-api/pull/2848
+* remove: drop support for claude-2 and claude-1 series models by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2853
+* feat: add claude-opus-4-6 by @prnake in https://github.com/QuantumNous/new-api/pull/2863
+* fix: /v1/chat/completions -> /v1/responses json_schema by @seefs001 in https://github.com/QuantumNous/new-api/pull/2876
+* ✨ refactor(wallet): Top-up layout to embed subscription plans into the recharge card tabs by @t0ng7u in https://github.com/QuantumNous/new-api/pull/2878
+* refactor: 抽象统一计费会话 BillingSession by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2877
+* 🔔 feat: Add subscription-aware quota notifications and update UI copy by @t0ng7u in https://github.com/QuantumNous/new-api/pull/2880
+* ✨ chore: Improve subscription billing fallback and UI states by @t0ng7u in https://github.com/QuantumNous/new-api/pull/2879
+* feat: add Codex channel disclaimer (i18n, OpenAI terms) by @seefs001 in https://github.com/QuantumNous/new-api/pull/2852
+
+### New Contributors
+* @xiangsx made their first contribution in https://github.com/QuantumNous/new-api/pull/2587
+* @147API made their first contribution in https://github.com/QuantumNous/new-api/pull/2588
+* @deanxv made their first contribution in https://github.com/QuantumNous/new-api/pull/2646
+* @Li-Xingyu made their first contribution in https://github.com/QuantumNous/new-api/pull/2738
+* @laozuzhen made their first contribution in https://github.com/QuantumNous/new-api/pull/2540
+* @mehunk made their first contribution in https://github.com/QuantumNous/new-api/pull/2745
+* @KiGamji made their first contribution in https://github.com/QuantumNous/new-api/pull/2759
+* @lanfunoe made their first contribution in https://github.com/QuantumNous/new-api/pull/2805
+* @thirking made their first contribution in https://github.com/QuantumNous/new-api/pull/2814
+* @dahetaoa made their first contribution in https://github.com/QuantumNous/new-api/pull/2826
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.5...v0.10.8
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.8/New-API-App.0.10.8.exe">New-API-App.0.10.8.exe</a> (96.4 MB)</li>
+<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.8/New-API-App.Setup.0.10.8.exe">New-API-App.Setup.0.10.8.exe</a> (96.6 MB)</li>
+<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.8/new-api-arm64-v0.10.8">new-api-arm64-v0.10.8</a> (61.8 MB)</li>
+<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.8/new-api-macos-v0.10.8">new-api-macos-v0.10.8</a> (79.7 MB)</li>
+<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.8/new-api-v0.10.8">new-api-v0.10.8</a> (64.1 MB)</li>
+<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.8/new-api-v0.10.8.exe">new-api-v0.10.8.exe</a> (65.7 MB)</li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.8-alpha.9
+
+<Callout type="note" title="Release · Published at 2026-02-06 16:18:41 (UTC+8)">
+
+### What's Changed
+* feat: add claude-opus-4-6 by @prnake in https://github.com/QuantumNous/new-api/pull/2863
+
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.8-alpha.8...v0.10.8-alpha.9
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.9.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.9.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.8-alpha.12
+
+<Callout type="note" title="Release · Published at 2026-02-07 00:31:48 (UTC+8)">
+
+* Defaulting to subscriptions when available and avoiding initial flash when no plans exist.
+* Adjust the wide-screen layout to place wallet and invite sections side by side, simplify the subscription header and controls, and add padding to prevent card borders from clipping.
+* Update related i18n strings by adding the new tab label and removing the obsolete subscription blurb.
+
+<img width="975" height="891" alt="image" src="https://github.com/user-attachments/assets/e27e942a-1af8-4695-b575-6ddf930eed5a" />
+
+
+### What's Changed
+* fix: /v1/chat/completions -> /v1/responses json_schema by @seefs001 in https://github.com/QuantumNous/new-api/pull/2876
+* ✨ refactor(wallet): Top-up layout to embed subscription plans into the recharge card tabs by @t0ng7u in https://github.com/QuantumNous/new-api/pull/2878
+* refactor: 抽象统一计费会话 BillingSession by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2877
+
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.8-alpha.11...v0.10.8-alpha.12
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.12.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.12.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.8-alpha.11
+
+<Callout type="note" title="Release · Published at 2026-02-06 19:53:11 (UTC+8)">
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.8-alpha.10...v0.10.8-alpha.11
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.11.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.11.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.8-alpha.8
+
+<Callout type="note" title="Release · Published at 2026-02-05 22:24:12 (UTC+8)">
+
+对Gemini因审核导致的空补全进行扣费处理
+完善Codex渠道支持
+移除对claude-2和claude-1系列模型支持
+
+### What's Changed
+* fix: optimize Codex relay by @dahetaoa in https://github.com/QuantumNous/new-api/pull/2826
+* fix: charge local input tokens when Gemini returns empty response by @seefs001 in https://github.com/QuantumNous/new-api/pull/2848
+* remove: drop support for claude-2 and claude-1 series models by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2853
+
+### New Contributors
+* @dahetaoa made their first contribution in https://github.com/QuantumNous/new-api/pull/2826
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.8-alpha.7...v0.10.8-alpha.8
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.8.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.8.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.8-alpha.7
+
+<Callout type="note" title="Release · Published at 2026-02-05 02:00:07 (UTC+8)">
+
+Support backend multi-language, supporting user-level language preference and Accept-Language request header preference
+Fix subscription package payment issue
+Task log displays username
+Fixed the issue where Chat2Responses could not retrieve the Chain of Thought.
+Added support for full request body passthrough based on Go Regex rules. Please refer to PR description #2840 for usage.
+
+支持后端多语言，支持用户级别语言偏好和Accept-Language请求头偏好
+修复订阅套餐无法支付的问题
+任务日志显示用户名
+修复Chat2Responses无法获取思维链的问题
+支持基于Go Regex规则和全量的请求体透传，使用方式请参考PR描述 #2840
+
+
+### What's Changed
+* feat: task log show username by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2635
+* ✨ fix: Improve subscription payment handling and card layout consistency by @t0ng7u in https://github.com/QuantumNous/new-api/pull/2838
+* 🐛 fix: sidebar scroll on mobile dynamic viewport by @t0ng7u in https://github.com/QuantumNous/new-api/pull/2839
+* fix: map Responses reasoning stream to chat completion deltas by @seefs001 in https://github.com/QuantumNous/new-api/pull/2837
+* feat: 支持基于Go Regex规则和全量的请求体透传 by @seefs001 in https://github.com/QuantumNous/new-api/pull/2840
+* feat: backend i18n by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2842
+
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.8-alpha.6...v0.10.8-alpha.7
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.7.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.7.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.8-alpha.6
+
+<Callout type="note" title="Release · Published at 2026-02-04 21:36:36 (UTC+8)">
+
+Added system performance monitoring. When performance monitoring is enabled, new Relay requests (/v1, /v1beta, etc.) will be rejected if system resource utilization exceeds the set threshold, in order to protect system stability.  
+
+新增系统性能监控，启用性能监控后，当系统资源使用率超过设定阈值时，将拒绝新的 Relay 请求 (/v1, /v1beta 等)，以保护系统稳定性。
+
+<img width="4186" height="760" alt="QQ_1770212181583" src="https://github.com/user-attachments/assets/e903585c-47f8-4bfc-8315-89b2edc4c02d" />
+
+
+### What's Changed
+* Revert "fix(ui): use distinct color palette for group tags" by @seefs001 in https://github.com/QuantumNous/new-api/pull/2832
+* feat(performance): implement system performance monitoring by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2835
+
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.8-alpha.5...v0.10.8-alpha.6
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.6.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.6.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.8-alpha.5
+
+<Callout type="note" title="Release · Published at 2026-02-04 18:28:30 (UTC+8)">
+
+Log increase request_id search.  
+Further optimize cache functionality, reducing memory usage for large request bodies.  
+
+日志增加request_id搜索  
+进一步优化缓存功能，减少大请求体下内存占用
+
+### What's Changed
+* feat: add useTimeSeconds in error log by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2819
+* feat: log search field request_id && conversion_path display by @seefs001 in https://github.com/QuantumNous/new-api/pull/2825
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.8-alpha.4...v0.10.8-alpha.5
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.5.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.5.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.8-alpha.4
+
+<Callout type="note" title="Release · Published at 2026-02-04 01:44:01 (UTC+8)">
+
+Try to fix startup issues while using SQLite database
+尝试修复sqlite数据库下的启动问题
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.8-alpha.3...v0.10.8-alpha.4
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.4.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.4.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.8-alpha.3
+
+<Callout type="note" title="Release · Published at 2026-02-04 00:16:19 (UTC+8)">
+
+fix epay callback
+修复易支付回调出错问题
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.8-alpha.2...v0.10.8-alpha.3
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.3.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.3.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.8-alpha.2
+
+<Callout type="note" title="Release · Published at 2026-02-03 18:59:33 (UTC+8)">
+
+feat(subscription): validate price amount and migrate database column type
+修复pgsql下无法启动的问题
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.8-alpha.1...v0.10.8-alpha.2
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.2.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.2.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.8-alpha.1
+
+<Callout type="note" title="Release · Published at 2026-02-03 17:49:43 (UTC+8)">
+
+Add subscription billing system (beta)
+支持订阅付费模式（测试版）
+
+### What's Changed
+* ✨ feat: add subscription billing system by @t0ng7u in https://github.com/QuantumNous/new-api/pull/2808
+* fix: 移除不必要的 unescapeMapOrSlice 调用，修复 Windows 路径转义问题 by @thirking in https://github.com/QuantumNous/new-api/pull/2814
+
+### New Contributors
+* @thirking made their first contribution in https://github.com/QuantumNous/new-api/pull/2814
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.7...v0.10.8-alpha.1
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.1.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.8-alpha.1.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.7
+
+<Callout type="note" title="Release · Published at 2026-02-03 17:43:15 (UTC+8)">
+
+### Major Updates
+* Added disk request body caching to System Settings - 性能设置, which can significantly reduce memory usage for large request bodies (swapping memory to disk).
+* Supports configuring request header pass-through, see configuration
+```json
+{
+  "Authorization": "{client_header:Test_Header}"
+}
+```
+* Compatible with Grok's charging for non-compliant requests, with configuration support (System Settings - Model Related Settings - Grok Settings)
+* Supports codex context compression/v1/response/compact (requires adding a model, e.g., to use gpt-5.2, you need to configure gpt-5.2-openai-compact)
+* Supports channel preference, prioritizing a certain channel based on a field in the request (System Settings - Model Related Settings - Channel Affinity)
+* Displays detailed reasons for errors rejected due to policy violations in logs
+
+### 主要更新
+* 系统设置-性能设置 增加磁盘请求体缓存，可大幅减少大请求体下的内存占用（磁盘换内存）
+* 支持配置请求头透传，配置参考
+```json
+{
+  "Authorization": "{client_header:Test_Header}"
+}
+```
+* 兼容Grok对不合规的请求进行收费操作，支持配置 （系统设置 - 模型相关设置 - Grok设置）
+* 支持codex上下文压缩/v1/response/compact （需要添加模型，例如要使用gpt-5.2，就需要配置gpt-5.2-openai-compact） 
+* 支持渠道优选，根据请求某个字段优先选择某个渠道 (系统设置 - 模型相关设置 - 渠道亲和性)
+* 日志详情展示由于违反政策被拒绝的错误原因
+
+<img width="2922" height="1572" alt="image" src="https://github.com/user-attachments/assets/89bcc1c6-1ab4-4e25-a4c6-56315bfa4b80" />
+<img width="3062" height="1270" alt="image" src="https://github.com/user-attachments/assets/f7034c0f-5031-410d-8786-2b9d773cf676" />
+
+
+
+### What's Changed
+* feat: add regex pattern to mask API keys in sensitive information by @xiangsx in https://github.com/QuantumNous/new-api/pull/2587
+* fix(task): 修复使用 auto 分组时 Task Relay 不记录日志和不扣费的问题 by @147API in https://github.com/QuantumNous/new-api/pull/2588
+* fix: 设置默认max req body 为128MB by @xyfacai in https://github.com/QuantumNous/new-api/pull/2590
+* fix: remove Minimax from FETCHABLE channels by @RedwindA in https://github.com/QuantumNous/new-api/pull/2619
+* fix(gemini): fetch model list via native v1beta/models endpoint by @RedwindA in https://github.com/QuantumNous/new-api/pull/2615
+* feat: /v1/chat/completion -> /v1/response by @seefs001 in https://github.com/QuantumNous/new-api/pull/2629
+* fix: support snake_case fields in GeminiChatGenerationConfig by @deanxv in https://github.com/QuantumNous/new-api/pull/2646
+* feat: status code auto-disable configuration by @seefs001 in https://github.com/QuantumNous/new-api/pull/2647
+* fix: chat2response setting ui by @seefs001 in https://github.com/QuantumNous/new-api/pull/2643
+* fix: clean propertyNames for gemini function by @seefs001 in https://github.com/QuantumNous/new-api/pull/2642
+* feat: channel testing supports parameter overriding by @seefs001 in https://github.com/QuantumNous/new-api/pull/2627
+* 新增: 豆包视频1.5pro by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2632
+* feat: codex channel by @seefs001 in https://github.com/QuantumNous/new-api/pull/2652
+* fix: log info input_token (chat -> claude model ) by @seefs001 in https://github.com/QuantumNous/new-api/pull/2670
+* fix: update warning threshold label from '5$' to '2$' by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2690
+* fix: fix email send when special character(./+) included in email string by @Bliod-Cook in https://github.com/QuantumNous/new-api/pull/2696
+* fix: video content api Priority use url field by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2691
+* fix: jimeng i2v support multi image by metadata by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2688
+* Revert "fix: video content api Priority use url field" by @seefs001 in https://github.com/QuantumNous/new-api/pull/2710
+* fix: openAI function to gemini function field adjusted to whitelist mode by @seefs001 in https://github.com/QuantumNous/new-api/pull/2667
+* feat: TLS_INSECURE_SKIP_VERIFY env by @seefs001 in https://github.com/QuantumNous/new-api/pull/2668
+* fix: the login method cannot be displayed under the aff link. by @seefs001 in https://github.com/QuantumNous/new-api/pull/2676
+* fix: codex Unsupported parameter: max_output_tokens by @seefs001 in https://github.com/QuantumNous/new-api/pull/2684
+* feat: customizable automatic retry status codes by @seefs001 in https://github.com/QuantumNous/new-api/pull/2663
+* fix: calls to multiple tools in gemini all return index=0 by @seefs001 in https://github.com/QuantumNous/new-api/pull/2701
+* fix: replace Alibaba's Claude-compatible url with new url by @seefs001 in https://github.com/QuantumNous/new-api/pull/2702
+* feat: log shows request conversion by @seefs001 in https://github.com/QuantumNous/new-api/pull/2703
+* feat(qwen): support qwen image sync image model config by @xyfacai in https://github.com/QuantumNous/new-api/pull/2717
+* feat: requestId time string use UTC by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2713
+* fix request pass-through aws channels can't test by @daggeryu in https://github.com/QuantumNous/new-api/pull/2693
+* feat: enhance Authorization header handling with Header Override support by @Li-Xingyu in https://github.com/QuantumNous/new-api/pull/2738
+* feat(gemini): 支持 tool_choice 参数转换，优化多个渠道错误处理 by @seefs001 in https://github.com/QuantumNous/new-api/pull/2742
+* 支持 tool_choice 参数转换，优化错误处理 by @laozuzhen in https://github.com/QuantumNous/new-api/pull/2540
+* 修复钱包页面刷新时显示错误余额数据的问题 by @wans10 in https://github.com/QuantumNous/new-api/pull/2749
+* feat: 可视化模型重定向设置中，允许用户从拉取的模型列表里直接选择模型 by @Bliod-Cook in https://github.com/QuantumNous/new-api/pull/2610
+* feat: header passthrough by @seefs001 in https://github.com/QuantumNous/new-api/pull/2735
+* fix: test using the correct path for rerank by @seefs001 in https://github.com/QuantumNous/new-api/pull/2736
+* feat: channel affinity by @seefs001 in https://github.com/QuantumNous/new-api/pull/2669
+* feat: openai response /v1/response/compact by @seefs001 in https://github.com/QuantumNous/new-api/pull/2644
+* feat: grok Usage Guidelines Violation Fee  by @seefs001 in https://github.com/QuantumNous/new-api/pull/2753
+* feat(gemini): map OpenAI stop to Gemini stopSequences by @RedwindA in https://github.com/QuantumNous/new-api/pull/2779
+* fix: remove disable_parallel_tool_use if tool_choice=none by @seefs001 in https://github.com/QuantumNous/new-api/pull/2765
+* fix: /v1/responses/compact default billing by @seefs001 in https://github.com/QuantumNous/new-api/pull/2766
+* feat: disk request body cache by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2780
+* feat: Support customizing the success and cancel url of Stripe. by @mehunk in https://github.com/QuantumNous/new-api/pull/2745
+* feat: doubao add first and last image to video by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2756
+* feat: task pre consume modelPrice default use setting value by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2733
+* feat: CodeViewer click link and auto wrap by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2783
+* feat(gemini): support cached token billing by @RedwindA in https://github.com/QuantumNous/new-api/pull/2798
+* fix(ui): use distinct color palette for group tags by @KiGamji in https://github.com/QuantumNous/new-api/pull/2759
+* fix: channel affinity by @seefs001 in https://github.com/QuantumNous/new-api/pull/2799
+* fix: make channel Host override take effect by @lanfunoe in https://github.com/QuantumNous/new-api/pull/2805
+* fix: claude panic by @seefs001 in https://github.com/QuantumNous/new-api/pull/2804
+* feat: /v1/responses qwen3 max && perplexity by @seefs001 in https://github.com/QuantumNous/new-api/pull/2803
+* feat: auto-adapt video modal by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2764
+* fix: openrouter claude cache usage by @seefs001 in https://github.com/QuantumNous/new-api/pull/2811
+* feat：default enable channel affinity by @seefs001 in https://github.com/QuantumNous/new-api/pull/2809
+* fix: vertex maas api addr by @seefs001 in https://github.com/QuantumNous/new-api/pull/2810
+
+### New Contributors
+* @xiangsx made their first contribution in https://github.com/QuantumNous/new-api/pull/2587
+* @147API made their first contribution in https://github.com/QuantumNous/new-api/pull/2588
+* @deanxv made their first contribution in https://github.com/QuantumNous/new-api/pull/2646
+* @Li-Xingyu made their first contribution in https://github.com/QuantumNous/new-api/pull/2738
+* @laozuzhen made their first contribution in https://github.com/QuantumNous/new-api/pull/2540
+* @mehunk made their first contribution in https://github.com/QuantumNous/new-api/pull/2745
+* @KiGamji made their first contribution in https://github.com/QuantumNous/new-api/pull/2759
+* @lanfunoe made their first contribution in https://github.com/QuantumNous/new-api/pull/2805
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.5...v0.10.7
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.7/New-API-App.0.10.7.exe">New-API-App.0.10.7.exe</a> (96.2 MB)</li>
+<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.7/New-API-App.Setup.0.10.7.exe">New-API-App.Setup.0.10.7.exe</a> (96.4 MB)</li>
+<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.7/new-api-arm64-v0.10.7">new-api-arm64-v0.10.7</a> (60.4 MB)</li>
+<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.7/new-api-macos-v0.10.7">new-api-macos-v0.10.7</a> (77.6 MB)</li>
+<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.7/new-api-v0.10.7">new-api-v0.10.7</a> (62.5 MB)</li>
+<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.7/new-api-v0.10.7.exe">new-api-v0.10.7.exe</a> (64.1 MB)</li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.7.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.7.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.7-alpha.2
+
+<Callout type="note" title="Release · Published at 2026-01-30 01:06:09 (UTC+8)">
+
+### Major Updates
+* Added disk request body caching to `System Settings - 性能设置`, which can significantly reduce memory usage for large request bodies (swapping memory to disk).
+
+### 主要更新
+* `系统设置-性能设置` 增加磁盘请求体缓存，可大幅减少大请求体下的内存占用（磁盘换内存）
+<img width="2922" height="1572" alt="QQ_1769706152415" src="https://github.com/user-attachments/assets/e52a8847-ebf4-4624-9c30-eb13e640cc62" />
+
+### What's Changed
+* feat(gemini): map OpenAI stop to Gemini stopSequences by @RedwindA in https://github.com/QuantumNous/new-api/pull/2779
+* fix: remove disable_parallel_tool_use if tool_choice=none by @seefs001 in https://github.com/QuantumNous/new-api/pull/2765
+* fix: /v1/responses/compact default billing by @seefs001 in https://github.com/QuantumNous/new-api/pull/2766
+* feat: disk request body cache by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2780
+
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.7-alpha.1...v0.10.7-alpha.2
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.7-alpha.2.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.7-alpha.2.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.7-alpha.1
+
+<Callout type="note" title="Release · Published at 2026-01-26 20:21:20 (UTC+8)">
+
+### 主要变更
+* 支持配置请求头透传，配置参考
+```
+{
+  "Authorization": "{client_header:Test_Header}"
+}
+```
+
+* 兼容Grok对不合规的请求进行收费操作，支持配置 （系统设置 - 模型相关设置 - Grok设置）
+<img width="1432" height="764" alt="image" src="https://github.com/user-attachments/assets/03305578-92f9-42c5-b338-ab7fffa19353" />
+* 日志详情展示由于违反政策被拒绝的错误原因
+<img width="1702" height="586" alt="image" src="https://github.com/user-attachments/assets/8106b3d9-0f4f-472b-93b9-feaf1fd11260" />
+* 支持codex上下文压缩/v1/response/compact （需要添加模型，例如要使用gpt-5.2，就需要配置gpt-5.2-openai-compact）
+* 支持渠道优选，根据请求某个字段优先选择某个渠道 (系统设置 - 模型相关设置 - 渠道亲和性)
+<img width="3062" height="1270" alt="image" src="https://github.com/user-attachments/assets/91191aed-996d-4d33-8e5b-11e1677100ce" />
+
+
+### What's Changed
+* feat(qwen): support qwen image sync image model config by @xyfacai in https://github.com/QuantumNous/new-api/pull/2717
+* feat: requestId time string use UTC by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2713
+* fix request pass-through aws channels can't test by @daggeryu in https://github.com/QuantumNous/new-api/pull/2693
+* feat: enhance Authorization header handling with Header Override support by @Li-Xingyu in https://github.com/QuantumNous/new-api/pull/2738
+* feat(gemini): 支持 tool_choice 参数转换，优化多个渠道错误处理 by @seefs001 in https://github.com/QuantumNous/new-api/pull/2742
+* 支持 tool_choice 参数转换，优化错误处理 by @laozuzhen in https://github.com/QuantumNous/new-api/pull/2540
+* 修复钱包页面刷新时显示错误余额数据的问题 by @wans10 in https://github.com/QuantumNous/new-api/pull/2749
+* feat: 可视化模型重定向设置中，允许用户从拉取的模型列表里直接选择模型 by @Bliod-Cook in https://github.com/QuantumNous/new-api/pull/2610
+* feat: header passthrough by @seefs001 in https://github.com/QuantumNous/new-api/pull/2735
+* fix: test using the correct path for rerank by @seefs001 in https://github.com/QuantumNous/new-api/pull/2736
+* feat: channel affinity by @seefs001 in https://github.com/QuantumNous/new-api/pull/2669
+* feat: openai response /v1/response/compact by @seefs001 in https://github.com/QuantumNous/new-api/pull/2644
+* feat: grok Usage Guidelines Violation Fee  by @seefs001 in https://github.com/QuantumNous/new-api/pull/2753
+
+### New Contributors
+* @Li-Xingyu made their first contribution in https://github.com/QuantumNous/new-api/pull/2738
+* @laozuzhen made their first contribution in https://github.com/QuantumNous/new-api/pull/2540
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.6-alpha.4...v0.10.7-alpha.1
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.7-alpha.1.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.7-alpha.1.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.6-alpha.4
+
+<Callout type="note" title="Release · Published at 2026-01-21 23:48:51 (UTC+8)">
+
+### 主要变更
+* 日志展开详情增加格式转换路径
+* 支持配置TLS_INSECURE_SKIP_VERIFY跳过http client验证
+* 支持自定义重试状态码
+* 支持Qwen渠道Claude格式
+
+### What's Changed
+* fix: log info input_token (chat -> claude model ) by @seefs001 in https://github.com/QuantumNous/new-api/pull/2670
+* fix: update warning threshold label from '5$' to '2$' by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2690
+* fix: fix email send when special character(./+) included in email string by @Bliod-Cook in https://github.com/QuantumNous/new-api/pull/2696
+* fix: jimeng i2v support multi image by metadata by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2688
+* fix: openAI function to gemini function field adjusted to whitelist mode by @seefs001 in https://github.com/QuantumNous/new-api/pull/2667
+* feat: TLS_INSECURE_SKIP_VERIFY env by @seefs001 in https://github.com/QuantumNous/new-api/pull/2668
+* fix: the login method cannot be displayed under the aff link. by @seefs001 in https://github.com/QuantumNous/new-api/pull/2676
+* fix: codex Unsupported parameter: max_output_tokens by @seefs001 in https://github.com/QuantumNous/new-api/pull/2684
+* feat: customizable automatic retry status codes by @seefs001 in https://github.com/QuantumNous/new-api/pull/2663
+* fix: calls to multiple tools in gemini all return index=0 by @seefs001 in https://github.com/QuantumNous/new-api/pull/2701
+* fix: replace Alibaba's Claude-compatible url with new url by @seefs001 in https://github.com/QuantumNous/new-api/pull/2702
+* feat: log shows request conversion by @seefs001 in https://github.com/QuantumNous/new-api/pull/2703
+
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.6-alpha.3...v0.10.6-alpha.4
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.6-alpha.4.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.6-alpha.4.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
+## v0.10.6-alpha.3
+
+<Callout type="note" title="Release · Published at 2026-01-14 22:30:30 (UTC+8)">
+
+### 主要变更
+* 新增Codex渠道类型，通过OpenAI OAuth接入
+（仅供个人测试使用，请在遵守OpenAI服务条款和使用规范的前提下使用，多帐号需自行管理帐号优先级）
+<img width="300" alt="image" src="https://github.com/user-attachments/assets/1d505360-f2ed-492a-a33d-fe36abca6b76" />
+<img width="300" alt="image" src="https://github.com/user-attachments/assets/f341f7ed-b669-4994-9867-3702663eb10b" />
+<img width="600" alt="image" src="https://github.com/user-attachments/assets/e6beec07-b7f4-45ab-a3df-9463b228e422" />
+
+* 优化/v1/chat/completions -> /v1/responses 工具调用 （系统设置 - 模型相关设置）
+<img width="3016" height="884" alt="image" src="https://github.com/user-attachments/assets/d1db5520-1735-4641-97bd-93e98a75569f" />
+
+
+### What's Changed
+* 新增: 豆包视频1.5pro by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2632
+* feat: codex channel by @seefs001 in https://github.com/QuantumNous/new-api/pull/2652
+
+
+**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.6-alpha.2...v0.10.6-alpha.3
+
+**Download Resources**
+
+<ul>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.6-alpha.3.zip">Source code (zip)</a></li>
+<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.6-alpha.3.tar.gz">Source code (tar.gz)</a></li>
+</ul>
+
+</Callout>
+
+---
+
 ## v0.10.6-alpha.2
 
-<Callout type="info" title="Latest Release · Published at 2026-01-12 18:49:13 (UTC+8)">
+<Callout type="note" title="Release · Published at 2026-01-12 18:49:13 (UTC+8)">
 
 ### 主要变更
 - 支持配置状态码列表进行渠道禁用
@@ -396,577 +1160,6 @@ To view all historical versions, please visit the [GitHub Releases page](https:/
 <li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.2/new-api-v0.10.2.exe">new-api-v0.10.2.exe</a> (58.7 MB)</li>
 <li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.2.zip">Source code (zip)</a></li>
 <li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.2.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.10.1
-
-<Callout type="note" title="Release · Published at 2025-12-20 13:36:29 (UTC+8)">
-
-### 主要更新
-* 支持在令牌中设置auto分组下是否启用跨分组重试
-<img width="400" alt="dff68a8183a6d438cd13d0b50bfe63c8" src="https://github.com/user-attachments/assets/a94b3613-8186-403b-909d-cf717b8442c0" />
-
-* 支持gpt模型-xhigh后缀
-* 支持非流gpt-4o-mini-tts类模型计费，规则详见 https://github.com/QuantumNous/new-api/pull/2434
-
-### What's Changed
-* fix: 支持aws 通过全局参数透传或者渠道参数透传来 调用 by @zdwy5 in https://github.com/QuantumNous/new-api/pull/2423
-* fix: health check by @seefs001 in https://github.com/QuantumNous/new-api/pull/2428
-* feat(token): add cross-group retry option for token processing by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2426
-* fix: correct sender format issues fix #1347 by @ion1ze in https://github.com/QuantumNous/new-api/pull/2424
-* feat(adaptor): add '-xhigh' suffix to reasoning effort options by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2429
-* fix(channel_select): adjust priority retry logic for cross-group by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2430
-* feat: support gpt tts series model quota calculate by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2434
-* feat(auth): enhance IP restriction handling with CIDR support by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2445
-* 🛡️ fix: prevent OOM on large/decompressed requests; skip heavy prompt… by @t0ng7u in https://github.com/QuantumNous/new-api/pull/2452
-* style: add card spacing by @TinsFox in https://github.com/QuantumNous/new-api/pull/2474
-* chore: add code-inspector-plugin integration by @TinsFox in https://github.com/QuantumNous/new-api/pull/2476
-
-### New Contributors
-* @zdwy5 made their first contribution in https://github.com/QuantumNous/new-api/pull/2423
-* @ion1ze made their first contribution in https://github.com/QuantumNous/new-api/pull/2424
-* @TinsFox made their first contribution in https://github.com/QuantumNous/new-api/pull/2474
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.0...v0.10.1
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.1/new-api-arm64-v0.10.1">new-api-arm64-v0.10.1</a> (55.4 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.1/new-api-macos-v0.10.1">new-api-macos-v0.10.1</a> (70.3 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.1/new-api-v0.10.1">new-api-v0.10.1</a> (57.1 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.1/new-api-v0.10.1.exe">new-api-v0.10.1.exe</a> (58.7 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.10.1-alpha.8
-
-<Callout type="note" title="Release · Published at 2025-12-14 00:05:16 (UTC+8)">
-
-修复wav文件获取时长异常的问题
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.1-alpha.7...v0.10.1-alpha.8
-
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.8.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.8.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.10.1-alpha.6
-
-<Callout type="note" title="Release · Published at 2025-12-13 17:56:32 (UTC+8)">
-
-### 主要更新
-* 跨分组重试完善
-* 支持非流gpt-4o-mini-tts类模型计费，规则详见 https://github.com/QuantumNous/new-api/pull/2434
-
-### What's Changed
-* feat: support gpt tts series model quota calculate by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2434
-
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.1-alpha.5...v0.10.1-alpha.6
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.6.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.6.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.10.1-alpha.5
-
-<Callout type="note" title="Release · Published at 2025-12-13 13:29:52 (UTC+8)">
-
-增加FlushWriter的panic检查
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.1-alpha.4...v0.10.1-alpha.5
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.5.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.5.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.10.1-alpha.4
-
-<Callout type="note" title="Release · Published at 2025-12-13 01:39:24 (UTC+8)">
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.1-alpha.3...v0.10.1-alpha.4
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.4.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.4.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.10.1-alpha.3
-
-<Callout type="note" title="Release · Published at 2025-12-13 01:06:53 (UTC+8)">
-
-### 主要更新
-* 修复auto下非跨分组重试不正确的问题
-* 支持gpt模型-xhigh后缀
-
-### What's Changed
-* feat(adaptor): add '-xhigh' suffix to reasoning effort options by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2429
-* fix(channel_select): adjust priority retry logic for cross-group by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2430
-
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.1-alpha.2...v0.10.1-alpha.3
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.3.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.3.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.10.1-alpha.2
-
-<Callout type="note" title="Release · Published at 2025-12-12 22:05:36 (UTC+8)">
-
-### 主要更新
-* 修复跨分组重试最终计费逻辑错误
-
-### What's Changed
-* fix: correct sender format issues fix #1347 by @ion1ze in https://github.com/QuantumNous/new-api/pull/2424
-
-### New Contributors
-* @ion1ze made their first contribution in https://github.com/QuantumNous/new-api/pull/2424
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.1-alpha.1...v0.10.1-alpha.2
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.2.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.2.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.10.1-alpha.1
-
-<Callout type="note" title="Release · Published at 2025-12-12 20:48:38 (UTC+8)">
-
-### 主要更新
-* 支持在令牌中设置auto分组下是否启用跨分组重试
-<img width="400" alt="dff68a8183a6d438cd13d0b50bfe63c8" src="https://github.com/user-attachments/assets/a94b3613-8186-403b-909d-cf717b8442c0" />
-
-### What's Changed
-* fix: 支持aws 通过全局参数透传或者渠道参数透传来 调用 by @zdwy5 in https://github.com/QuantumNous/new-api/pull/2423
-* fix: health check by @seefs001 in https://github.com/QuantumNous/new-api/pull/2428
-* feat(token): add cross-group retry option for token processing by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2426
-
-### New Contributors
-* @zdwy5 made their first contribution in https://github.com/QuantumNous/new-api/pull/2423
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.0...v0.10.1-alpha.1
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.1.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.1-alpha.1.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.10.0
-
-<Callout type="note" title="Release · Published at 2025-12-11 23:37:29 (UTC+8)">
-
-### 主要更新
-* 支持sora remix
-* 修复可能导致CPU占用100%的问题
-* 性能优化
-* 优化OpenAI转Claude格式函数调用的问题
-
-### What's Changed
-* chore: update the relay openapi file by @t0ng7u in https://github.com/QuantumNous/new-api/pull/2353
-* fix: try resolve the high concurrency issue to a single host by @prnake in https://github.com/QuantumNous/new-api/pull/2351
-* feat: refactor token estimation logic by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2355
-* feat: gemini 3 thinking level gemini-3-pro-preview-high by @seefs001 in https://github.com/QuantumNous/new-api/pull/2344
-* fix(adaptor): fix reasoning suffix not processing in vertex adapter by @FirstMelody in https://github.com/QuantumNous/new-api/pull/2388
-* feat: add claude-haiku-4-5-20251001 model support by @FlowerRealm in https://github.com/QuantumNous/new-api/pull/2375
-* Increase token name length limit from 30 to 50 by @oudi in https://github.com/QuantumNous/new-api/pull/2368
-* fix: Set default to unsupported value for gpt-5 model series requests by @HynoR in https://github.com/QuantumNous/new-api/pull/2229
-* fix(go.mod): 更新modernc.org/sqlite依赖项版本 by @binorxin in https://github.com/QuantumNous/new-api/pull/2387
-* feat: zhipu 4v image generations by @seefs001 in https://github.com/QuantumNous/new-api/pull/2356
-* chore(go): enable greenteagc by @seefs001 in https://github.com/QuantumNous/new-api/pull/2357
-* fix: regex repeat compile by @seefs001 in https://github.com/QuantumNous/new-api/pull/2358
-* fix: qwen chat_template_kwargs by @seefs001 in https://github.com/QuantumNous/new-api/pull/2359
-* fix: fetch upstream models by @seefs001 in https://github.com/QuantumNous/new-api/pull/2394
-* fix: sidebar color overlap by @seefs001 in https://github.com/QuantumNous/new-api/pull/2395
-* fix: Try to fix login error "already logged in" issue by @seefs001 in https://github.com/QuantumNous/new-api/pull/2396
-* fix: Use channel proxy settings for task query scenarios by @seefs001 in https://github.com/QuantumNous/new-api/pull/2398
-* feat: update price display use current currency symbol by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2360
-* fix: try to fix tool call issues by @seefs001 in https://github.com/QuantumNous/new-api/pull/2397
-* fix(channel): update channel identification logic in error processing by @NoahCodeGG in https://github.com/QuantumNous/new-api/pull/2194
-* feat: add openai video remix endpoint by @seefs001 in https://github.com/QuantumNous/new-api/pull/2412
-
-### New Contributors
-* @FirstMelody made their first contribution in https://github.com/QuantumNous/new-api/pull/2388
-* @FlowerRealm made their first contribution in https://github.com/QuantumNous/new-api/pull/2375
-* @oudi made their first contribution in https://github.com/QuantumNous/new-api/pull/2368
-* @NoahCodeGG made their first contribution in https://github.com/QuantumNous/new-api/pull/2194
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.9.28...v0.10.0
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.0/New-API-App.0.10.0.exe">New-API-App.0.10.0.exe</a> (95.2 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.0/New-API-App.Setup.0.10.0.exe">New-API-App.Setup.0.10.0.exe</a> (95.4 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.0/new-api-arm64-v0.10.0">new-api-arm64-v0.10.0</a> (55.3 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.0/new-api-macos-v0.10.0">new-api-macos-v0.10.0</a> (70.2 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.0/new-api-v0.10.0">new-api-v0.10.0</a> (57.1 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.10.0/new-api-v0.10.0.exe">new-api-v0.10.0.exe</a> (58.6 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.0.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.0.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.10.0-alpha.3
-
-<Callout type="note" title="Release · Published at 2025-12-09 16:58:10 (UTC+8)">
-
-### What's Changed
-* fix(adaptor): fix reasoning suffix not processing in vertex adapter by @FirstMelody in https://github.com/QuantumNous/new-api/pull/2388
-* feat: add claude-haiku-4-5-20251001 model support by @FlowerRealm in https://github.com/QuantumNous/new-api/pull/2375
-* Increase token name length limit from 30 to 50 by @oudi in https://github.com/QuantumNous/new-api/pull/2368
-* fix: Set default to unsupported value for gpt-5 model series requests by @HynoR in https://github.com/QuantumNous/new-api/pull/2229
-* fix(go.mod): 更新modernc.org/sqlite依赖项版本 by @binorxin in https://github.com/QuantumNous/new-api/pull/2387
-* feat: zhipu 4v image generations by @seefs001 in https://github.com/QuantumNous/new-api/pull/2356
-* chore(go): enable greenteagc by @seefs001 in https://github.com/QuantumNous/new-api/pull/2357
-* fix: regex repeat compile by @seefs001 in https://github.com/QuantumNous/new-api/pull/2358
-* fix: qwen chat_template_kwargs by @seefs001 in https://github.com/QuantumNous/new-api/pull/2359
-* fix: fetch upstream models by @seefs001 in https://github.com/QuantumNous/new-api/pull/2394
-* fix: sidebar color overlap by @seefs001 in https://github.com/QuantumNous/new-api/pull/2395
-* fix: Try to fix login error "already logged in" issue by @seefs001 in https://github.com/QuantumNous/new-api/pull/2396
-* fix: Use channel proxy settings for task query scenarios by @seefs001 in https://github.com/QuantumNous/new-api/pull/2398
-* feat: update price display use current currency symbol by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2360
-* fix: try to fix tool call issues by @seefs001 in https://github.com/QuantumNous/new-api/pull/2397
-
-### New Contributors
-* @FirstMelody made their first contribution in https://github.com/QuantumNous/new-api/pull/2388
-* @FlowerRealm made their first contribution in https://github.com/QuantumNous/new-api/pull/2375
-* @oudi made their first contribution in https://github.com/QuantumNous/new-api/pull/2368
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.0-alpha.2...v0.10.0-alpha.3
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.0-alpha.3.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.0-alpha.3.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.10.0-alpha.2
-
-<Callout type="note" title="Release · Published at 2025-12-03 00:25:32 (UTC+8)">
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.10.0-alpha.1...v0.10.0-alpha.2
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.0-alpha.2.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.0-alpha.2.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.10.0-alpha.1
-
-<Callout type="note" title="Release · Published at 2025-12-02 21:56:46 (UTC+8)">
-
-### What's Changed
-* chore: update the relay openapi file by @t0ng7u in https://github.com/QuantumNous/new-api/pull/2353
-* fix: try resolve the high concurrency issue to a single host by @prnake in https://github.com/QuantumNous/new-api/pull/2351
-* feat: refactor token estimation logic by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2355
-* feat: gemini 3 thinking level gemini-3-pro-preview-high by @seefs001 in https://github.com/QuantumNous/new-api/pull/2344
-
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.9.28...v0.10.0-alpha.1
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.0-alpha.1.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.10.0-alpha.1.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.9.28
-
-<Callout type="note" title="Release · Published at 2025-12-02 00:33:31 (UTC+8)">
-
-### What's Changed
-* feat(gemini): implement markdown image handling in text processing by @Calcium-Ion in https://github.com/QuantumNous/new-api/pull/2346
-
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.9.27...v0.9.28
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.28/New-API-App.0.9.28.exe">New-API-App.0.9.28.exe</a> (95.1 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.28/New-API-App.Setup.0.9.28.exe">New-API-App.Setup.0.9.28.exe</a> (95.3 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.28/new-api-arm64-v0.9.28">new-api-arm64-v0.9.28</a> (54.9 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.28/new-api-macos-v0.9.28">new-api-macos-v0.9.28</a> (69.8 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.28/new-api-v0.9.28">new-api-v0.9.28</a> (56.9 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.28/new-api-v0.9.28.exe">new-api-v0.9.28.exe</a> (58.5 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.28.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.28.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.9.27-patch.1
-
-<Callout type="note" title="Release · Published at 2025-11-30 18:50:54 (UTC+8)">
-
-### What's Changed
-* fix: cast size to int64 before comparing with MaxUint32 by @binorxin in https://github.com/QuantumNous/new-api/pull/2264
-* fix: root page does not have analytic code by @wzxjohn in https://github.com/QuantumNous/new-api/pull/2261
-* feat: add claude-opus-4-5-20251101 by @prnake in https://github.com/QuantumNous/new-api/pull/2293
-* feat: enable thoughtSignature for non-function-call messages by @amikebzek in https://github.com/QuantumNous/new-api/pull/2282
-* fix: volcengine && baidu claude adapter by @seefs001 in https://github.com/QuantumNous/new-api/pull/2294
-* feat: 视频下载和界面预览统一使用OAI标准接口 by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2324
-* fix(aws): extract HTTP status code from AWS SDK errors by @mfzzf in https://github.com/QuantumNous/new-api/pull/2329
-* feat(playground): enhance SSE debugging and add image paste support with i18n by @ImogeneOctaviap794 in https://github.com/QuantumNous/new-api/pull/2312
-* fix: nano banana pro 4k(StreamScannerMaxBufferMB env) by @seefs001 in https://github.com/QuantumNous/new-api/pull/2335
-* feat: glm coding plan && kimi coding plan by @seefs001 in https://github.com/QuantumNous/new-api/pull/2334
-* fix: edit vertex key type by @seefs001 in https://github.com/QuantumNous/new-api/pull/2311
-* fix: claude request missing field by @seefs001 in https://github.com/QuantumNous/new-api/pull/2304
-* fix(i18n): fill missing translations in i18n. by @seefs001 in https://github.com/QuantumNous/new-api/pull/2314
-
-### New Contributors
-* @binorxin made their first contribution in https://github.com/QuantumNous/new-api/pull/2264
-* @amikebzek made their first contribution in https://github.com/QuantumNous/new-api/pull/2282
-* @mfzzf made their first contribution in https://github.com/QuantumNous/new-api/pull/2329
-* @ImogeneOctaviap794 made their first contribution in https://github.com/QuantumNous/new-api/pull/2312
-
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.9.25...v0.9.27-patch.1
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.27-patch.1/new-api-arm64-v0.9.27-patch.1">new-api-arm64-v0.9.27-patch.1</a> (54.9 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.27-patch.1/new-api-macos-v0.9.27-patch.1">new-api-macos-v0.9.27-patch.1</a> (69.8 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.27-patch.1/new-api-v0.9.27-patch.1">new-api-v0.9.27-patch.1</a> (56.9 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.27-patch.1/new-api-v0.9.27-patch.1.exe">new-api-v0.9.27-patch.1.exe</a> (58.5 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.27-patch.1.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.27-patch.1.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.9.25
-
-<Callout type="note" title="Release · Published at 2025-11-23 23:52:26 (UTC+8)">
-
-### What's Changed
-* fix: 错误解析responses api中的input字段 by @jarvis-u in https://github.com/QuantumNous/new-api/pull/2224
-* feat: Add Vietnamese language support by @chokiproai in https://github.com/QuantumNous/new-api/pull/2268
-* feat: 关联 discord 账号 by @StageDog in https://github.com/QuantumNous/new-api/pull/1706
-* feat: gemini thinking_level && snake params by @seefs001 in https://github.com/QuantumNous/new-api/pull/2274
-* feat: embedding param override && internal params by @seefs001 in https://github.com/QuantumNous/new-api/pull/2276
-* feat: 二次确认添加重定向前模型 && 重定向后模式视为已有模型 by @seefs001 in https://github.com/QuantumNous/new-api/pull/2277
-* fix: release workflow show version by @seefs001 in https://github.com/QuantumNous/new-api/pull/2278
-
-### New Contributors
-* @jarvis-u made their first contribution in https://github.com/QuantumNous/new-api/pull/2224
-* @chokiproai made their first contribution in https://github.com/QuantumNous/new-api/pull/2268
-* @StageDog made their first contribution in https://github.com/QuantumNous/new-api/pull/1706
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.9.24...v0.9.25
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.25/New-API-App.0.9.25.exe">New-API-App.0.9.25.exe</a> (95.1 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.25/New-API-App.Setup.0.9.25.exe">New-API-App.Setup.0.9.25.exe</a> (95.3 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.25/new-api-arm64-v0.9.25">new-api-arm64-v0.9.25</a> (54.9 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.25/new-api-macos-v0.9.25">new-api-macos-v0.9.25</a> (69.7 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.25/new-api-v0.9.25">new-api-v0.9.25</a> (56.8 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.25/new-api-v0.9.25.exe">new-api-v0.9.25.exe</a> (58.4 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.25.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.25.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.9.24
-
-<Callout type="note" title="Release · Published at 2025-11-20 18:16:21 (UTC+8)">
-
-### What's Changed
-* feat: Fill thoughtSignature only for Gemini/Vertex channels using OpenAI format by @seefs001 in https://github.com/QuantumNous/new-api/pull/2256
-* fix: When retrieving the model list with multiple keys, select the first enabled one. by @seefs001 in https://github.com/QuantumNous/new-api/pull/2260
-
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.9.23...v0.9.24
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.24/New-API-App.0.9.24.exe">New-API-App.0.9.24.exe</a> (95.1 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.24/New-API-App.Setup.0.9.24.exe">New-API-App.Setup.0.9.24.exe</a> (95.3 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.24/new-api-arm64-v0.9.24">new-api-arm64-v0.9.24</a> (54.7 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.24/new-api-macos-v0.9.24">new-api-macos-v0.9.24</a> (69.5 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.24/new-api-v0.9.24">new-api-v0.9.24</a> (56.6 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.24/new-api-v0.9.24.exe">new-api-v0.9.24.exe</a> (58.2 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.24.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.24.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.9.23
-
-<Callout type="note" title="Release · Published at 2025-11-20 15:13:53 (UTC+8)">
-
-### What's Changed
-* update model categories' match rules by @QAbot-zh in https://github.com/QuantumNous/new-api/pull/2239
-* fix: optimized the GitHub login copy and timeout. by @seefs001 in https://github.com/QuantumNous/new-api/pull/2244
-* chore(deps-dev): bump js-yaml from 4.1.0 to 4.1.1 in /electron by @dependabot[bot] in https://github.com/QuantumNous/new-api/pull/2231
-* feat: gemini-3-pro by @seefs001 in https://github.com/QuantumNous/new-api/pull/2243
-* feat: channel by tag omit key by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2247
-* chore(deps): bump golang.org/x/crypto from 0.42.0 to 0.45.0 by @dependabot[bot] in https://github.com/QuantumNous/new-api/pull/2252
-* fix: claude cache price render by @seefs001 in https://github.com/QuantumNous/new-api/pull/2250
-
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.9.22...v0.9.23
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.23/New-API-App.0.9.23.exe">New-API-App.0.9.23.exe</a> (95.1 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.23/New-API-App.Setup.0.9.23.exe">New-API-App.Setup.0.9.23.exe</a> (95.3 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.23/new-api-arm64-v0.9.23">new-api-arm64-v0.9.23</a> (54.7 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.23/new-api-macos-v0.9.23">new-api-macos-v0.9.23</a> (69.5 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.23/new-api-v0.9.23">new-api-v0.9.23</a> (56.6 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.23/new-api-v0.9.23.exe">new-api-v0.9.23.exe</a> (58.2 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.23.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.23.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.9.22-patch.1
-
-<Callout type="note" title="Release · Published at 2025-11-18 16:57:11 (UTC+8)">
-
-### What's Changed
-* update model categories' match rules by @QAbot-zh in https://github.com/QuantumNous/new-api/pull/2239
-
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.9.22...v0.9.22-patch.1
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.22-patch.1/new-api-arm64-v0.9.22-patch.1">new-api-arm64-v0.9.22-patch.1</a> (54.7 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.22-patch.1/new-api-macos-v0.9.22-patch.1">new-api-macos-v0.9.22-patch.1</a> (69.4 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.22-patch.1/new-api-v0.9.22-patch.1">new-api-v0.9.22-patch.1</a> (56.6 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.22-patch.1/new-api-v0.9.22-patch.1.exe">new-api-v0.9.22-patch.1.exe</a> (58.2 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.22-patch.1.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.22-patch.1.tar.gz">Source code (tar.gz)</a></li>
-</ul>
-
-</Callout>
-
----
-
-## v0.9.22
-
-<Callout type="note" title="Release · Published at 2025-11-16 23:52:07 (UTC+8)">
-
-### What's Changed
-* 增加wan2.5-i2i-preview图生图支持 by @feitianbubu in https://github.com/QuantumNous/new-api/pull/2227
-* support reasoning field for playground by @QAbot-zh in https://github.com/QuantumNous/new-api/pull/2207
-* feat: support gpt-5.1 prompt_cache_retention by @seefs001 in https://github.com/QuantumNous/new-api/pull/2228
-* fix: boundary parser error (error parsing multipart NextPart: bufio: buffer full) by @seefs001 in https://github.com/QuantumNous/new-api/pull/2235
-* feat: support vertex open source models by @seefs001 in https://github.com/QuantumNous/new-api/pull/2236
-* feat: support configuring the linuxdo endpoint via environment variables by @seefs001 in https://github.com/QuantumNous/new-api/pull/2237
-* feat: support doubao coding plan by @seefs001 in https://github.com/QuantumNous/new-api/pull/2238
-
-
-**Full Changelog**: https://github.com/QuantumNous/new-api/compare/v0.9.21...v0.9.22
-
-**Download Resources**
-
-<ul>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.22/New-API-App.0.9.22.exe">New-API-App.0.9.22.exe</a> (95.1 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.22/New-API-App.Setup.0.9.22.exe">New-API-App.Setup.0.9.22.exe</a> (95.3 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.22/new-api-arm64-v0.9.22">new-api-arm64-v0.9.22</a> (54.7 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.22/new-api-macos-v0.9.22">new-api-macos-v0.9.22</a> (69.4 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.22/new-api-v0.9.22">new-api-v0.9.22</a> (56.6 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/releases/download/v0.9.22/new-api-v0.9.22.exe">new-api-v0.9.22.exe</a> (58.2 MB)</li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.22.zip">Source code (zip)</a></li>
-<li><a href="https://github.com/QuantumNous/new-api/archive/refs/tags/v0.9.22.tar.gz">Source code (tar.gz)</a></li>
 </ul>
 
 </Callout>
